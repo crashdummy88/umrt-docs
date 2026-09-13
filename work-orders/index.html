@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work Orders · UMRT Docs</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem;color:#1A1A1A;background:#fff}
+  a{color:#1A1A1A}
+  .gold{color:#C9972C}
+  header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+  h1{margin:.2rem 0 .3rem;font-size:1.6rem}
+  .lede{color:#666;margin:0 0 1.2rem}
+  .card{border:1px solid #E5E5E5;border-radius:10px;padding:1rem 1.1rem;margin-bottom:.7rem;background:#fff}
+  .job-top{display:flex;justify-content:space-between;align-items:flex-start;gap:.6rem;flex-wrap:wrap}
+  .job-top h3{margin:.15rem 0;font-size:1.02rem}
+  .meta{color:#666;font-size:.85rem;margin:.1rem 0}
+  .pill{display:inline-block;font-size:.72em;font-weight:700;text-transform:uppercase;letter-spacing:.03em;padding:3px 10px;border-radius:999px;background:#F5F5F5;color:#1A1A1A}
+  .pill.none{background:#F3D6D6;color:#8A1F1F}
+  .pill.draft{background:#EFE3C0;color:#7A5A00}
+  .pill.completed{background:#DCF5E0;color:#1B7A34}
+  .pill.void{background:#eee;color:#888}
+  .btn{display:inline-block;background:#C9972C;color:#1A1A1A;font-weight:700;padding:.5rem 1rem;border-radius:8px;text-decoration:none;font-size:.9rem}
+  .btn-ghost{background:transparent;border:1px solid #1A1A1A;color:#1A1A1A}
+  .muted{color:#888}
+  #signed-out .card, #no-access .card{text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <a href="/" style="text-decoration:none;font-weight:700">United Mobile <span class="gold">RV</span> Docs</a>
+  <nav><a href="/guides/">Guides</a> · <a href="/sop/">SOP</a> · <a href="/work-orders/" aria-current="page">Work Orders</a></nav>
+</header>
+<main>
+  <p class="gold" style="margin:0;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase">Internal · Official record</p>
+  <h1>Work orders</h1>
+  <p class="lede">Every job from the shared jobs ledger, with its work-order status. Extends umrt-portal's job tracking — same underlying record, not a separate system.</p>
+
+  <div id="loading"><p class="muted">Checking access…</p></div>
+
+  <div id="signed-out" hidden>
+    <div class="card">
+      <p><strong>Sign in required.</strong></p>
+      <a class="btn" href="/api/auth/google/start">Sign in with Google</a>
+    </div>
+  </div>
+
+  <div id="no-access" hidden>
+    <div class="card">
+      <p><strong>This account isn't authorized for work orders.</strong></p>
+    </div>
+  </div>
+
+  <div id="list-wrap" hidden>
+    <div id="job-list"></div>
+    <p id="empty-note" class="muted" hidden>No jobs yet.</p>
+  </div>
+</main>
+<footer style="margin-top:2rem;color:#888;font-size:.85rem">United Mobile RV LLC · Internal use only</footer>
+
+<script>
+(function () {
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function fmtDate(s) { return s ? String(s).slice(0, 10) : ''; }
+
+  function woPill(j) {
+    if (!j.work_order_id) return '<span class="pill none">No work order</span>';
+    var label = j.wo_status === 'completed' ? 'Completed' : j.wo_status === 'void' ? 'Void' : 'Draft';
+    return '<span class="pill ' + esc(j.wo_status || 'draft') + '">' + esc(label) + '</span>';
+  }
+
+  function renderJobs(jobs) {
+    var list = document.getElementById('job-list');
+    document.getElementById('empty-note').hidden = !!jobs.length;
+    list.innerHTML = jobs.map(function (j) {
+      var rig = [j.rv_year, j.rv_make, j.rv_model].filter(Boolean).join(' ');
+      var where = [j.city, j.state].filter(Boolean).join(', ');
+      return '' +
+        '<div class="card">' +
+          '<div class="job-top">' +
+            '<div>' +
+              woPill(j) +
+              '<h3>' + esc(j.full_name) + (rig ? ' — ' + esc(rig) : '') + '</h3>' +
+              '<p class="meta">' + esc(j.issue) + '</p>' +
+              '<p class="meta">' + esc(j.phone) + (where ? ' · ' + esc(where) : '') + ' · Job status: ' + esc(j.job_status) + '</p>' +
+              '<p class="meta">Submitted ' + esc(fmtDate(j.job_created_at)) + (j.wo_updated_at ? ' · Work order updated ' + esc(fmtDate(j.wo_updated_at)) : '') + '</p>' +
+            '</div>' +
+            '<a class="btn' + (j.work_order_id ? ' btn-ghost' : '') + '" href="/work-orders/edit.html?job=' + encodeURIComponent(j.job_id) + '">' + (j.work_order_id ? 'View / edit' : 'Create work order') + '</a>' +
+          '</div>' +
+        '</div>';
+    }).join('');
+  }
+
+  function showNoAccess() {
+    document.getElementById('loading').hidden = true;
+    document.getElementById('no-access').hidden = false;
+  }
+
+  fetch('/api/auth/me', { credentials: 'include' })
+    .then(function (r) { return r.status === 200 ? r.json() : null; })
+    .then(function (meData) {
+      document.getElementById('loading').hidden = true;
+      if (!meData || !meData.user) {
+        document.getElementById('signed-out').hidden = false;
+        return;
+      }
+      return fetch('/api/work-orders', { credentials: 'include' })
+        .then(function (r) {
+          if (r.status === 401) { showNoAccess(); return null; }
+          return r.json();
+        })
+        .then(function (data) {
+          if (!data) return;
+          document.getElementById('list-wrap').hidden = false;
+          renderJobs(data.jobs || []);
+        });
+    })
+    .catch(function () {
+      document.getElementById('loading').hidden = true;
+      document.getElementById('signed-out').hidden = false;
+    });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+# Cloudflare Pages · umrt-docs
+# D1 binding name MUST be DB (matches umrt-portal's convention -- this is
+# the SAME shared database, id cad7eb04-167f-4330-b7e4-5e35a52de927, also
+# bound as PORTAL_DB in united-mobile-rv). Work orders live alongside the
+# jobs/users/sessions tables that database already has.
+name = "umrt-docs"
+compatibility_date = "2026-09-13"
+pages_build_output_dir = "."
+
+[[d1_databases]]
+binding = "DB"
+database_name = "umrt-portal-db"
+database_id = "cad7eb04-167f-4330-b7e4-5e35a52de927"

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work Order · UMRT Docs</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;max-width:760px;margin:2rem auto;padding:0 1rem;color:#1A1A1A;background:#fff}
+  a{color:#1A1A1A}
+  .gold{color:#C9972C}
+  header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+  h1{margin:.2rem 0 .3rem;font-size:1.5rem}
+  .muted{color:#888}
+  label{display:block;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#666;margin:1rem 0 .3rem}
+  label:first-of-type{margin-top:0}
+  input,select,textarea{width:100%;box-sizing:border-box;font-family:inherit;font-size:.95rem;padding:.55rem .65rem;border:1px solid #CCC;border-radius:8px}
+  textarea{min-height:5rem;resize:vertical}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+  @media(max-width:520px){.row{grid-template-columns:1fr}}
+  .btn{display:inline-block;background:#C9972C;color:#1A1A1A;font-weight:700;padding:.6rem 1.2rem;border-radius:8px;text-decoration:none;font-size:.92rem;border:0;cursor:pointer}
+  .btn-ghost{background:transparent;border:1px solid #1A1A1A;color:#1A1A1A}
+  .actions{display:flex;gap:.6rem;align-items:center;margin-top:1.4rem;flex-wrap:wrap}
+  .save-msg{font-size:.85rem;font-weight:700}
+  .save-msg.ok{color:#1B7A34}
+  .save-msg.err{color:#8A1F1F}
+  .job-summary{background:#F5F5F5;border-radius:10px;padding:.9rem 1rem;margin-bottom:1.2rem;font-size:.9rem}
+  .job-summary p{margin:.2rem 0}
+  .sig-block{border-top:1px solid #E5E5E5;margin-top:1.5rem;padding-top:1rem}
+  .sig-line{border-bottom:1px solid #1A1A1A;min-height:1.6rem;margin:.4rem 0 .2rem;font-style:italic}
+
+  /* Printable official document -- everything else hides on print */
+  @media print {
+    body{max-width:none;margin:0;padding:1.2rem}
+    header, .actions, #signed-out, #no-access, .no-print { display:none !important; }
+    .job-summary{background:none;border:1px solid #1A1A1A}
+    input,select,textarea{border:none;padding:.1rem 0;background:transparent}
+    label{color:#000}
+  }
+</style>
+</head>
+<body>
+<header class="no-print">
+  <a href="/work-orders/" style="text-decoration:none;font-weight:700">← Work Orders</a>
+  <a href="/" style="text-decoration:none">United Mobile <span class="gold">RV</span> Docs</a>
+</header>
+
+<div id="loading"><p class="muted">Loading…</p></div>
+<div id="signed-out" hidden><p><strong>Sign in required.</strong> <a class="btn" href="/api/auth/google/start">Sign in with Google</a></p></div>
+<div id="no-access" hidden><p><strong>Not authorized.</strong></p></div>
+<div id="no-job" hidden><p><strong>No job specified.</strong> Go back to <a href="/work-orders/">Work Orders</a> and pick one.</p></div>
+
+<main id="form-wrap" hidden>
+  <p class="gold" style="margin:0;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase">United Mobile RV LLC · Official Work Order</p>
+  <h1 id="wo-title">Work order</h1>
+
+  <div class="job-summary" id="job-summary"></div>
+
+  <label>Technician</label>
+  <input id="f-technician" type="text" placeholder="Matt">
+
+  <label>Diagnosis</label>
+  <textarea id="f-diagnosis" placeholder="What was actually wrong"></textarea>
+
+  <label>Work performed</label>
+  <textarea id="f-work" placeholder="What was done to fix it"></textarea>
+
+  <label>Parts used</label>
+  <textarea id="f-parts" placeholder="One per line: qty x part @ price"></textarea>
+
+  <div class="row">
+    <div>
+      <label>Labor hours</label>
+      <input id="f-hours" type="number" min="0" step="0.25" placeholder="0.0">
+    </div>
+    <div>
+      <label>Status</label>
+      <select id="f-status">
+        <option value="draft">Draft</option>
+        <option value="completed">Completed</option>
+        <option value="void">Void</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="sig-block">
+    <label>Customer name (signature)</label>
+    <input id="f-customer-name" type="text" placeholder="Type full name to sign">
+    <p class="muted no-print" style="font-size:.8rem;margin:.3rem 0 0">Typing a name here + checking the box below records it as the customer's signature with a timestamp — this is an electronic signature, not a scanned/drawn one.</p>
+    <label style="display:flex;align-items:center;gap:.4rem;font-weight:400;text-transform:none;letter-spacing:0;color:#1A1A1A;margin-top:.5rem">
+      <input id="f-customer-sign" type="checkbox" style="width:auto"> I certify the work described above was completed to my satisfaction
+    </label>
+    <div id="customer-signed-line" class="sig-line" hidden></div>
+
+    <label style="margin-top:1.2rem">Technician sign-off</label>
+    <label style="display:flex;align-items:center;gap:.4rem;font-weight:400;text-transform:none;letter-spacing:0;color:#1A1A1A">
+      <input id="f-tech-sign" type="checkbox" style="width:auto"> I certify this work order is accurate
+    </label>
+    <div id="tech-signed-line" class="sig-line" hidden></div>
+  </div>
+
+  <div class="actions">
+    <button class="btn save-btn">Save</button>
+    <button class="btn btn-ghost" onclick="window.print()" type="button">Print / Save as PDF</button>
+    <span class="save-msg" id="save-msg"></span>
+  </div>
+</main>
+
+<script>
+(function () {
+  var params = new URLSearchParams(location.search);
+  var jobId = params.get('job');
+  var currentWO = null;
+
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function fmtDateTime(s) { return s ? new Date(s).toLocaleString() : ''; }
+
+  if (!jobId) {
+    document.getElementById('loading').hidden = true;
+    document.getElementById('no-job').hidden = false;
+    return;
+  }
+
+  function renderJobSummary(job) {
+    var rig = [job.rv_year, job.rv_make, job.rv_model].filter(Boolean).join(' ');
+    var where = [job.street, job.city, job.state, job.zip].filter(Boolean).join(', ');
+    document.getElementById('job-summary').innerHTML =
+      '<p><strong>' + esc(job.full_name) + '</strong>' + (rig ? ' — ' + esc(rig) : '') + '</p>' +
+      '<p>' + esc(job.phone) + (job.email ? ' · ' + esc(job.email) : '') + '</p>' +
+      (where ? '<p>' + esc(where) + '</p>' : '') +
+      '<p>Issue: ' + esc(job.issue) + '</p>';
+  }
+
+  function populateForm(wo) {
+    currentWO = wo;
+    document.getElementById('f-technician').value = (wo && wo.technician_name) || 'Matt';
+    document.getElementById('f-diagnosis').value = (wo && wo.diagnosis) || '';
+    document.getElementById('f-work').value = (wo && wo.work_performed) || '';
+    document.getElementById('f-parts').value = (wo && wo.parts_used) || '';
+    document.getElementById('f-hours').value = (wo && wo.labor_hours != null) ? wo.labor_hours : '';
+    document.getElementById('f-status').value = (wo && wo.status) || 'draft';
+    document.getElementById('f-customer-name').value = (wo && wo.customer_signed_name) || '';
+
+    var custLine = document.getElementById('customer-signed-line');
+    var custCheck = document.getElementById('f-customer-sign');
+    if (wo && wo.customer_signed_at) {
+      custLine.hidden = false;
+      custLine.textContent = esc(wo.customer_signed_name) + ' — signed ' + fmtDateTime(wo.customer_signed_at);
+      custCheck.checked = true;
+      custCheck.disabled = true;
+    }
+
+    var techLine = document.getElementById('tech-signed-line');
+    var techCheck = document.getElementById('f-tech-sign');
+    if (wo && wo.technician_signed_at) {
+      techLine.hidden = false;
+      techLine.textContent = (wo.technician_name || 'Technician') + ' — signed ' + fmtDateTime(wo.technician_signed_at);
+      techCheck.checked = true;
+      techCheck.disabled = true;
+    }
+  }
+
+  function save() {
+    var msg = document.getElementById('save-msg');
+    var body = {
+      technician_name: document.getElementById('f-technician').value,
+      diagnosis: document.getElementById('f-diagnosis').value,
+      work_performed: document.getElementById('f-work').value,
+      parts_used: document.getElementById('f-parts').value,
+      labor_hours: document.getElementById('f-hours').value,
+      status: document.getElementById('f-status').value,
+      customer_signed_name: document.getElementById('f-customer-name').value
+    };
+    var custCheck = document.getElementById('f-customer-sign');
+    var techCheck = document.getElementById('f-tech-sign');
+    if (custCheck.checked && !custCheck.disabled) body.customer_sign = true;
+    if (techCheck.checked && !techCheck.disabled) body.technician_sign = true;
+
+    msg.textContent = 'Saving…'; msg.className = 'save-msg';
+    fetch('/api/work-orders/' + encodeURIComponent(jobId), {
+      method: 'PUT', credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    }).then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+      .then(function (res) {
+        if (!res.ok) { msg.textContent = 'Error: ' + (res.d && res.d.error || 'failed'); msg.className = 'save-msg err'; return; }
+        msg.textContent = 'Saved'; msg.className = 'save-msg ok';
+        populateForm(res.d.work_order);
+      })
+      .catch(function () { msg.textContent = 'Network error'; msg.className = 'save-msg err'; });
+  }
+
+  function showNoAccess() {
+    document.getElementById('loading').hidden = true;
+    document.getElementById('no-access').hidden = false;
+  }
+
+  fetch('/api/auth/me', { credentials: 'include' })
+    .then(function (r) { return r.status === 200 ? r.json() : null; })
+    .then(function (meData) {
+      if (!meData || !meData.user) {
+        document.getElementById('loading').hidden = true;
+        document.getElementById('signed-out').hidden = false;
+        return;
+      }
+      return fetch('/api/work-orders/' + encodeURIComponent(jobId), { credentials: 'include' })
+        .then(function (r) {
+          if (r.status === 401) { showNoAccess(); return null; }
+          if (r.status === 404) {
+            document.getElementById('loading').hidden = true;
+            document.getElementById('no-job').hidden = false;
+            return null;
+          }
+          return r.json();
+        })
+        .then(function (data) {
+          if (!data) return;
+          document.getElementById('loading').hidden = true;
+          document.getElementById('form-wrap').hidden = false;
+          document.getElementById('wo-title').textContent = 'Work order — ' + data.job.full_name;
+          renderJobSummary(data.job);
+          populateForm(data.work_order);
+          document.querySelector('.save-btn').addEventListener('click', save);
+        });
+    })
+    .catch(function () {
+      document.getElementById('loading').hidden = true;
+      document.getElementById('signed-out').hidden = false;
+    });
+})();
+</script>
+</body>
+</html>
