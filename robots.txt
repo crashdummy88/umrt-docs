@@ -3,4 +3,4 @@ Allow: /
 Disallow: /work-orders/
 Disallow: /api/
 
-Sitemap: https://umrt-docs.pages.dev/sitemap.xml
+Sitemap: https://docs.unitedmobilerv.com/sitemap.xml
