@@ -1,4 +1,4 @@
-/* Remap sms: → tel: when the client cannot open a composer (desktop / older phones). */
+/* Remap sms: → tel: when the client cannot open a composer (desktop). Call stays tel:. */
 (function () {
   var ua = navigator.userAgent || '';
   var smsOk = /iPhone|iPad|iPod|Android|Windows Phone|IEMobile/i.test(ua);
