@@ -1,0 +1,68 @@
+/* UMRT convert chrome — Text Now (sms) + Book (Square). tel: for older clients. */
+
+.umrt-cta-row {
+  margin: 1rem 0;
+}
+
+.umrt-cta-row .btn,
+.umrt-mobile-bar .btn {
+  display: inline-block;
+  background: #C9972C;
+  color: #1A1A1A;
+  font-weight: 700;
+  padding: 0.65rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-right: 0.5rem;
+  box-sizing: border-box;
+}
+
+.umrt-cta-row .btn-ghost,
+.umrt-mobile-bar .btn-ghost {
+  background: transparent;
+  border: 2px solid #1A1A1A;
+  color: #1A1A1A;
+}
+
+.umrt-older {
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.umrt-older a {
+  color: #1A1A1A;
+}
+
+.umrt-mobile-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: rgba(255, 255, 255, 0.97);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid #ddd;
+  padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+  gap: 10px;
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.umrt-mobile-bar .btn {
+  flex: 1;
+  min-height: 44px;
+  text-align: center;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .umrt-mobile-bar { display: flex; }
+  body { padding-bottom: 72px; }
+}
+
+@media print {
+  .umrt-mobile-bar,
+  .umrt-cta-row,
+  .umrt-older { display: none !important; }
+}
