@@ -28,6 +28,11 @@
   .job-summary p{margin:.2rem 0}
   .sig-block{border-top:1px solid #E5E5E5;margin-top:1.5rem;padding-top:1rem}
   .sig-line{border-bottom:1px solid #1A1A1A;min-height:1.6rem;margin:.4rem 0 .2rem;font-style:italic}
+  .photo-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:.5rem;margin-bottom:.6rem}
+  .photo-thumb{position:relative;aspect-ratio:1/1;border-radius:8px;overflow:hidden;border:1px solid #E5E5E5;background:#F5F5F5}
+  .photo-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .photo-thumb .photo-del{position:absolute;top:4px;right:4px;background:rgba(26,26,26,.75);color:#fff;border:0;border-radius:50%;width:22px;height:22px;line-height:22px;text-align:center;font-size:.8rem;cursor:pointer;padding:0}
+  .photo-empty{color:#888;font-size:.85rem;margin:0 0 .5rem}
 
   /* Printable official document -- everything else hides on print */
   @media print {
@@ -82,6 +87,15 @@
         <option value="void">Void</option>
       </select>
     </div>
+  </div>
+
+  <label>Photos</label>
+  <p class="photo-empty no-print" id="photo-empty">No photos yet.</p>
+  <div class="photo-gallery" id="photo-gallery"></div>
+  <div class="no-print" style="margin-bottom:1rem">
+    <input type="file" id="f-photo-input" accept="image/jpeg,image/png,image/webp,image/heic" capture="environment" style="display:none">
+    <button class="btn btn-ghost" type="button" id="photo-upload-btn">Add Photo</button>
+    <span class="save-msg" id="photo-msg"></span>
   </div>
 
   <div class="sig-block">
@@ -161,6 +175,47 @@
     }
   }
 
+  function renderPhotos(photos) {
+    photos = photos || [];
+    document.getElementById('photo-empty').hidden = !!photos.length;
+    document.getElementById('photo-gallery').innerHTML = photos.map(function (p) {
+      return '<div class="photo-thumb"><img src="' + esc(p.url) + '" alt="' + esc(p.caption || '') + '" loading="lazy">' +
+        '<button type="button" class="photo-del no-print" data-photo-id="' + esc(p.id) + '" title="Delete photo">×</button></div>';
+    }).join('');
+    document.querySelectorAll('.photo-del').forEach(function (btn) {
+      btn.addEventListener('click', function () { deletePhoto(btn.dataset.photoId); });
+    });
+  }
+
+  function deletePhoto(id) {
+    if (!confirm('Delete this photo?')) return;
+    fetch('/api/work-order-photos/' + encodeURIComponent(id), { method: 'DELETE', credentials: 'include' })
+      .then(function (r) { return r.json(); })
+      .then(function () { refetch(); });
+  }
+
+  function uploadPhoto(file) {
+    var msg = document.getElementById('photo-msg');
+    msg.textContent = 'Uploading…'; msg.className = 'save-msg';
+    var form = new FormData();
+    form.append('job_id', jobId);
+    form.append('image', file);
+    fetch('/api/work-order-photos/upload', { method: 'POST', credentials: 'include', body: form })
+      .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+      .then(function (res) {
+        if (!res.ok) { msg.textContent = 'Error: ' + (res.d && (res.d.message || res.d.error) || 'upload failed'); msg.className = 'save-msg err'; return; }
+        msg.textContent = 'Photo added'; msg.className = 'save-msg ok';
+        refetch();
+      })
+      .catch(function () { msg.textContent = 'Network error'; msg.className = 'save-msg err'; });
+  }
+
+  function refetch() {
+    fetch('/api/work-orders/' + encodeURIComponent(jobId), { credentials: 'include' })
+      .then(function (r) { return r.json(); })
+      .then(function (data) { populateForm(data.work_order); renderPhotos(data.photos); });
+  }
+
   function save() {
     var msg = document.getElementById('save-msg');
     var body = {
@@ -221,7 +276,15 @@
           document.getElementById('wo-title').textContent = 'Work order — ' + data.job.full_name;
           renderJobSummary(data.job);
           populateForm(data.work_order);
+          renderPhotos(data.photos);
           document.querySelector('.save-btn').addEventListener('click', save);
+          document.getElementById('photo-upload-btn').addEventListener('click', function () {
+            document.getElementById('f-photo-input').click();
+          });
+          document.getElementById('f-photo-input').addEventListener('change', function (e) {
+            if (e.target.files && e.target.files[0]) uploadPhoto(e.target.files[0]);
+            e.target.value = '';
+          });
         });
     })
     .catch(function () {

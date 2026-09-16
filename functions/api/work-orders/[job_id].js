@@ -1,33 +1,75 @@
 /**
- * GET  /api/work-orders/:job_id — the job plus its work order (or null if
- *      none exists yet).
- * PUT  /api/work-orders/:job_id — create or update the work order for this
- *      job (upsert, keyed on job_id's UNIQUE constraint).
- * Both admin-only. Signing (customer_signed_name/at, technician_signed_at)
- * is set via dedicated fields in the PUT body -- once technician_signed_at
- * is set and status is 'completed', treat the record as final: the UI
- * should stop offering an edit form and show a read-only/printable view,
- * but nothing here enforces that server-side yet (small shop, single
- * admin -- add a status-lock check if this ever needs it).
+ * GET  /api/work-orders/:job_id — the job plus its work order and photos
+ *      (or null work_order if none exists yet). Two callers, both real:
+ *      the admin edit page (full job record, can also PUT) and, added
+ *      2026-09-16, a signed-in customer viewing their OWN job (job.email
+ *      matches their session email) -- read-only, and a reduced set of
+ *      job fields (no admin_notes, lead source, or raw Square object
+ *      IDs). Ownership is checked here rather than adding a third
+ *      endpoint, so the two views can never drift apart.
+ * PUT  /api/work-orders/:job_id — create or update the work order.
+ *      Admin-only (unchanged). Signing (customer_signed_name/at,
+ *      technician_signed_at) is set via dedicated fields in the PUT body
+ *      -- once technician_signed_at is set and status is 'completed',
+ *      treat the record as final: the UI should stop offering an edit
+ *      form and show a read-only/printable view, but nothing here
+ *      enforces that server-side yet (small shop, single admin -- add a
+ *      status-lock check if this ever needs it).
  */
 import { getSessionUser, isAdminUser, randomToken, json } from '../../_lib/auth.js';
 
 const VALID_STATUSES = ['draft', 'completed', 'void'];
 
+// Fields a customer is allowed to see on their own job. Deliberately
+// excludes admin_notes, source (internal lead tracking), and the raw
+// square_order_id/square_invoice_id object IDs -- square_invoice_url is
+// kept since that's the actual pay link a customer needs.
+const CUSTOMER_JOB_FIELDS = [
+  'id', 'full_name', 'rv_year', 'rv_make', 'rv_model', 'issue', 'city', 'state',
+  'status', 'created_at', 'updated_at', 'final_amount_cents', 'payment_method',
+  'paid_at', 'square_invoice_url', 'square_invoice_status',
+];
+
+function customerSafeJob(job) {
+  const out = {};
+  for (const k of CUSTOMER_JOB_FIELDS) out[k] = job[k];
+  return out;
+}
+
 export async function onRequestGet(context) {
   const { env, request, params } = context;
   const user = await getSessionUser(env, request);
-  if (!user || !isAdminUser(user, env)) {
-    return json({ error: 'unauthorized' }, 401, { 'Cache-Control': 'no-store' });
-  }
+  if (!user) return json({ error: 'unauthorized' }, 401, { 'Cache-Control': 'no-store' });
   if (!env.DB) return json({ error: 'no_db' }, 503);
 
   const jobId = params.job_id;
   const job = await env.DB.prepare('SELECT * FROM jobs WHERE id = ?').bind(jobId).first();
   if (!job) return json({ error: 'job_not_found' }, 404);
 
-  const workOrder = await env.DB.prepare('SELECT * FROM work_orders WHERE job_id = ?').bind(jobId).first();
-  return json({ job, work_order: workOrder || null }, 200, { 'Cache-Control': 'no-store' });
+  const admin = isAdminUser(user, env);
+  const owner = !admin && job.email && String(job.email).toLowerCase() === String(user.email).toLowerCase();
+  if (!admin && !owner) {
+    return json({ error: 'unauthorized' }, 401, { 'Cache-Control': 'no-store' });
+  }
+
+  let workOrder = await env.DB.prepare('SELECT * FROM work_orders WHERE job_id = ?').bind(jobId).first();
+  // A 'draft' work order is Matt's in-progress working notes, not yet
+  // meant for the customer to see -- only 'completed' (or 'void', shown
+  // so a customer isn't left wondering why nothing appears) is customer-
+  // visible. Admin always sees everything regardless of status.
+  if (!admin && workOrder && workOrder.status === 'draft') workOrder = null;
+
+  const { results: photos } = !admin && !workOrder
+    ? { results: [] }
+    : await env.DB.prepare(
+        `SELECT id, r2_key, caption, created_at FROM work_order_photos WHERE job_id = ? ORDER BY created_at ASC`
+      ).bind(jobId).all();
+
+  return json({
+    job: admin ? job : customerSafeJob(job),
+    work_order: workOrder || null,
+    photos: (photos || []).map((p) => ({ ...p, url: `/r2/${p.r2_key}` })),
+  }, 200, { 'Cache-Control': 'no-store' });
 }
 
 export async function onRequestPut(context) {

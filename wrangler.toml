@@ -17,3 +17,14 @@ database_id = "cad7eb04-167f-4330-b7e4-5e35a52de927"
 binding = "UNIFIED_DB"
 database_name = "umrt-unified-db"
 database_id = "3442db0b-172b-4246-b5e7-6509dfb7cf23"
+
+# R2 bucket for work-order photos (technician-taken repair photos, one per
+# job). Added 2026-09-16 for the customer-facing job docs feature. A
+# dedicated bucket, not united-mobile-rv's shared `umrt-forum-media` --
+# these photos are private per-customer (served with an auth check in
+# functions/r2/[[path]].js), unlike the forum's fully-public images, so
+# keeping them in a separate bucket avoids any chance of the two access
+# models getting mixed up.
+[[r2_buckets]]
+binding = "MEDIA"
+bucket_name = "umrt-work-order-photos"
