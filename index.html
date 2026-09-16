@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-platform="docs">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Docs · United Mobile RV</title>
   <meta name="description" content="United Mobile RV field guides and SOP shells. Prefer Text (616) 606-5277." />
   <meta name="theme-color" content="#1A1A1A" />
-  <link rel="icon" href="https://united-mobile-rv.pages.dev/assets/brand/favicon-64.png" />
+  <link rel="icon" href="/assets/brand/favicon-64.png" />
   <style>
     :root { --black:#1A1A1A; --gold:#C9972C; --white:#fff; --light:#F5F5F5; --gray:#666; }
     body{margin:0;font-family:system-ui,sans-serif;color:var(--black);background:var(--white);line-height:1.5}
@@ -32,15 +32,25 @@
 <body>
   <div class="umrt-platform-bar" role="navigation" aria-label="UMRT properties">
     <div class="umrt-platform-bar-inner">
-      <a href="https://unitedmobilerv.com/" data-platform-link="hub">Main Hub</a>
-      <a href="https://shop.unitedmobilerv.com/" data-platform-link="shop">Shop</a>
-      <a href="https://forum.unitedmobilerv.com/" data-platform-link="forum">Forum</a>
-      <a href="https://software.unitedmobilerv.com/" data-platform-link="software">Software</a>
-      <a href="https://status.unitedmobilerv.com/" data-platform-link="status">Status</a>
-      <a href="https://portal.unitedmobilerv.com/" data-platform-link="portal">Portal</a>
-      <a href="https://docs.unitedmobilerv.com/" data-platform-link="docs" class="is-current" aria-current="page">Docs</a>
-    </div>
+    <a href="https://unitedmobilerv.com/" data-platform-link="hub">Hub</a>
+    <a href="https://shop.unitedmobilerv.com/" data-platform-link="shop">Shop</a>
+    <a href="https://forum.unitedmobilerv.com/" data-platform-link="forum">Forum</a>
+    <a href="https://book.unitedmobilerv.com/" data-platform-link="book">Book</a>
+    <a href="https://portal.unitedmobilerv.com/" data-platform-link="portal">Portal</a>
+    <a href="https://software.unitedmobilerv.com/" data-platform-link="software">Software</a>
+    <a href="https://status.unitedmobilerv.com/" data-platform-link="status">Status</a>
+    <a href="https://docs.unitedmobilerv.com/" data-platform-link="docs" class="is-current" aria-current="page">Docs</a>
+    <a class="umrt-platform-text" href="sms:+16166065277">Prefer Text (616) 606-5277</a>
   </div>
+  </div>
+  <script>
+    (function () {
+      var current = document.documentElement.getAttribute('data-platform');
+      if (!current) return;
+      var link = document.querySelector('.umrt-platform-bar [data-platform-link="' + current + '"]');
+      if (link) { link.setAttribute('aria-current', 'page'); link.classList.add('is-current'); }
+    })();
+  </script>
 
   <header class="top">
     <strong>UMRT Docs</strong>
@@ -55,15 +65,15 @@
     <p class="eyebrow">Field docs</p>
     <h1>Field guides &amp; SOPs</h1>
     <p>Customer field guides and technician SOP shells. Prefer Text if you need help before a guide is published.</p>
-    <p><a class="btn" href="tel:+16166065277">Prefer Text (616) 606-5277</a></p>
+    <p><a class="btn" href="sms:+16166065277">Prefer Text (616) 606-5277</a></p>
     <section class="card"><h2>Guides</h2><p><a href="/guides/">/guides/</a> — customer field stubs</p></section>
     <section class="card"><h2>SOP</h2><p><a href="/sop/">/sop/</a> — internal shells</p></section>
     <section class="card"><h2>Work Orders</h2><p><a href="/work-orders/">/work-orders/</a> — internal, sign-in required. Not for customers.</p></section>
   </main>
   <footer class="wrap">
-    <p class="fine">United Mobile RV LLC · <a href="tel:+16166065277">Prefer Text (616) 606-5277</a></p>
+    <p class="fine">United Mobile RV LLC · <a href="sms:+16166065277">Prefer Text (616) 606-5277</a></p>
     <p class="fine">
-      <a href="https://unitedmobilerv.com/">Main Hub</a> ·
+      <a href="https://unitedmobilerv.com/">Hub</a> ·
       <a href="https://forum.unitedmobilerv.com/">Forum</a> ·
       <a href="https://software.unitedmobilerv.com/">Software</a> ·
       <a href="https://status.unitedmobilerv.com/">Status</a> ·
@@ -74,7 +84,7 @@
     </p>
   </footer>
   <div class="mobile-bar" aria-label="Quick actions">
-    <a class="btn btn-ghost" href="tel:+16166065277">Prefer Text</a>
+    <a class="btn btn-ghost" href="sms:+16166065277">Prefer Text</a>
     <a class="btn" href="https://book.unitedmobilerv.com/">Book Online</a>
   </div>
 </body>
