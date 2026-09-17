@@ -9,8 +9,9 @@ Docs site for United Mobile RV LLC (Cloudflare Pages). Two real audiences:
   technician writes the diagnosis/work/parts, attaches photos, and both
   sides sign off. This is the "official record" a customer later sees
   read-only in `/account/`.
-- `/guides/`, `/sop/` — public field-guide/SOP stubs, unrelated to a
-  specific job.
+- `/guides/` — short pointer to the WordPress Field Guide hub
+  (`https://unitedmobilerv.com/guide/`). Not a customer how-to destination.
+- `/sop/` — internal SOP stubs, unrelated to a specific job.
 
 ## Convert chrome
 - Call (616) 606-5277 → `tel:+16166065277` · Text Now → `sms:+16166065277` · Book → https://united-mobile-rv-llc.square.site/ · leftover `/go/book` 302s there
