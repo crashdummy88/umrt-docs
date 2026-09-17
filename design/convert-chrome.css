@@ -58,6 +58,11 @@
   body { padding-bottom: 72px; }
 }
 
+@media (max-width: 520px) {
+  .umrt-cta-row { flex-direction: column; align-items: stretch; }
+  .umrt-cta-row .btn { text-align: center; }
+}
+
 @media print {
   .umrt-mobile-bar,
   .umrt-cta-row { display: none !important; }
