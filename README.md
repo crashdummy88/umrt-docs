@@ -14,6 +14,7 @@ Docs site for United Mobile RV LLC (Cloudflare Pages). Two real audiences:
 
 ## Convert chrome
 - Call (616) 606-5277 → `tel:+16166065277` · Text Now → `sms:+16166065277` · Book → https://united-mobile-rv-llc.square.site/ · leftover `/go/book` 302s there
+- `design/convert-chrome.js` does not remap `sms:` → `tel:` (Text Now stays `sms:` after JS)
 - Applied on `/`, `/guides/`, `/sop/`, `/work-orders/` via `/design/convert-chrome.css`/`.js` -- no "Call (older phones)"
 
 ## Data
