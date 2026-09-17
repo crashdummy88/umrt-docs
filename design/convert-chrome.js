@@ -1,10 +1,4 @@
-/* Remap sms: → tel: when the client cannot open a composer (desktop). Call stays tel:. */
+/* Convert chrome: Call stays tel:, Text Now stays sms:. No desktop remap. */
 (function () {
-  var ua = navigator.userAgent || '';
-  var smsOk = /iPhone|iPad|iPod|Android|Windows Phone|IEMobile/i.test(ua);
-  if (smsOk) return;
-  var links = document.querySelectorAll('a[href^="sms:"]');
-  for (var i = 0; i < links.length; i++) {
-    links[i].setAttribute('href', links[i].getAttribute('href').replace(/^sms:/i, 'tel:'));
-  }
+  /* Intentionally empty — do not rewrite sms: → tel:. */
 })();
