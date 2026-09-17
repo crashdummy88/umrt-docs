@@ -9,9 +9,9 @@ Docs site for United Mobile RV LLC (Cloudflare Pages). Two real audiences:
   technician writes the diagnosis/work/parts, attaches photos, and both
   sides sign off. This is the "official record" a customer later sees
   read-only in `/account/`.
-- `/guides/` — **pointer** to the live WordPress Field Guide hub
-  (`https://unitedmobilerv.com/guide/`). Docs does not host a second how-to
-  library. Slug aliases in `_redirects` 302 to existing WP / service pages only.
+- `/guides/` — CF surface of Matt’s live Field Guides. Top-set articles are
+  adapted from `unitedmobilerv.com/guide/<slug>/` (attributed on each page).
+  The full WP hub remains the library. Book → Square · Forum · Shop · Call/Text.
 - `/sop/` — public teaser + Portal login CTA. `/sop/internal/` and
   `/sop/estimate/` are staff-gated stubs (ADMIN or `STAFF_EMAILS`), same
   session check as work orders. Public marketing stays on the main site.
