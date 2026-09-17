@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "include": [
+    "/api/*",
+    "/r2/*",
+    "/sop/internal",
+    "/sop/internal/*",
+    "/sop/estimate",
+    "/sop/estimate/*"
+  ],
+  "exclude": []
+}

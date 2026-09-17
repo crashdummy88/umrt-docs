@@ -1,2 +1,34 @@
 /go/book  https://united-mobile-rv-llc.square.site/  302
 /go/home  https://unitedmobilerv.com/  302
+/go/guides  https://unitedmobilerv.com/guide/  302
+
+# Short aliases → docs pages we actually published.
+/guides/solar  /guides/best-solar-panels-guide/  302
+/guides/solar/  /guides/best-solar-panels-guide/  302
+/guides/inverters  /guides/best-inverters-guide/  302
+/guides/inverters/  /guides/best-inverters-guide/  302
+/guides/starlink  /guides/starlink-rv-guide/  302
+/guides/starlink/  /guides/starlink-rv-guide/  302
+/guides/starlink-connectivity  /guides/starlink-rv-guide/  302
+/guides/starlink-connectivity/  /guides/starlink-rv-guide/  302
+/guides/weboost  /guides/weboost-install-guide/  302
+/guides/weboost/  /guides/weboost-install-guide/  302
+/guides/winterization  /guides/winterization-guide/  302
+/guides/winterization/  /guides/winterization-guide/  302
+/guides/generator  /guides/generator-troubleshooting/  302
+/guides/generator/  /guides/generator-troubleshooting/  302
+/guides/generator-maintenance  /guides/generator-troubleshooting/  302
+/guides/generator-maintenance/  /guides/generator-troubleshooting/  302
+/guides/furnace  /guides/rv-furnace-troubleshooting-guide/  302
+/guides/furnace/  /guides/rv-furnace-troubleshooting-guide/  302
+
+# Still WP-only (not ported on this host yet).
+/guides/victron  https://unitedmobilerv.com/guide/victron-fault-code-guide/  302
+/guides/victron/  https://unitedmobilerv.com/guide/victron-fault-code-guide/  302
+/guides/pre-trip-electrical  https://unitedmobilerv.com/electrical/  302
+/guides/pre-trip-electrical/  https://unitedmobilerv.com/electrical/  302
+/guides/wireless  https://unitedmobilerv.com/wireless/  302
+/guides/wireless/  https://unitedmobilerv.com/wireless/  302
+
+# Unknown docs paths: real 404 (do not soft-200 the homepage).
+/*  /404.html  404

@@ -1,6 +1,9 @@
 User-agent: *
 Allow: /
 Disallow: /work-orders/
+Disallow: /account/
 Disallow: /api/
+Disallow: /sop/internal/
+Disallow: /sop/estimate/
 
 Sitemap: https://docs.unitedmobilerv.com/sitemap.xml
