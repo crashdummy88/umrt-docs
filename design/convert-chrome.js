@@ -1,10 +1,2 @@
-/* Remap sms: → tel: when the client cannot open a composer (desktop). Call stays tel:. */
-(function () {
-  var ua = navigator.userAgent || '';
-  var smsOk = /iPhone|iPad|iPod|Android|Windows Phone|IEMobile/i.test(ua);
-  if (smsOk) return;
-  var links = document.querySelectorAll('a[href^="sms:"]');
-  for (var i = 0; i < links.length; i++) {
-    links[i].setAttribute('href', links[i].getAttribute('href').replace(/^sms:/i, 'tel:'));
-  }
-})();
+/* Convert hrefs stay canonical in markup. Never remap sms→tel. Never Prefer Text.
+   Call=tel:+16166065277 · Text Now=sms:+16166065277 · Book=https://united-mobile-rv-llc.square.site/ */
