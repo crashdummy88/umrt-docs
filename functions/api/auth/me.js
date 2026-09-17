@@ -1,10 +1,14 @@
-import { getSessionUser, json, sessionCookie } from '../../_lib/auth.js';
+import { getSessionUser, isAdminUser, isStaffUser, json, sessionCookie } from '../../_lib/auth.js';
 import { readSsoCookie } from '../../_lib/sso.js';
 
 export async function onRequestGet(context) {
   const user = await getSessionUser(context.env, context.request);
   if (user) {
-    return json({ user }, 200, { 'Cache-Control': 'no-store' });
+    return json({
+      user,
+      admin: isAdminUser(user, context.env),
+      staff: isStaffUser(user, context.env),
+    }, 200, { 'Cache-Control': 'no-store' });
   }
 
   // Fallback: no docs session, but recognized via the shared

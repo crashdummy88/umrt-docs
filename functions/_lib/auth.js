@@ -211,3 +211,13 @@ export function isAdminUser(user, env) {
   ).map((e) => e.trim().toLowerCase()).filter(Boolean);
   return list.includes(String(user.email).toLowerCase());
 }
+
+/** Admin plus optional STAFF_EMAILS (comma-separated env, names only). */
+export function isStaffUser(user, env) {
+  if (isAdminUser(user, env)) return true;
+  if (!user || !user.email) return false;
+  const extra = (env && env.STAFF_EMAILS ? String(env.STAFF_EMAILS).split(',') : [])
+    .map((e) => e.trim().toLowerCase())
+    .filter(Boolean);
+  return extra.includes(String(user.email).toLowerCase());
+}

@@ -1,26 +1,99 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SOP · UMRT Docs</title>
+<meta name="description" content="United Mobile RV staff SOP and estimate templates. Sign in on the portal to view internal pages." />
+<link rel="icon" href="/assets/brand/favicon-64.png" />
+<link rel="stylesheet" href="/design/platform-bar.css">
 <link rel="stylesheet" href="/design/convert-chrome.css">
-<style>body{font-family:system-ui;max-width:40rem;margin:2rem auto;padding:0 1rem;color:#1A1A1A}a{color:#1A1A1A}.gold{color:#C9972C}</style></head>
+<style>
+body{font-family:system-ui;margin:0;color:#1A1A1A;line-height:1.5}
+a{color:#1A1A1A}
+.gold{color:#C9972C}
+.wrap{max-width:40rem;margin:2rem auto;padding:0 1rem}
+.card{background:#F5F5F5;border-radius:8px;padding:1.1rem 1.25rem;margin:1.25rem 0}
+.fine{color:#666;font-size:.85rem}
+footer{margin-top:2rem;color:#666;font-size:.85rem}
+footer a{color:#1A1A1A;text-decoration:none}
+footer a:hover{color:#C9972C}
+.notice{border-left:4px solid #C9972C;padding:.15rem 0 .15rem 1rem}
+</style></head>
 <body>
+  <div class="umrt-platform-bar" role="navigation" aria-label="UMRT properties">
+    <div class="umrt-platform-bar-inner">
+      <a href="https://unitedmobilerv.com/" data-platform-link="hub">Main Hub</a>
+      <a href="https://shop.unitedmobilerv.com/" data-platform-link="shop">Shop</a>
+      <a href="https://forum.unitedmobilerv.com/" data-platform-link="forum">Forum</a>
+      <a href="https://software.unitedmobilerv.com/" data-platform-link="software">Software</a>
+      <a href="https://status.unitedmobilerv.com/" data-platform-link="status">Status</a>
+      <a href="https://portal.unitedmobilerv.com/" data-platform-link="portal">Portal</a>
+      <a href="https://docs.unitedmobilerv.com/" data-platform-link="docs" class="is-current" aria-current="page">Docs</a>
+      <a href="tel:+16166065277" data-platform-link="call">Call (616) 606-5277</a>
+      <a href="sms:+16166065277" data-platform-link="text">Text Now</a>
+      <a href="https://united-mobile-rv-llc.square.site/" data-platform-link="book" target="_blank" rel="noopener">Book</a>
+    </div>
+  </div>
+<div class="wrap">
 <p class="gold">SOP</p>
-<h1>Internal SOP shells</h1>
-<p>Internal technician procedures. Public marketing lives on the main site.</p>
-<ul>
-<li>Book / Text Now intake — coming soon</li>
-<li>Corridor dispatch — coming soon</li>
-<li>Credentials &amp; training notes — coming soon</li>
-</ul>
+<h1>Internal ops docs</h1>
+<p>Technician SOP and estimate templates live behind staff sign-in. Public marketing and Field Guides stay on the <a href="https://unitedmobilerv.com/">main site</a>.</p>
+
+<div id="auth-note" class="card notice" hidden>
+  <p id="auth-note-text" style="margin:0"></p>
+</div>
+
+<section class="card">
+  <h2>Staff sign-in</h2>
+  <p>Same account as <a href="https://portal.unitedmobilerv.com/">portal.unitedmobilerv.com</a>. Portal is the identity authority. A docs Google session is also accepted for ADMIN / staff emails (same pattern as work orders).</p>
+  <p class="umrt-cta-row">
+    <a class="btn" href="https://portal.unitedmobilerv.com/">Sign in on Portal</a>
+    <a class="btn btn-ghost" href="/api/auth/google/start">Docs Google sign-in</a>
+  </p>
+</section>
+
+<section class="card">
+  <h2>Internal index (staff)</h2>
+  <p class="fine">Titles only on this public page. Full pages require staff access.</p>
+  <ul>
+    <li><a href="/sop/internal/">SOP stubs</a> — intake, corridor dispatch, credentials</li>
+    <li><a href="/sop/estimate/">ESTIMATE template</a> — job estimate scaffold</li>
+  </ul>
+</section>
+
 <p class="umrt-cta-row">
   <a class="btn btn-ghost" href="tel:+16166065277">Call (616) 606-5277</a>
   <a class="btn" href="sms:+16166065277">Text Now</a>
   <a class="btn btn-ghost" href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a>
 </p>
 <p><a href="/">← Docs home</a></p>
+<footer>
+  <p>United Mobile RV LLC · <a href="tel:+16166065277">Call (616) 606-5277</a> · <a href="sms:+16166065277">Text Now</a></p>
+  <p>
+    <a href="https://unitedmobilerv.com/">Main Hub</a> ·
+    <a href="https://unitedmobilerv.com/guide/">Field Guides</a> ·
+    <a href="https://forum.unitedmobilerv.com/">Forum</a> ·
+    <a href="https://portal.unitedmobilerv.com/">Portal</a> ·
+    <a href="https://shop.unitedmobilerv.com/">Shop</a> ·
+    <a href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a>
+  </p>
+</footer>
+</div>
 <div class="umrt-mobile-bar" aria-label="Quick actions">
   <a class="btn btn-ghost" href="tel:+16166065277">Call <span class="umrt-call-num">(616) 606-5277</span></a>
   <a class="btn" href="sms:+16166065277">Text Now</a>
   <a class="btn btn-ghost" href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a>
 </div>
 <script src="/design/convert-chrome.js" defer></script>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var note = document.getElementById('auth-note');
+  var text = document.getElementById('auth-note-text');
+  if (q.get('auth') === 'required') {
+    note.hidden = false;
+    text.textContent = 'Sign in on the portal (or Docs Google) to open staff SOP / ESTIMATE pages.';
+  } else if (q.get('auth') === 'forbidden') {
+    note.hidden = false;
+    text.textContent = 'This account is signed in but is not on the staff list. Use the portal owner / ADMIN_EMAILS account.';
+  }
+})();
+</script>
 </body></html>
