@@ -1,14 +1,18 @@
-import { destroySession, sessionCookie, json } from '../../_lib/auth.js';
+import { destroySession, sessionCookie, clearCentralSessionCookie } from '../../_lib/auth.js';
+import { clearSsoCookie } from '../../_lib/sso.js';
 
 export async function onRequestPost(context) {
   const { env, request } = context;
-  if (env.SESSION_SECRET && env.DB) {
-    await destroySession(env.DB, request, env.SESSION_SECRET);
-  }
-  return json({ ok: true }, 200, {
-    'Set-Cookie': sessionCookie('', true),
+  await destroySession(env, request);
+
+  const headers = new Headers({
+    'Content-Type': 'application/json; charset=utf-8',
     'Cache-Control': 'no-store',
   });
+  headers.append('Set-Cookie', sessionCookie('', true));
+  headers.append('Set-Cookie', clearCentralSessionCookie());
+  headers.append('Set-Cookie', clearSsoCookie());
+  return new Response(JSON.stringify({ ok: true }), { status: 200, headers });
 }
 
 export async function onRequestGet(context) {

@@ -13,8 +13,8 @@
  * `sub` is the OAuth provider's stable subject id (Google `sub`).
  *
  * Display-only fallback everywhere it's consumed -- does NOT grant access
- * to any account data, which still requires a real docs session (see
- * _lib/auth.js's getSessionUser, untouched by this).
+ * to account data or gated /sop/ /estimates/ pages. Those still require
+ * getSessionUser (central or legacy docs session).
  */
 
 const SSO_COOKIE = 'umrt_sso';

@@ -11,10 +11,10 @@ export async function onRequestGet(context) {
     }, 200, { 'Cache-Control': 'no-store' });
   }
 
-  // Fallback: no docs session, but recognized via the shared
-  // cross-subdomain SSO cookie (e.g. logged in on forum/portal first).
-  // Display-only -- does NOT grant account access, which still requires
-  // a real docs session via getSessionUser above.
+  // Fallback: no DB session, but recognized via the shared
+  // cross-subdomain SSO cookie (e.g. logged in on forum first).
+  // Display-only -- does NOT open /sop/ or /estimates/, which still
+  // require getSessionUser (central or legacy docs session).
   if (context.env.SSO_SHARED_SECRET) {
     const identity = await readSsoCookie(context.request, context.env.SSO_SHARED_SECRET);
     if (identity) {
