@@ -1,12 +1,23 @@
 /**
  * Shared auth helpers for Cloudflare Pages Functions.
- * Env (names only): SESSION_SECRET, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET,
- * optional FACEBOOK_APP_ID, FACEBOOK_APP_SECRET. D1 bind: DB.
+ * Env (names only): SESSION_SECRET, CENTRAL_SESSION_SECRET,
+ * GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, optional FACEBOOK_APP_ID,
+ * FACEBOOK_APP_SECRET. D1 bind: DB (same umrt-portal-db as umrt-portal).
+ *
+ * Stage 3 (portal already ships this): a UUID-shaped `umrt_session` id is
+ * a central session signed with CENTRAL_SESSION_SECRET. On
+ * *.unitedmobilerv.com that cookie is Domain=.unitedmobilerv.com, so
+ * docs can verify a portal login without a second OAuth dance.
+ * Legacy docs Google sessions stay host-only and are signed with this
+ * project's SESSION_SECRET (randomToken(24) ids). Fail closed if the
+ * matching secret is missing or the HMAC/DB row does not verify.
+ * umrt_sso / SSO_SHARED_SECRET stays display-only — never a gate.
  */
 
 const SESSION_COOKIE = 'umrt_session';
 const STATE_COOKIE = 'umrt_oauth_state';
 const SESSION_DAYS = 14;
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 function b64url(buf) {
   const bytes = buf instanceof ArrayBuffer ? new Uint8Array(buf) : buf;
@@ -76,13 +87,14 @@ export function parseCookies(request) {
   return out;
 }
 
-export function cookieHeader(name, value, { maxAge, httpOnly = true, clear = false } = {}) {
+export function cookieHeader(name, value, { maxAge, httpOnly = true, clear = false, domain } = {}) {
   const parts = [
     `${name}=${clear ? '' : encodeURIComponent(value)}`,
     'Path=/',
     'Secure',
     'SameSite=Lax',
   ];
+  if (domain) parts.push(`Domain=${domain}`);
   if (httpOnly) parts.push('HttpOnly');
   if (clear) parts.push('Max-Age=0');
   else if (typeof maxAge === 'number') parts.push(`Max-Age=${maxAge}`);
@@ -94,6 +106,19 @@ export function sessionCookie(value, clear = false) {
     maxAge: clear ? 0 : SESSION_DAYS * 86400,
     clear,
   });
+}
+
+/** Clearing Set-Cookie for the Stage-3 parent-domain session (must match Domain). */
+export function centralSessionCookie(value, clear = false, domain = '.unitedmobilerv.com') {
+  return cookieHeader(SESSION_COOKIE, value, {
+    maxAge: clear ? 0 : SESSION_DAYS * 86400,
+    clear,
+    domain,
+  });
+}
+
+export function clearCentralSessionCookie() {
+  return centralSessionCookie('', true);
 }
 
 export function stateCookie(value, clear = false) {
@@ -116,20 +141,34 @@ export async function createSession(db, userId, secret) {
   return signed;
 }
 
-export async function destroySession(db, request, secret) {
+/**
+ * UUID raw id → CENTRAL_SESSION_SECRET (portal/forum Stage 3).
+ * Anything else → this project's SESSION_SECRET (legacy docs Google).
+ * Missing secret or bad HMAC → null (fail closed).
+ */
+export async function resolveRawSessionId(token, env) {
+  if (!token || !env) return null;
+  const i = token.lastIndexOf('.');
+  if (i <= 0) return null;
+  const candidateRawId = token.slice(0, i);
+  const secret = UUID_RE.test(candidateRawId) ? env.CENTRAL_SESSION_SECRET : env.SESSION_SECRET;
+  if (!secret) return null;
+  return verifySessionId(token, secret);
+}
+
+export async function destroySession(env, request) {
+  if (!env || !env.DB) return;
   const cookies = parseCookies(request);
-  const token = cookies[SESSION_COOKIE];
-  const rawId = await verifySessionId(token, secret);
-  if (rawId && db) {
-    await db.prepare('DELETE FROM sessions WHERE id = ?').bind(rawId).run();
+  const rawId = await resolveRawSessionId(cookies[SESSION_COOKIE], env);
+  if (rawId) {
+    await env.DB.prepare('DELETE FROM sessions WHERE id = ?').bind(rawId).run();
   }
 }
 
 export async function getSessionUser(env, request) {
-  const secret = env.SESSION_SECRET;
-  if (!secret || !env.DB) return null;
+  if (!env || !env.DB) return null;
   const cookies = parseCookies(request);
-  const rawId = await verifySessionId(cookies[SESSION_COOKIE], secret);
+  const rawId = await resolveRawSessionId(cookies[SESSION_COOKIE], env);
   if (!rawId) return null;
   const row = await env.DB.prepare(
     `SELECT u.id, u.email, u.name, u.picture, u.provider, s.expires_at

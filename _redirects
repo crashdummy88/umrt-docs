@@ -2,6 +2,14 @@
 /go/home  https://unitedmobilerv.com/  302
 /go/guides  https://unitedmobilerv.com/guide/  302
 
+# SOP / ESTIMATE aliases (Functions also 302 these when the route is gated).
+/sop/estimate  /estimates/  302
+/sop/estimate/  /estimates/  302
+/sop/internal  /sop/  302
+/sop/internal/  /sop/  302
+/estimate  /estimates/  302
+/estimate/  /estimates/  302
+
 # Short aliases → docs pages we actually published.
 /guides/solar  /guides/best-solar-panels-guide/  302
 /guides/solar/  /guides/best-solar-panels-guide/  302

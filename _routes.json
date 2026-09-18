@@ -3,10 +3,12 @@
   "include": [
     "/api/*",
     "/r2/*",
-    "/sop/internal",
-    "/sop/internal/*",
-    "/sop/estimate",
-    "/sop/estimate/*"
+    "/sop",
+    "/sop/*",
+    "/estimates",
+    "/estimates/*",
+    "/estimate",
+    "/estimate/*"
   ],
   "exclude": []
 }

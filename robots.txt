@@ -3,7 +3,8 @@ Allow: /
 Disallow: /work-orders/
 Disallow: /account/
 Disallow: /api/
-Disallow: /sop/internal/
-Disallow: /sop/estimate/
+Disallow: /sop/
+Disallow: /estimates/
+Disallow: /estimate/
 
 Sitemap: https://docs.unitedmobilerv.com/sitemap.xml
