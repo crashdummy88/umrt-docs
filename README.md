@@ -12,9 +12,11 @@ Docs site for United Mobile RV LLC (Cloudflare Pages). Two real audiences:
 - `/guides/` — CF surface of Matt’s live Field Guides. Top-set articles are
   adapted from `unitedmobilerv.com/guide/<slug>/` (attributed on each page).
   The full WP hub remains the library. Book → Square · Forum · Shop · Call/Text.
-- `/sop/` — public teaser + Portal login CTA. `/sop/internal/` and
-  `/sop/estimate/` are staff-gated stubs (ADMIN or `STAFF_EMAILS`), same
-  session check as work orders. Public marketing stays on the main site.
+- `/sop/` — public teaser + Portal login CTA. `/sop/internal/`,
+  `/sop/estimate/`, and `/estimates/` are staff-gated stubs (ADMIN or
+  `STAFF_EMAILS`), same session check as work orders. Public marketing
+  stays on the main site. `/estimates/` is the same worksheet as
+  `/sop/estimate/` (alias for the QC / #15 path — do not treat as new IA).
 
 ## Convert chrome
 - Call (616) 606-5277 → `tel:+16166065277` · Text Now → `sms:+16166065277` · Book → https://united-mobile-rv-llc.square.site/ · leftover `/go/book` 302s there
@@ -39,6 +41,6 @@ Shares `umrt-portal-db` (D1, binding `DB`) with `umrt-portal` — same
 - `SSO_SHARED_SECRET` — optional, cross-subdomain "already signed in
   elsewhere" recognition only, never grants access by itself.
 
-Tokens: `#1A1A1A` / `#C9972C` · v0 is static HTML + Pages Functions.
+Tokens: `#1A1A1A` / `#C9972C` · dark Pages-sibling chrome (`design/docs-theme.css`) · v0 is static HTML + Pages Functions.
 
 Unknown routes serve `404.html` with status 404 (`/* /404.html 404`). Sitemap lists the docs pointer pages only — not SOP internals.
