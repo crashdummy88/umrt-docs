@@ -6,7 +6,9 @@
     "/sop/internal",
     "/sop/internal/*",
     "/sop/estimate",
-    "/sop/estimate/*"
+    "/sop/estimate/*",
+    "/estimates",
+    "/estimates/*"
   ],
   "exclude": []
 }

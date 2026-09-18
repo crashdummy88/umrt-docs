@@ -4,52 +4,48 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Work Order · UMRT Docs</title>
 <meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="/design/docs-theme.css">
 <link rel="stylesheet" href="/design/convert-chrome.css">
 <style>
-  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;max-width:760px;margin:2rem auto;padding:0 1rem;color:#1A1A1A;background:#fff}
-  a{color:#1A1A1A}
-  .gold{color:#C9972C}
-  header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
-  h1{margin:.2rem 0 .3rem;font-size:1.5rem}
-  .muted{color:#888}
-  label{display:block;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#666;margin:1rem 0 .3rem}
-  label:first-of-type{margin-top:0}
-  input,select,textarea{width:100%;box-sizing:border-box;font-family:inherit;font-size:.95rem;padding:.55rem .65rem;border:1px solid #CCC;border-radius:8px}
-  textarea{min-height:5rem;resize:vertical}
   .row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
   @media(max-width:520px){.row{grid-template-columns:1fr}}
-  .btn{display:inline-block;background:#C9972C;color:#1A1A1A;font-weight:700;padding:.6rem 1.2rem;border-radius:8px;text-decoration:none;font-size:.92rem;border:0;cursor:pointer}
-  .btn-ghost{background:transparent;border:1px solid #1A1A1A;color:#1A1A1A}
   .actions{display:flex;gap:.6rem;align-items:center;margin-top:1.4rem;flex-wrap:wrap}
   .save-msg{font-size:.85rem;font-weight:700}
-  .save-msg.ok{color:#1B7A34}
-  .save-msg.err{color:#8A1F1F}
-  .job-summary{background:#F5F5F5;border-radius:10px;padding:.9rem 1rem;margin-bottom:1.2rem;font-size:.9rem}
+  .save-msg.ok{color:#7dcc96}
+  .save-msg.err{color:#e08982}
+  .job-summary{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:.9rem 1rem;margin-bottom:1.2rem;font-size:.9rem}
   .job-summary p{margin:.2rem 0}
-  .sig-block{border-top:1px solid #E5E5E5;margin-top:1.5rem;padding-top:1rem}
-  .sig-line{border-bottom:1px solid #1A1A1A;min-height:1.6rem;margin:.4rem 0 .2rem;font-style:italic}
+  .sig-block{border-top:1px solid rgba(255,255,255,0.12);margin-top:1.5rem;padding-top:1rem}
+  .sig-line{border-bottom:1px solid rgba(255,255,255,0.35);min-height:1.6rem;margin:.4rem 0 .2rem;font-style:italic}
   .photo-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:.5rem;margin-bottom:.6rem}
-  .photo-thumb{position:relative;aspect-ratio:1/1;border-radius:8px;overflow:hidden;border:1px solid #E5E5E5;background:#F5F5F5}
+  .photo-thumb{position:relative;aspect-ratio:1/1;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);background:#141414}
   .photo-thumb img{width:100%;height:100%;object-fit:cover;display:block}
   .photo-thumb .photo-del{position:absolute;top:4px;right:4px;background:rgba(26,26,26,.75);color:#fff;border:0;border-radius:50%;width:22px;height:22px;line-height:22px;text-align:center;font-size:.8rem;cursor:pointer;padding:0}
-  .photo-empty{color:#888;font-size:.85rem;margin:0 0 .5rem}
+  .photo-empty{color:rgba(255,255,255,0.55);font-size:.85rem;margin:0 0 .5rem}
+  .check-label{display:flex;align-items:center;gap:.4rem;font-weight:400;text-transform:none;letter-spacing:0;color:rgba(255,255,255,0.85);margin-top:.5rem}
 
   /* Printable official document -- everything else hides on print */
   @media print {
-    body{max-width:none;margin:0;padding:1.2rem}
-    header, .actions, #signed-out, #no-access, .no-print { display:none !important; }
+    body{max-width:none;margin:0;padding:1.2rem;background:#fff;color:#1A1A1A}
+    header, .actions, #signed-out, #no-access, .no-print, .umrt-mobile-bar { display:none !important; }
     .job-summary{background:none;border:1px solid #1A1A1A}
-    input,select,textarea{border:none;padding:.1rem 0;background:transparent}
-    label{color:#000}
+    input,select,textarea{border:none;padding:.1rem 0;background:transparent;color:#000}
+    label,.check-label{color:#000}
+    h1,h2,p{color:#000}
   }
 </style>
 </head>
 <body>
-<header class="no-print">
-  <a href="/work-orders/" style="text-decoration:none;font-weight:700">← Work Orders</a>
-  <a href="/" style="text-decoration:none">United Mobile <span class="gold">RV</span> Docs</a>
-  <nav><a href="tel:+16166065277">Call (616) 606-5277</a> · <a href="sms:+16166065277">Text Now</a> · <a href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a></nav>
+<header class="top no-print">
+  <a class="brand" href="/work-orders/">← Work Orders</a>
+  <a class="brand" href="/">United Mobile <span>RV</span> Docs</a>
+  <nav>
+    <a href="tel:+16166065277">Call (616) 606-5277</a>
+    <a href="sms:+16166065277">Text Now</a>
+    <a href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a>
+  </nav>
 </header>
+<div class="wrap">
 
 <div id="loading"><p class="muted">Loading…</p></div>
 <div id="signed-out" hidden><p><strong>Sign in required.</strong> <a class="btn" href="/api/auth/google/start">Sign in with Google</a></p></div>
@@ -102,13 +98,13 @@
     <label>Customer name (signature)</label>
     <input id="f-customer-name" type="text" placeholder="Type full name to sign">
     <p class="muted no-print" style="font-size:.8rem;margin:.3rem 0 0">Typing a name here + checking the box below records it as the customer's signature with a timestamp — this is an electronic signature, not a scanned/drawn one.</p>
-    <label style="display:flex;align-items:center;gap:.4rem;font-weight:400;text-transform:none;letter-spacing:0;color:#1A1A1A;margin-top:.5rem">
+    <label class="check-label">
       <input id="f-customer-sign" type="checkbox" style="width:auto"> I certify the work described above was completed to my satisfaction
     </label>
     <div id="customer-signed-line" class="sig-line" hidden></div>
 
     <label style="margin-top:1.2rem">Technician sign-off</label>
-    <label style="display:flex;align-items:center;gap:.4rem;font-weight:400;text-transform:none;letter-spacing:0;color:#1A1A1A">
+    <label class="check-label">
       <input id="f-tech-sign" type="checkbox" style="width:auto"> I certify this work order is accurate
     </label>
     <div id="tech-signed-line" class="sig-line" hidden></div>
@@ -120,6 +116,7 @@
     <span class="save-msg" id="save-msg"></span>
   </div>
 </main>
+</div>
 
 <script>
 (function () {

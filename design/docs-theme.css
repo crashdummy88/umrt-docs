@@ -1,0 +1,298 @@
+/* UMRT Docs — Pages-sibling dark/gold chrome.
+   Tokens match united-mobile-rv css/site.css. Wire-only: colors,
+   type, header/footer, cards. Not a new product or IA. */
+:root {
+  --black: #1A1A1A;
+  --white: #FFFFFF;
+  --gold: #C9972C;
+  --gold-hover: #e0b04a;
+  --gray: #666666;
+  --light: #F5F5F5;
+  --rule: rgba(255, 255, 255, 0.12);
+  --muted: rgba(255, 255, 255, 0.55);
+  --body: rgba(255, 255, 255, 0.78);
+  --card: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.12);
+  --well: #141414;
+  --font: "Inter", "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  --space: 8px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--black);
+  color: var(--white);
+  line-height: 1.55;
+  font-size: 16px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; }
+
+a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color .2s var(--ease);
+}
+a:hover { color: var(--gold-hover); }
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+p a:not(.btn):not(.text-link),
+.lead a:not(.btn) {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.wrap { max-width: 46rem; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; }
+.wrap-narrow { max-width: 40rem; margin: 0 auto; padding: 0 1.25rem; }
+
+.eyebrow,
+.micro,
+.gold {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.micro {
+  display: block;
+  margin-bottom: 0.45rem;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: var(--white);
+}
+h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); margin: 0.2rem 0 0.7rem; font-weight: 400; }
+h2 { font-size: 1.2rem; margin: 1.3rem 0 0.5rem; }
+h3 { font-size: 1.02rem; margin: 0.2rem 0 0.35rem; }
+
+p { color: var(--body); }
+.lead { font-size: 1.05rem; color: rgba(255, 255, 255, 0.85); max-width: 46rem; }
+.fine,
+.muted,
+.lede { color: var(--muted); font-size: 0.9rem; }
+.fine { font-size: 0.85rem; }
+
+strong { color: var(--white); }
+
+/* Header — dark bar, gold brand, uppercase convert nav */
+.top {
+  background: rgba(26, 26, 26, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--white);
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--rule);
+  position: sticky;
+  top: 0;
+  z-index: 90;
+}
+.top .brand,
+.top > a.brand,
+.top > strong,
+.top > strong a {
+  color: var(--white);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 13px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.top .brand span,
+.top .gold,
+.brand span { color: var(--gold); }
+.brand-logo {
+  height: 36px;
+  width: auto;
+  border-radius: 6px;
+  display: block;
+}
+.top nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem 1.15rem;
+}
+.top nav a {
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.top nav a:hover,
+.top nav a[aria-current="page"] { color: var(--white); }
+
+/* Cards — shop-like dark wells, gold hover */
+.card,
+.service-card,
+.job-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 1.1rem 1.25rem;
+  margin: 1rem 0;
+  color: var(--body);
+  transition: border-color .2s var(--ease), transform .2s var(--ease);
+}
+.card:hover,
+.service-card:hover { border-color: rgba(201, 151, 44, 0.45); }
+.card h2,
+.card h3,
+.job-card h3 { color: var(--white); margin-top: 0.15rem; }
+.card a { color: var(--gold); font-weight: 600; }
+.card a:hover { color: var(--gold-hover); }
+
+.notice { border-left: 4px solid var(--gold); padding: 0.15rem 0 0.15rem 1rem; }
+
+/* Buttons (page-level). Convert row/mobile-bar live in convert-chrome.css */
+.btn,
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gold);
+  color: var(--black);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.7rem 1.15rem;
+  min-height: 44px;
+  border-radius: 2px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(201, 151, 44, 0.22);
+  transition: background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease);
+}
+.btn:hover,
+.btn-gold:hover {
+  background: var(--gold-hover);
+  color: var(--black);
+  transform: translateY(-1px);
+}
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.7rem 1.15rem;
+  min-height: 44px;
+  border-radius: 2px;
+  text-decoration: none;
+  box-shadow: none;
+}
+.btn-ghost:hover {
+  border-color: var(--white);
+  color: var(--white);
+  background: transparent;
+}
+
+.btn-row { display: flex; flex-wrap: wrap; gap: 0.65rem; }
+
+/* Forms on SOP / ESTIMATE */
+label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin: 1rem 0 0.35rem;
+}
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+  background: #0c0c0c;
+  color: var(--white);
+}
+textarea { min-height: 4.5rem; resize: vertical; }
+input:focus,
+select:focus,
+textarea:focus { border-color: var(--gold); }
+input[type="checkbox"],
+input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--gold);
+}
+
+/* Footer mesh */
+footer,
+footer.guide-foot {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+footer a,
+footer.guide-foot a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+}
+footer a:hover,
+footer.guide-foot a:hover { color: var(--gold); }
+
+/* Pills / staff chrome */
+.pill {
+  display: inline-block;
+  font-size: 0.72em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--white);
+}
+.pill.completed { background: rgba(78, 163, 107, 0.2); color: #7dcc96; }
+.pill.draft { background: rgba(201, 151, 44, 0.18); color: var(--gold); }
+.pill.none { background: rgba(217, 119, 111, 0.18); color: #e08982; }
+.pill.void { background: rgba(255, 255, 255, 0.08); color: var(--muted); }
+
+.meta { color: var(--muted); font-size: 0.85rem; margin: 0.1rem 0; }
