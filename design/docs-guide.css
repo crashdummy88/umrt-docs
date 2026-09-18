@@ -106,6 +106,11 @@ strong { color: var(--white); }
 .brand-logo { height: 36px; width: auto; border-radius: 6px; display: block; }
 .top a:hover { color: var(--gold); }
 .top nav { display: flex; flex-wrap: wrap; gap: 0.85rem 1.15rem; align-items: center; }
+@media (max-width: 900px) {
+  .top nav a[href^="tel:"],
+  .top nav a[href^="sms:"],
+  .top nav a[href*="square.site"] { display: none; }
+}
 
 footer.guide-foot { margin: 2rem 0 1rem; color: var(--gray); font-size: 0.85rem; border-top: 1px solid var(--rule); padding-top: 1.5rem; }
 footer.guide-foot a { color: rgba(255, 255, 255, 0.6); text-decoration: none; }
@@ -131,7 +136,7 @@ footer.guide-foot a:hover { color: var(--gold); }
 }
 .btn-ghost {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   color: var(--white);
 }
 

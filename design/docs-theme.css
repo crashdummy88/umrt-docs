@@ -154,6 +154,13 @@ strong { color: var(--white); }
 .top nav a:hover,
 .top nav a[aria-current="page"] { color: var(--white); }
 
+/* Mobile bar already has Call / Text Now / Book — don't stack them in the header. */
+@media (max-width: 900px) {
+  .top nav a[href^="tel:"],
+  .top nav a[href^="sms:"],
+  .top nav a[href*="square.site"] { display: none; }
+}
+
 /* Cards — shop-like dark wells, gold hover */
 .card,
 .service-card,
@@ -208,7 +215,7 @@ strong { color: var(--white); }
   align-items: center;
   justify-content: center;
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   color: var(--white);
   font-weight: 600;
   font-size: 12px;
