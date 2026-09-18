@@ -4,43 +4,42 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Work Order · UMRT Docs</title>
 <meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="/design/docs-theme.css">
 <link rel="stylesheet" href="/design/convert-chrome.css">
 <style>
-  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;max-width:760px;margin:2rem auto;padding:0 1rem;color:#1A1A1A;background:#fff}
-  a{color:#1A1A1A}
-  .gold{color:#C9972C}
+  body{max-width:760px;margin:2rem auto;padding:0 1rem}
   header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
   h1{margin:.2rem 0 .3rem;font-size:1.5rem}
-  .muted{color:#888}
-  label{display:block;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#666;margin:1rem 0 .3rem}
+  label{display:block;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-muted);margin:1rem 0 .3rem}
   label:first-of-type{margin-top:0}
-  input,select,textarea{width:100%;box-sizing:border-box;font-family:inherit;font-size:.95rem;padding:.55rem .65rem;border:1px solid #CCC;border-radius:8px}
+  input,select,textarea{width:100%;font-family:inherit;font-size:.95rem;padding:.55rem .65rem;border-radius:8px}
   textarea{min-height:5rem;resize:vertical}
   .row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
   @media(max-width:520px){.row{grid-template-columns:1fr}}
-  .btn{display:inline-block;background:#C9972C;color:#1A1A1A;font-weight:700;padding:.6rem 1.2rem;border-radius:8px;text-decoration:none;font-size:.92rem;border:0;cursor:pointer}
-  .btn-ghost{background:transparent;border:1px solid #1A1A1A;color:#1A1A1A}
+  .btn{cursor:pointer}
   .actions{display:flex;gap:.6rem;align-items:center;margin-top:1.4rem;flex-wrap:wrap}
   .save-msg{font-size:.85rem;font-weight:700}
-  .save-msg.ok{color:#1B7A34}
-  .save-msg.err{color:#8A1F1F}
-  .job-summary{background:#F5F5F5;border-radius:10px;padding:.9rem 1rem;margin-bottom:1.2rem;font-size:.9rem}
+  .save-msg.ok{color:var(--success)}
+  .save-msg.err{color:var(--error)}
+  .job-summary{padding:.9rem 1rem;margin-bottom:1.2rem;font-size:.9rem}
   .job-summary p{margin:.2rem 0}
-  .sig-block{border-top:1px solid #E5E5E5;margin-top:1.5rem;padding-top:1rem}
-  .sig-line{border-bottom:1px solid #1A1A1A;min-height:1.6rem;margin:.4rem 0 .2rem;font-style:italic}
+  .sig-block{border-top:1px solid var(--line);margin-top:1.5rem;padding-top:1rem}
+  .sig-line{border-bottom:1px solid var(--line);min-height:1.6rem;margin:.4rem 0 .2rem;font-style:italic;color:var(--text)}
   .photo-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:.5rem;margin-bottom:.6rem}
-  .photo-thumb{position:relative;aspect-ratio:1/1;border-radius:8px;overflow:hidden;border:1px solid #E5E5E5;background:#F5F5F5}
+  .photo-thumb{position:relative;aspect-ratio:1/1;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--band)}
   .photo-thumb img{width:100%;height:100%;object-fit:cover;display:block}
   .photo-thumb .photo-del{position:absolute;top:4px;right:4px;background:rgba(26,26,26,.75);color:#fff;border:0;border-radius:50%;width:22px;height:22px;line-height:22px;text-align:center;font-size:.8rem;cursor:pointer;padding:0}
-  .photo-empty{color:#888;font-size:.85rem;margin:0 0 .5rem}
+  .photo-empty{color:var(--text-muted);font-size:.85rem;margin:0 0 .5rem}
 
-  /* Printable official document -- everything else hides on print */
+  /* Printable official document — light paper, hide chrome */
   @media print {
-    body{max-width:none;margin:0;padding:1.2rem}
+    body{max-width:none;margin:0;padding:1.2rem;background:#fff;color:#1A1A1A}
+    h1,h2,h3,h4,strong{color:#1A1A1A}
     header, .actions, #signed-out, #no-access, .no-print { display:none !important; }
-    .job-summary{background:none;border:1px solid #1A1A1A}
-    input,select,textarea{border:none;padding:.1rem 0;background:transparent}
+    .job-summary{background:none;border:1px solid #1A1A1A;color:#1A1A1A}
+    input,select,textarea{border:none;padding:.1rem 0;background:transparent;color:#000}
     label{color:#000}
+    .sig-line{border-bottom-color:#1A1A1A;color:#1A1A1A}
   }
 </style>
 </head>
@@ -102,13 +101,13 @@
     <label>Customer name (signature)</label>
     <input id="f-customer-name" type="text" placeholder="Type full name to sign">
     <p class="muted no-print" style="font-size:.8rem;margin:.3rem 0 0">Typing a name here + checking the box below records it as the customer's signature with a timestamp — this is an electronic signature, not a scanned/drawn one.</p>
-    <label style="display:flex;align-items:center;gap:.4rem;font-weight:400;text-transform:none;letter-spacing:0;color:#1A1A1A;margin-top:.5rem">
+    <label style="display:flex;align-items:center;gap:.4rem;font-weight:400;text-transform:none;letter-spacing:0;color:var(--text);margin-top:.5rem">
       <input id="f-customer-sign" type="checkbox" style="width:auto"> I certify the work described above was completed to my satisfaction
     </label>
     <div id="customer-signed-line" class="sig-line" hidden></div>
 
     <label style="margin-top:1.2rem">Technician sign-off</label>
-    <label style="display:flex;align-items:center;gap:.4rem;font-weight:400;text-transform:none;letter-spacing:0;color:#1A1A1A">
+    <label style="display:flex;align-items:center;gap:.4rem;font-weight:400;text-transform:none;letter-spacing:0;color:var(--text)">
       <input id="f-tech-sign" type="checkbox" style="width:auto"> I certify this work order is accurate
     </label>
     <div id="tech-signed-line" class="sig-line" hidden></div>

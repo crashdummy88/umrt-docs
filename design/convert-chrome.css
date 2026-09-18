@@ -1,4 +1,5 @@
-/* UMRT convert chrome — Call (tel) + Text Now (sms) + Book (Square). */
+/* UMRT convert chrome — Call (tel) + Text Now (sms) + Book (Square).
+   Dark/gold to match mothership / shop / forum Pages. */
 
 .umrt-cta-row {
   display: flex;
@@ -8,7 +9,10 @@
 }
 
 .umrt-cta-row .btn,
-.umrt-mobile-bar .btn {
+.umrt-cta-row .btn-gold,
+.umrt-mobile-bar .btn,
+.btn,
+.btn-gold {
   display: inline-block;
   background: #C9972C;
   color: #1A1A1A;
@@ -17,13 +21,32 @@
   border-radius: 4px;
   text-decoration: none;
   box-sizing: border-box;
+  border: 2px solid #C9972C;
+}
+
+.umrt-cta-row .btn:hover,
+.umrt-cta-row .btn-gold:hover,
+.btn:hover,
+.btn-gold:hover {
+  background: #E0B04A;
+  border-color: #E0B04A;
+  color: #1A1A1A;
 }
 
 .umrt-cta-row .btn-ghost,
-.umrt-mobile-bar .btn-ghost {
+.umrt-mobile-bar .btn-ghost,
+.btn-ghost {
   background: transparent;
-  border: 2px solid #1A1A1A;
-  color: #1A1A1A;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  color: #FFFFFF;
+}
+
+.umrt-cta-row .btn-ghost:hover,
+.umrt-mobile-bar .btn-ghost:hover,
+.btn-ghost:hover {
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+  background: transparent;
 }
 
 .umrt-mobile-bar {
@@ -33,13 +56,13 @@
   left: 0;
   right: 0;
   z-index: 200;
-  background: rgba(255, 255, 255, 0.97);
+  background: rgba(26, 26, 26, 0.97);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
-  border-top: 1px solid #ddd;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
   gap: 8px;
-  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.35);
 }
 
 .umrt-mobile-bar .btn {
