@@ -4,9 +4,11 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Work Orders · UMRT Docs</title>
 <meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="/design/platform-bar.css">
 <link rel="stylesheet" href="/design/convert-chrome.css">
 <style>
-  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem;color:#1A1A1A;background:#fff}
+  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;margin:0;color:#1A1A1A;background:#fff}
+  .wo-wrap{max-width:900px;margin:2rem auto;padding:0 1rem}
   a{color:#1A1A1A}
   .gold{color:#C9972C}
   header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
@@ -28,6 +30,19 @@
 </style>
 </head>
 <body>
+  <div class="umrt-platform-bar" role="navigation" aria-label="UMRT properties">
+    <div class="umrt-platform-bar-inner">
+      <a href="https://shop.unitedmobilerv.com/" data-platform-link="shop">Shop</a>
+      <a href="https://united-mobile-rv-llc.square.site/" data-platform-link="book" target="_blank" rel="noopener">Book</a>
+      <a href="https://forum.unitedmobilerv.com/" data-platform-link="forum">Forum</a>
+      <a href="https://software.unitedmobilerv.com/" data-platform-link="software">Software</a>
+      <a href="https://docs.unitedmobilerv.com/" data-platform-link="docs" class="is-current" aria-current="page">Docs</a>
+      <a href="https://unitedmobilerv.com/" data-platform-link="hub">MAIN HUB</a>
+      <a href="tel:+16166065277" data-platform-link="call">Call (616) 606-5277</a>
+      <a href="sms:+16166065277" data-platform-link="text">Text Now</a>
+    </div>
+  </div>
+<div class="wo-wrap">
 <header>
   <a href="/" style="text-decoration:none;font-weight:700">United Mobile <span class="gold">RV</span> Docs</a>
   <nav><a href="/guides/">Guides</a> · <a href="/sop/">SOP</a> · <a href="/work-orders/" aria-current="page">Work Orders</a> · <a href="tel:+16166065277">Call (616) 606-5277</a> · <a href="sms:+16166065277">Text Now</a> · <a href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a></nav>
@@ -58,11 +73,19 @@
   </div>
 </main>
 <footer style="margin-top:2rem;color:#888;font-size:.85rem">
-  United Mobile RV LLC · Internal use only ·
+  <p>United Mobile RV LLC · Internal use only ·
   <a href="tel:+16166065277">Call (616) 606-5277</a> ·
-  <a href="sms:+16166065277">Text Now</a> ·
-  <a href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a>
+  <a href="sms:+16166065277">Text Now</a></p>
+  <p>
+      <a href="https://shop.unitedmobilerv.com/">Shop</a> ·
+      <a href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a> ·
+      <a href="https://forum.unitedmobilerv.com/">Forum</a> ·
+      <a href="https://software.unitedmobilerv.com/">Software</a> ·
+      <a href="https://docs.unitedmobilerv.com/">Docs</a> ·
+      <a href="https://unitedmobilerv.com/">MAIN HUB</a>
+    </p>
 </footer>
+</div>
 <div class="umrt-mobile-bar" aria-label="Quick actions">
   <a class="btn btn-ghost" href="tel:+16166065277">Call <span class="umrt-call-num">(616) 606-5277</span></a>
   <a class="btn" href="sms:+16166065277">Text Now</a>

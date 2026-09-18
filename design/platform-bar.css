@@ -1,6 +1,8 @@
-/* UMRT cross-platform bar — tokens sourced from design/theme.json.
-   ~600 bytes gzipped, no external requests, no framework. Safe on slow
-   cellular/satellite links (weBoost/Starlink users are the audience). */
+/* UMRT platform bar — 2026-09-18 lock.
+   Order: 1 Shop · 2 Book (Square) · 3 Forum · 4 Software · 5 Docs + MAIN HUB.
+   Forbidden in this bar / footer mesh: Portal · Status · Field Guides.
+   Convert Call/Text Now stay tel:+16166065277 / sms:+16166065277.
+   Tokens from design/theme.json (#0C0C0C / #C9972C). */
 
 .umrt-platform-bar {
   background: #0C0C0C;

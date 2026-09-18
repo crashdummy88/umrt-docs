@@ -18,8 +18,19 @@ Docs site for United Mobile RV LLC (Cloudflare Pages). Two real audiences:
 
 ## Convert chrome
 - Call (616) 606-5277 → `tel:+16166065277` · Text Now → `sms:+16166065277` · Book → https://united-mobile-rv-llc.square.site/ · leftover `/go/book` 302s there
-- Applied on `/`, `/guides/`, `/sop/`, `/work-orders/` via `/design/convert-chrome.css`/`.js` -- no "Call (older phones)"
-- Mesh: Main Hub / Shop / Forum / Portal stay on custom domains (never `book.*` for Book)
+- Applied on `/`, `/guides/`, `/sop/`, `/work-orders/`, `/account/` via `/design/convert-chrome.css`/`.js` -- no "Call (older phones)"
+
+## Platform chrome lock (2026-09-18)
+Primary chrome order everywhere (platform-bar, footer mesh, header product items):
+1. Shop → `https://shop.unitedmobilerv.com/`
+2. Book → `https://united-mobile-rv-llc.square.site/`
+3. Forum → `https://forum.unitedmobilerv.com/`
+4. Software → `https://software.unitedmobilerv.com/`
+5. Docs → `https://docs.unitedmobilerv.com/` + MAIN HUB → `https://unitedmobilerv.com/`
+
+Forbidden in platform-bar and footer mesh: Portal, Status, Field Guides buttons.
+`/guides/` may still bridge to WP `unitedmobilerv.com/guide/` as docs content.
+No `pages.dev` customer URLs. Never `book.*` for Book.
 
 ## Data
 
