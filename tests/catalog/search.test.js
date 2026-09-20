@@ -52,7 +52,7 @@ function assert(cond, msg) {
 assert(ENTRIES.length >= 76, 'catalog indexes the #22 Field Guide set');
 assert(new Set(ENTRIES.map((e) => e.id)).size === ENTRIES.length, 'ids are unique');
 assert(ENTRIES.every((e) => e.title && e.blurb && e.kind && e.category), 'required fields');
-assert(guides.every((e) => e.source), 'guide entries have WP source');
+assert(guides.every((e) => e.source), 'guide entries have source page URL');
 assert(ENTRIES.every((e) => catIds.has(e.category)), 'every entry has a known category');
 assert(ENTRIES.filter((e) => e.href).every((e) => e.href.startsWith('/guides/')), 'docs hrefs stay on /guides/');
 assert(diskSlugs.every((slug) => ENTRIES.some((e) => e.id === slug)), 'every on-disk /guides/<slug>/ is in the catalog');
@@ -159,20 +159,47 @@ const articleBanners = diskSlugs.filter((slug) => {
 assert(articleBanners.length === 0, 'no Adapted-from source banner');
 const articlePricing = diskSlugs.filter((slug) => {
   const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
-  return /Pricing teaser/.test(html);
+  return /Pricing teaser/.test(html) || /What does a visit cost/.test(html);
 });
-assert(articlePricing.length === 0, 'no pricing teaser blocks');
+assert(articlePricing.length === 0, 'no pricing teaser blocks or visit-cost cards');
+const articleDollars = diskSlugs.filter((slug) => {
+  const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
+  return /\$175|\$225|Trip fee <strong>\$75/.test(html);
+});
+assert(articleDollars.length === 0, 'no dollar teaser cards that replace booking');
 const articleWpCta = diskSlugs.filter((slug) => {
   const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
   const wp = 'https://unitedmobilerv.com/guide/' + slug + '/';
-  return !html.includes('guide-end-cta') || !html.includes(wp) || !/Read the full guide on the main site/.test(html);
+  return !html.includes('guide-end-cta') || !html.includes(wp) || !/>Source page</.test(html);
 });
-assert(articleWpCta.length === 0, 'every article has bottom WP main-site CTA');
+assert(articleWpCta.length === 0, 'every article has bottom Source page button');
+const articleBookCta = diskSlugs.filter((slug) => {
+  const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
+  return !/class="btn"[^>]*>Book service</.test(html);
+});
+assert(articleBookCta.length === 0, 'every article has gold Book service button');
+const articleNav = diskSlugs.filter((slug) => {
+  const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
+  return /WP library/.test(html) || /WordPress library/.test(html) || /WordPress-adapted/.test(html);
+});
+assert(articleNav.length === 0, 'no WP library / adapted advertising on articles');
+const articleCorridor = diskSlugs.filter((slug) => {
+  const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
+  return /Active corridor:/.test(html) || !/class="service-area"/.test(html) || !/Montana, Wyoming, Idaho, and Washington/.test(html);
+});
+assert(articleCorridor.length === 0, 'every article has professional service-area copy');
 const nestedCta = diskSlugs.filter((slug) => {
   const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
   return /service-card[\s\S]{0,400}guide-end-cta/.test(html);
 });
 assert(nestedCta.length === 0, 'end CTA is not nested in a service card');
+
+for (const [name, html] of [['home', home], ['guides', guidesHtml], ['policies', policiesHtml]]) {
+  assert(!/WP library/.test(html), name + ' has no WP library label');
+  assert(!/WordPress-adapted/.test(html), name + ' does not advertise adapted');
+  assert(!/WordPress library/.test(html), name + ' has no WordPress library footer');
+  assert(/>Book service</.test(html), name + ' has Book service button');
+}
 
 if (failed) {
   console.error(failed + ' failed');

@@ -70,3 +70,29 @@ code { font-size: 0.92em; color: var(--gold); }
 }
 .guide-end-cta h2 { margin: 0.2rem 0 0.55rem; }
 .guide-end-cta .umrt-cta-row { margin: 0.85rem 0 0; }
+
+.service-area {
+  margin: 1rem 0 0;
+  max-width: 46rem;
+}
+.service-area p {
+  margin: 0.35rem 0 0;
+  color: var(--text);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.btn-source,
+.umrt-cta-row .btn-source,
+.btn-row .btn-source {
+  background: transparent;
+  border: 2px solid #C9972C;
+  color: #C9972C;
+  font-weight: 700;
+}
+.btn-source:hover,
+.umrt-cta-row .btn-source:hover {
+  background: rgba(201, 151, 44, 0.14);
+  border-color: #E0B04A;
+  color: #E0B04A;
+}

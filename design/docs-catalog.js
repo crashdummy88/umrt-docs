@@ -804,7 +804,7 @@
     {
       id: "lithium-buying",
       title: "Lithium battery buying guide",
-      blurb: "How to compare packs before you spend — WP source, not duplicated here.",
+      blurb: "How to compare packs before you spend — source page, not duplicated here.",
       kind: "Guide",
       category: "solar",
       href: "",
@@ -942,7 +942,7 @@
       links.appendChild(el('a', { href: entry.pdf }, 'Download PDF'));
     }
     if (entry.source) {
-      links.appendChild(el('a', { href: entry.source }, entry.href ? 'WP source' : 'Open WP source'));
+      links.appendChild(el('a', { href: entry.source }, entry.href ? 'Source page' : 'Open source page'));
     }
     li.appendChild(links);
     return li;
