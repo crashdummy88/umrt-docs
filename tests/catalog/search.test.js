@@ -88,6 +88,14 @@ assert(/guides and troubleshooting/.test(notFound), '404 points at the catalog')
 assert(/noindex/.test(sop), 'SOP is noindex');
 assert(/Not part of the public docs catalog/.test(sop), 'SOP is not advertised as catalog');
 
+const furnace = fs.readFileSync(path.join(root, 'guides/rv-furnace-troubleshooting-guide/index.html'), 'utf8');
+assert(/sail switch/.test(furnace), '#22 furnace body is preserved');
+const articleSop = diskSlugs.filter((slug) => {
+  const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
+  return /href="\/sop\/"/.test(html) || /href="\/account\/"/.test(html);
+});
+assert(articleSop.length === 0, 'article pages do not advertise SOP or My Jobs');
+
 if (failed) {
   console.error(failed + ' failed');
   process.exit(1);
