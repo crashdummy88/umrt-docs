@@ -9,9 +9,11 @@ Docs site for United Mobile RV LLC (Cloudflare Pages). Two real audiences:
   technician writes the diagnosis/work/parts, attaches photos, and both
   sides sign off. This is the "official record" a customer later sees
   read-only in `/account/`.
-- `/guides/` — Field Guides on this host, adapted from
-  `unitedmobilerv.com/guide/<slug>/` (attributed on each page). Catalog,
-  reference charts, and system how-tos live here. Book → Square · Forum · Shop · Call/Text.
+- `/guides/` — this host's unique job: Field Guides and reference depth
+  (adapted from `unitedmobilerv.com/guide/<slug>/`, attributed on each page).
+  Catalog, system how-tos, and spec charts live here in the docs UI — not
+  shop, booking, or forum landing copy. Convert Call / Text Now / Square Book
+  stays utility chrome (platform mesh + sticky mobile bar), not page marketing.
 - `/sop/` — public teaser + Portal login CTA. `/sop/internal/` and
   `/sop/estimate/` are staff-gated stubs (ADMIN or `STAFF_EMAILS`), same
   session check as work orders. Public marketing stays on the main site.
