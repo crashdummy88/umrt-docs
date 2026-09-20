@@ -9,12 +9,14 @@ Docs site for United Mobile RV LLC (Cloudflare Pages). Two real audiences:
   technician writes the diagnosis/work/parts, attaches photos, and both
   sides sign off. This is the "official record" a customer later sees
   read-only in `/account/`.
-- `/guides/` — CF surface of Matt’s live Field Guides. Top-set articles are
-  adapted from `unitedmobilerv.com/guide/<slug>/` (attributed on each page).
-  The full WP hub remains the library. Book → Square · Forum · Shop · Call/Text.
-- `/sop/` — public teaser + Portal login CTA. `/sop/internal/` and
-  `/sop/estimate/` are staff-gated stubs (ADMIN or `STAFF_EMAILS`), same
-  session check as work orders. Public marketing stays on the main site.
+- `/guides/` — CF Field Guides bridge. Top-set articles are adapted from
+  live `unitedmobilerv.com/guide/<slug>/` (source-attributed on each page;
+  no invented procedures). Full WP hub remains the library. In-page money
+  loop: Book → `https://book.unitedmobilerv.com/` · Forum · Shop ·
+  Call `tel:+16166065277` · Text Now `sms:+16166065277`. Published rates
+  only: labor $150/hr · generator maintenance starting at $150.
+- Square owns SOP / ESTIMATE. Docs does not advertise Portal as a
+  customer destination and does not add SOP/ESTIMATE gates.
 
 ## Convert chrome
 - Call (616) 606-5277 → `tel:+16166065277` · Text Now → `sms:+16166065277` · Book → https://united-mobile-rv-llc.square.site/ · leftover `/go/book` 302s there

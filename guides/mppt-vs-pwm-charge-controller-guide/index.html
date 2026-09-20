@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MPPT vs PWM charge controllers · UMRT Docs</title>
-<meta name="description" content="Why MPPT usually wins on RV roofs, and how to match controller to array and chemistry.">
+<meta name="description" content="PWM vs MPPT efficiency, when PWM is fine, and the cold-weather case for MPPT — from the live WP guide.">
 <link rel="canonical" href="https://docs.unitedmobilerv.com/guides/mppt-vs-pwm-charge-controller-guide/">
 <meta name="theme-color" content="#1A1A1A">
 <link rel="icon" href="/assets/brand/favicon-64.png">
@@ -34,44 +34,70 @@
     <a href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a>
   </nav>
 </header>
-<p class="source wrap">United Mobile RV field guide — adapted for docs from <a href="https://unitedmobilerv.com/guide/mppt-vs-pwm-charge-controller-guide/">unitedmobilerv.com/guide/mppt-vs-pwm-charge-controller-guide/</a>. Full library stays on the main-site hub. Questions? <a href="https://forum.unitedmobilerv.com/">Forum</a>.</p>
-<article><section class="page-hero">
+<p class="source wrap">United Mobile RV field guide — adapted for docs from <a href="https://unitedmobilerv.com/guide/mppt-vs-pwm-charge-controller-guide/">unitedmobilerv.com/guide/mppt-vs-pwm-charge-controller-guide/</a>. Full library stays on the <a href="https://unitedmobilerv.com/guide/">main-site hub</a>. Questions? <a href="https://forum.unitedmobilerv.com/">Forum</a>.</p>
+<article>
+<section class="page-hero">
   <div class="wrap">
-    <span class="micro">Owner guide</span>
+    <span class="micro">Owner guide · Lithium &amp; solar</span>
     <h1>MPPT vs. PWM Solar Charge Controllers</h1>
     <p class="lead">Both keep your panels from overcharging the battery. Only one of them actually gets full value out of your panels. Here’s the difference, in numbers.</p>
-    <p class="muted" style="margin-top:16px;max-width:48ch">Active corridor: Montana · Wyoming · Idaho · Washington — case-by-case beyond.</p>
+    <p class="muted" style="margin-top:16px;max-width:48ch">Source: <a href="https://unitedmobilerv.com/guide/mppt-vs-pwm-charge-controller-guide/">WP Field Guide</a>. Corridor: Montana · Wyoming · Idaho · Washington — case-by-case beyond.</p>
   </div>
 </section>
 <section class="band">
   <div class="wrap">
     <span class="micro">Field notes</span>
-    <p>Both keep your panels from overcharging the battery. Only one of them actually gets full value out of your panels. Here’s the difference, in numbers. Small, single-panel trickle-charge systems (under ~150W) where the panel’s rated voltage is already close to the battery’s — a PWM controller is cheaper and the efficiency loss barely matters at that scale. Once you’re wiring panels in series to reach a higher voltage, or running any system over roughly 200–300W, MPPT is the one worth paying for.</p>
-    <div class="grid-2"><article class="service-card"><h3>How They Actually Differ</h3><p>Field notes from mobile diagnostics — gather model/fault data before parts get swapped.</p></article><article class="service-card"><h3>When PWM Is Actually Fine</h3><p>Small, single-panel trickle-charge systems (under ~150W) where the panel’s rated voltage is already close to the battery’s — a PWM controller is cheaper and the efficiency loss barely matters at that scale.</p></article><article class="service-card"><h3>The Cold-Weather Case for MPPT</h3><p>Panel voltage actually rises in cold weather. A PWM controller can’t use that extra voltage — it just clips it.</p></article><article class="service-card"><h3>Related</h3><p>Solar Sizing &amp; Installation GuideVictron Fault Code GuideVictron Energy Power SystemsBack to Field Guide</p></article></div>
-    
-    <p class="muted">Related: <a href="/guides/">Docs guides</a> · <a href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a> · <a href="https://unitedmobilerv.com/pricing/">Pricing</a></p>
+    <h2>How they actually differ</h2>
+    <p>Copied from the live comparison table — not a marketing rewrite.</p>
+    <table class="guide-table">
+      <thead><tr><th></th><th>PWM</th><th>MPPT</th></tr></thead>
+      <tbody>
+        <tr><td>Panel voltage vs. battery voltage</td><td>Must roughly match</td><td>Can be much higher — controller converts it</td></tr>
+        <tr><td>Typical efficiency</td><td>~75–80%</td><td>~94–99%</td></tr>
+        <tr><td>Cold/cloudy weather output</td><td>Loses the most output</td><td>Recovers more panel voltage as usable current</td></tr>
+        <tr><td>Cost</td><td>Lower</td><td>Higher, but pays back on a real-sized system</td></tr>
+      </tbody>
+    </table>
+
+    <h2>When PWM is actually fine</h2>
+    <p>Small, single-panel trickle-charge systems (under ~150 W) where the panel’s rated voltage is already close to the battery’s — a PWM controller is cheaper and the efficiency loss barely matters at that scale. Once you are wiring panels in series to reach a higher voltage, or running any system over roughly <strong>200–300 W</strong>, MPPT is the one worth paying for.</p>
+
+    <h2>The cold-weather case for MPPT</h2>
+    <p>Panel voltage actually rises in cold weather. A PWM controller can’t use that extra voltage — it just clips it. An MPPT controller converts that higher voltage into more current at the battery, which means on cold clear days (exactly the days you’re relying on solar hardest) an MPPT system meaningfully outperforms a PWM system with identical panels.</p>
+    <div class="field-note">
+      <p><strong>From the live Field Guide.</strong> Flexible or series arrays on a Victron SmartSolar MPPT are the pairing named on the <a href="/guides/best-solar-panels-guide/">panel buying guide</a>. Fault codes for SmartSolar live on the WP <a href="https://unitedmobilerv.com/guide/victron-fault-code-guide/">Victron diagnostics guide</a>.</p>
+    </div>
+
+    <p class="muted" style="margin-top:24px">Related: <a href="/guides/best-solar-panels-guide/">Best solar panels</a> · <a href="/guides/solar-sizing-installation-guide/">Solar sizing</a> · <a href="https://unitedmobilerv.com/guide/victron-fault-code-guide/">Victron fault codes</a> (WP)</p>
     <div class="btn-row" style="margin-top:24px">
-      <a class="btn btn-gold" href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a>
-      <a class="btn btn-ghost" href="tel:+16166065277">(616) 606-5277</a>
+      <a class="btn" href="https://book.unitedmobilerv.com/">Book</a>
+      <a class="btn btn-ghost" href="https://forum.unitedmobilerv.com/">Forum</a>
       <a class="btn btn-ghost" href="/guides/">Docs guides</a>
     </div>
   </div>
 </section>
 <section class="band band-tight" style="border-top:1px solid var(--rule)">
   <div class="wrap-narrow">
-    <span class="micro">Pricing teaser</span>
-    <p>Trip fee <strong>$75</strong> within 30 miles, then <strong>$1.50/mi</strong>. Labor ~<strong>$150/hr</strong> (1-hour minimum, billed in 30-minute increments). Diagnostic <strong>$175</strong> applied toward repair if you proceed.</p>
-    <p class="muted" style="font-size:13px">Active corridor: Montana · Wyoming · Idaho · Washington — case-by-case beyond. Credentials (text): Victron Professional Certified Installer · weBoost Authorized Installer · Peplink Certified Associate · Dometic Professional Certified.</p>
+    <span class="micro">Published rates</span>
+    <p>Labor <strong>$150/hr</strong> (1-hour minimum, billed in 30-minute increments) as published on <a href="https://unitedmobilerv.com/pricing/">unitedmobilerv.com/pricing/</a>. Generator maintenance, when quoted, starts at <strong>$150</strong>. Full trip, diagnostic, and flat-rate figures stay on that pricing page — we do not invent rates here.</p>
+    <p class="muted" style="font-size:13px">Active corridor: Montana · Wyoming · Idaho · Washington — case-by-case beyond. Credentials (text): Victron Professional Certified Installer · weBoost Authorized Installer · Peplink Certified Associate · Dometic Professional Certified. Starlink = installs only (not a certified partner title).</p>
   </div>
-</section></article><p class="umrt-cta-row wrap">
-  <a class="btn btn-ghost" href="tel:+16166065277">Call (616) 606-5277</a>
-  <a class="btn" href="sms:+16166065277">Text Now</a>
-  <a class="btn btn-ghost" href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a>
-  <a class="btn btn-ghost" href="https://forum.unitedmobilerv.com/">Forum</a>
-  <a class="btn btn-ghost" href="https://shop.unitedmobilerv.com/">Shop</a>
-</p>
+</section></article>
+<section class="money-loop" aria-label="Book, forum, shop, call">
+  <div class="wrap">
+    <span class="micro">After you read</span>
+    <h2>Troubleshoot → book → forum</h2>
+    <p>Appointments live on <a href="https://book.unitedmobilerv.com/">book.unitedmobilerv.com</a> — not a Portal login. Ask owners on the Forum, shop parts, or call/text the shop.</p>
+    <p class="umrt-cta-row">
+      <a class="btn" href="https://book.unitedmobilerv.com/">Book</a>
+      <a class="btn btn-ghost" href="https://forum.unitedmobilerv.com/">Forum</a>
+      <a class="btn btn-ghost" href="https://shop.unitedmobilerv.com/">Shop</a>
+      <a class="btn btn-ghost" href="tel:+16166065277">Call (616) 606-5277</a>
+      <a class="btn" href="sms:+16166065277">Text Now</a>
+    </p>
+  </div>
+</section>
 <p class="wrap"><a href="/guides/">← Docs guides</a> · <a href="https://unitedmobilerv.com/guide/">Full WP library</a></p>
-
 <footer class="guide-foot wrap">
   <p>United Mobile RV LLC · <a href="tel:+16166065277">Call (616) 606-5277</a> · <a href="sms:+16166065277">Text Now</a></p>
   <p>
