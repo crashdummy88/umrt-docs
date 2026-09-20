@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RV Electrical Troubleshooting: Shore Power, 12V Drain &amp; Converter · Docs</title>
+<meta name="description" content="Frame shore-power, parasitic drain, and converter faults before swapping parts — then know when metered mobile diagnostics beat DIY.">
+<link rel="canonical" href="https://docs.unitedmobilerv.com/guides/electrical-troubleshooting/">
+<meta name="theme-color" content="#1A1A1A">
+<link rel="icon" href="/assets/brand/favicon-64.png">
+<link rel="stylesheet" href="/design/platform-bar.css">
+<link rel="stylesheet" href="/design/convert-chrome.css">
+<link rel="stylesheet" href="/design/docs-guide.css">
+</head>
+<body>
+<div class="umrt-platform-bar" role="navigation" aria-label="UMRT properties">
+  <div class="umrt-platform-bar-inner">
+    <a href="https://unitedmobilerv.com/" data-platform-link="hub">Home</a>
+    <a href="https://shop.unitedmobilerv.com/" data-platform-link="shop">Shop</a>
+    <a href="https://united-mobile-rv-llc.square.site/" data-platform-link="book" target="_blank" rel="noopener">Book</a>
+    <a href="https://forum.unitedmobilerv.com/" data-platform-link="forum">Forum</a>
+    <a href="https://software.unitedmobilerv.com/" data-platform-link="software">Software</a>
+    <a href="https://docs.unitedmobilerv.com/" data-platform-link="docs" class="is-current" aria-current="page">Docs</a>
+  </div>
+</div>
+<nav class="top" aria-label="Docs">
+  <a href="/guides/">Guides</a>
+  <a href="https://unitedmobilerv.com/guide/">WP library</a>
+  <a href="/sop/">SOP</a>
+  <a href="/account/">My Jobs</a>
+</nav>
+<p class="source wrap">Adapted from <a href="https://unitedmobilerv.com/guide/electrical-troubleshooting/">unitedmobilerv.com/guide/electrical-troubleshooting/</a>. Full library stays on the main-site hub.</p>
+<article>
+<section class="page-hero">
+  <div class="wrap">
+    <span class="micro">Electrical guide</span>
+    <h1>RV electrical &amp; shore-power troubleshooting</h1>
+    <p class="lead">Frame shore-power, 12V drain, and converter symptoms before you start swapping parts — then know when metered mobile diagnostics beat DIY.</p>
+    <p class="muted" style="margin-top:16px;max-width:48ch">Active corridor: Montana · Wyoming · Idaho · Washington — case-by-case beyond.</p>
+  </div>
+</section>
+<section class="band">
+  <div class="wrap">
+    <span class="micro">Field notes</span>
+    <p>Shore power problems and flickering lights are the most common calls we get. This page covers the wiring and power-supply side — for battery chemistry, capacity testing, and charging profiles, see <a href="/guides/solar-battery-troubleshooting/">Solar &amp; battery troubleshooting</a>. This guide assumes a standard <strong>12V DC</strong> house bank (the overwhelming majority of RVs). If your coach runs a 24V or 48V inverter/charger stack (common with larger Victron MultiPlus/Quattro installs), voltages scale — confirm charge stages and fault text in VictronConnect, then use the <a href="/guides/victron-fault-code-guide/">Victron fault-code guide</a>.</p>
+
+    <h2 style="margin-top:28px;font-size:1.25rem">Who this is for</h2>
+    <div class="grid-2">
+      <article class="service-card"><h3>Right place if you</h3><p>Arrive at a pedestal with no AC. Wake to a dead house bank. See lights dim when the pump or furnace kicks. Smell heat at the shore cord. Need a field order of operations before buying another converter.</p></article>
+      <article class="service-card"><h3>Maybe not yet if</h3><p>Your only question is lithium vs AGM sizing — start on solar/battery. You already have a Victron error on screen — confirm the exact alarm in the app first, then the Victron guide. You smell burning plastic or see scorch marks — stop DIY and Text for a diagnostic.</p></article>
+    </div>
+
+    <h2 style="margin-top:28px;font-size:1.25rem">Shore power not working at the campsite</h2>
+    <p>Start at the source before assuming the coach is the problem. Work this order:</p>
+    <ol style="line-height:1.75;margin-top:8px">
+      <li>Check the campground pedestal breaker — it may have tripped on the prior guest.</li>
+      <li>Inspect the shore-power cord for burnt or melted pins at both ends.</li>
+      <li>Check the coach breaker panel — reset tripped breakers once; if one trips again, find the load or short.</li>
+      <li>Test the 30/50 amp adapter — adapters corrode and fail more often than owners expect.</li>
+      <li>Verify pedestal voltage. Anything sustained under about <strong>108V AC</strong> can damage appliances and converters silently over time.</li>
+    </ol>
+    <div class="grid-2" style="margin-top:16px">
+      <article class="service-card"><h3>Pro tip</h3><p>A surge protector with voltage monitoring is one of the best owner investments. It protects the A/C, microwave, and converter from low-voltage damage and pays for itself after one bad pedestal.</p></article>
+      <article class="service-card"><h3>30 vs 50 amp honesty</h3><p>Adapters do not invent amperage. If you need the full 50A story or dogbone limits, see <a href="/guides/30-amp-vs-50-amp-guide/">30 vs 50 amp</a>. Undersized adapters that run hot are a fire risk, not a convenience feature.</p></article>
+    </div>
+
+    <h2 style="margin-top:28px;font-size:1.25rem">Battery draining overnight</h2>
+    <p>A bank that reads full at bedtime and dead by morning almost always means a parasitic draw — a detector, control module, or radio left wired hot; an aging battery near end of life; or a converter/inverter drawing current in standby. Finding the draw means pulling fuses one at a time while watching current on a meter, not guessing.</p>
+    <div class="grid-2">
+      <article class="service-card"><h3>Owner checks first</h3><p>Confirm inverter is truly off (not just “standby”). Kill aftermarket cameras, boosters, and USB hubs on ignition-hot circuits. Note anything that stays warm overnight. Photograph the fuse panel labels before you pull anything.</p></article>
+      <article class="service-card"><h3>When resting voltage lies</h3><p>A sulfated or capacity-dead lead-acid pack can look “full” at rest and collapse under a small load. Capacity testing beats resting voltage alone — see solar/battery troubleshooting for chemistry-specific guidance.</p></article>
+    </div>
+
+    <h2 style="margin-top:28px;font-size:1.25rem">Flickering lights or dimming under load</h2>
+    <p>Lights that dim when the water pump or furnace fan kicks on point to voltage drop somewhere in the circuit — usually a loose or corroded connection, not the light fixture itself.</p>
+    <div style="margin-top:12px">
+      <span class="micro">Owner checklist</span>
+      <ul style="margin-top:8px;line-height:1.7">
+        <li>Check battery terminal connections for corrosion or looseness first — the most common cause</li>
+        <li>Inspect ground connections at the chassis and distribution panel</li>
+        <li>Remember a weak or sulfated battery can read normal at rest and still fail under load</li>
+        <li>Undersized wire on an aftermarket accessory can pull down the whole 12V bus</li>
+        <li>Measure voltage drop across each connection under actual load with a DVOM — that isolates resistance</li>
+      </ul>
+    </div>
+
+    <h2 style="margin-top:28px;font-size:1.25rem">Converter not charging properly</h2>
+    <p>A converter that undercharges leaves the bank chronically low; one that overcharges cooks it early. Neither mode is obvious without testing. Internal converter fuses are a common failure point and are often overlooked. Multi-stage converters that never leave bulk usually indicate a charge-stage sensing fault.</p>
+    <div class="grid-2">
+      <article class="service-card"><h3>What we meter</h3><p>Output voltage at the converter, voltage at the battery under charge, and whether stages actually transition. Brand-specific fault text: Victron on the Victron guide; Progressive Dynamics / WFCO / Xantrex on their fault index when you have that chassis.</p></article>
+      <article class="service-card"><h3>Converter vs inverter-charger</h3><p>Factory converters and aftermarket MultiPlus-class inverter-chargers fail differently. If you upgraded power and kept the old converter in parallel, you can get two chargers fighting — classic high-voltage / ripple symptoms. See <a href="/guides/converter-inverter-charger-guide/">converter / inverter / charger</a>.</p></article>
+    </div>
+
+    <h2 style="margin-top:28px;font-size:1.25rem">Failure modes we see</h2>
+    <div class="grid-2">
+      <article class="service-card"><h3>Bad pedestal blamed on the coach</h3><p>Low voltage or a weak breaker looks like “my A/C died.” Meter the pedestal first.</p></article>
+      <article class="service-card"><h3>Melted dogbone</h3><p>Hot adapters and corroded pins. Replace — do not tape and hope.</p></article>
+      <article class="service-card"><h3>Shared noisy grounds</h3><p>Aftermarket accessories bonded poorly pull lights and radios down together.</p></article>
+      <article class="service-card"><h3>Invisible parasitic</h3><p>Inverter standby, LP detectors, and “always on” modules. Fuse-pull method wins.</p></article>
+      <article class="service-card"><h3>Converter fuse ignored</h3><p>Internal fuses open; owners replace the whole unit.</p></article>
+      <article class="service-card"><h3>Fire-risk DIY</h3><p>Instant-trip breakers, scorch marks, burning smell — stop. Text for metered diagnostics.</p></article>
+    </div>
+
+    <h2 style="margin-top:28px;font-size:1.25rem">When to stop and book UMRT</h2>
+    <div class="grid-2">
+      <article class="service-card"><h3>Reasonable DIY</h3><p>Pedestal checks, cord inspection, labeled fuse pulls with a clamp meter if you own one, surge-protector install on a known-good pedestal.</p></article>
+      <article class="service-card"><h3>Book us when</h3><p>You smell burning, see scorch marks, or a breaker trips instantly. You need thermal imaging and DVOM drop tests under load. You are in MT · WY · ID · WA or need a case-by-case trip quote. Electrical faults get more expensive the longer they run — some are genuine fire risks.</p></article>
+    </div>
+
+    <h2 style="margin-top:28px;font-size:1.25rem">FAQ</h2>
+    <div class="grid-2">
+      <article class="service-card"><h3>My surge protector shows low voltage — now what?</h3><p>Do not run A/C and microwave on a weak pedestal. Ask the park to reset or move sites. Sustained under-voltage damages converters.</p></article>
+      <article class="service-card"><h3>Inverter dies when the A/C kicks?</h3><p>Often DC cable, lug torque, or bank capacity — not a bad inverter board. Meter at the inverter lugs under surge.</p></article>
+      <article class="service-card"><h3>Is this a 24V/48V problem?</h3><p>If you run Victron MultiPlus/Quattro at higher voltage, confirm alarms in VictronConnect and use the Victron fault-code guide. Do not apply 12V resting numbers blindly.</p></article>
+      <article class="service-card"><h3>Can you diagnose remotely?</h3><p>Text Now a photo of the pedestal meter, cord ends, and breaker panel. Many jobs still need on-site metering.</p></article>
+    </div>
+
+    <p class="muted" style="margin-top:24px">Related: <a href="https://unitedmobilerv.com/electrical/">Electrical service</a> · <a href="/guides/30-amp-vs-50-amp-guide/">30 vs 50 amp</a> · <a href="/guides/converter-inverter-charger-guide/">Converter / inverter</a> · <a href="/guides/solar-battery-troubleshooting/">Solar &amp; battery</a> · <a href="/guides/victron-fault-code-guide/">Victron fault codes</a> · <a href="https://unitedmobilerv.com/troubleshoot/">Troubleshoot hub</a></p>
+    <div class="btn-row" style="margin-top:24px">
+      <a class="btn" href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a>
+      <a class="btn btn-ghost" href="sms:+16166065277">Text Now</a>
+      <a class="btn btn-ghost" href="/guides/">Field Guides</a>
+    </div>
+  </div>
+</section>
+
+
+<section class="band band-tight" style="border-top:1px solid var(--rule)">
+  <div class="wrap-narrow">
+    <span class="micro">Pricing teaser</span>
+    <p>Trip fee <strong>$75</strong> within 30 miles, then <strong>$1.50/mi</strong> each way. Labor ~<strong>$150/hr</strong> (1-hour minimum, billed in 30-minute increments). Diagnostic <strong>$175</strong> applied toward repair if you proceed.</p>
+    <p class="muted" style="font-size:13px">Credentials (text): Victron Professional Certified Installer · weBoost Authorized Installer · Peplink Certified Associate · Dometic Professional Certified. Starlink = installs only (not a certified partner title).</p>
+  </div>
+</section>
+</article>
+<p class="wrap"><a href="/guides/">← Field Guides</a></p>
+<footer class="guide-foot wrap">
+  <p>United Mobile RV LLC · <a href="tel:+16166065277">Call (616) 606-5277</a> · <a href="sms:+16166065277">Text Now</a></p>
+  <p>
+    <a href="https://unitedmobilerv.com/">Home</a> ·
+    <a href="https://shop.unitedmobilerv.com/">Shop</a> ·
+    <a href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a> ·
+    <a href="https://forum.unitedmobilerv.com/">Forum</a> ·
+    <a href="https://software.unitedmobilerv.com/">Software</a> ·
+    <a href="https://docs.unitedmobilerv.com/">Docs</a>
+  </p>
+</footer>
+<div class="umrt-mobile-bar" aria-label="Quick actions">
+  <a class="btn btn-ghost" href="tel:+16166065277">Call <span class="umrt-call-num">(616) 606-5277</span></a>
+  <a class="btn" href="sms:+16166065277">Text Now</a>
+  <a class="btn btn-ghost" href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a>
+</div>
+<script src="/design/convert-chrome.js" defer></script>
+</body>
+</html>

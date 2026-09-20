@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RV Solar &amp; Battery Troubleshooting: Charge Stages, BMS &amp; Array Faults · Docs</title>
+<meta name="description" content="Diagnose solar and house-bank problems by chemistry — LiFePO4 vs AGM, charge-controller stages, and when a Victron Professional install beats guesswork.">
+<link rel="canonical" href="https://docs.unitedmobilerv.com/guides/solar-battery-troubleshooting/">
+<meta name="theme-color" content="#1A1A1A">
+<link rel="icon" href="/assets/brand/favicon-64.png">
+<link rel="stylesheet" href="/design/platform-bar.css">
+<link rel="stylesheet" href="/design/convert-chrome.css">
+<link rel="stylesheet" href="/design/docs-guide.css">
+</head>
+<body>
+<div class="umrt-platform-bar" role="navigation" aria-label="UMRT properties">
+  <div class="umrt-platform-bar-inner">
+    <a href="https://unitedmobilerv.com/" data-platform-link="hub">Home</a>
+    <a href="https://shop.unitedmobilerv.com/" data-platform-link="shop">Shop</a>
+    <a href="https://united-mobile-rv-llc.square.site/" data-platform-link="book" target="_blank" rel="noopener">Book</a>
+    <a href="https://forum.unitedmobilerv.com/" data-platform-link="forum">Forum</a>
+    <a href="https://software.unitedmobilerv.com/" data-platform-link="software">Software</a>
+    <a href="https://docs.unitedmobilerv.com/" data-platform-link="docs" class="is-current" aria-current="page">Docs</a>
+  </div>
+</div>
+<nav class="top" aria-label="Docs">
+  <a href="/guides/">Guides</a>
+  <a href="https://unitedmobilerv.com/guide/">WP library</a>
+  <a href="/sop/">SOP</a>
+  <a href="/account/">My Jobs</a>
+</nav>
+<p class="source wrap">Adapted from <a href="https://unitedmobilerv.com/guide/solar-battery-troubleshooting/">unitedmobilerv.com/guide/solar-battery-troubleshooting/</a>. Full library stays on the main-site hub.</p>
+<article>
+<section class="page-hero">
+  <div class="wrap">
+    <span class="micro">Solar guide</span>
+    <h1>Solar &amp; battery system troubleshooting</h1>
+    <p class="lead">Diagnose solar and house-bank problems by chemistry — LiFePO4 vs AGM, charge-controller stages, array faults, and when a Victron Professional install beats guesswork.</p>
+    <p class="muted" style="margin-top:16px;max-width:48ch">Active corridor: Montana · Wyoming · Idaho · Washington — case-by-case beyond.</p>
+  </div>
+</section>
+<section class="band">
+  <div class="wrap">
+    <span class="micro">Field notes</span>
+    <p>This is the page to start on for battery-related symptoms — chemistry basics, charging, maintenance, and field troubleshooting. Brand-specific fault text: <a href="/guides/victron-fault-code-guide/">Victron MultiPlus / Quattro / SmartSolar</a> for Victron stacks; Progressive Dynamics / WFCO / Xantrex on their fault index when that is your chassis. United Mobile RV is a <strong>Victron Professional Certified Installer</strong> — we design and diagnose these systems as electrical work, not gadget swaps.</p>
+
+    <h2 style="margin-top:28px;font-size:1.25rem">Who this is for</h2>
+    <div class="grid-2">
+      <article class="service-card"><h3>Right place if you</h3><p>Bank will not hold a charge. Solar underperforms after a perfect sunny day. Inverter shuts down under load. You mixed chemistries or charger profiles and need honesty before buying another battery.</p></article>
+      <article class="service-card"><h3>Maybe not yet if</h3><p>You only need a Victron alarm decoded — confirm the exact text in VictronConnect, then open the Victron fault-code guide. You only need shore-power / pedestal diagnostics — start on <a href="/guides/electrical-troubleshooting/">electrical troubleshooting</a>.</p></article>
+    </div>
+
+    <h2 style="margin-top:28px;font-size:1.25rem">Battery chemistry: why it changes everything</h2>
+    <p>The single biggest mistake in RV battery systems is treating lithium (LiFePO4), AGM, and flooded lead-acid as interchangeable. They need different charge voltages, discharge habits, and storage practices — a charger set for one chemistry will damage another over time.</p>
+    <div class="grid-2">
+      <article class="service-card"><h3>Lithium (LiFePO4)</h3><p>Deep-cycle friendly with a working BMS. Does not want lead-acid float habits. Cold charge inhibit near freezing is common — confirm your battery/BMS manual (many inhibit around 0 °C / 32 °F; heated packs differ). Do not invent a universal cutoff.</p></article>
+      <article class="service-card"><h3>AGM</h3><p>Sealed, no watering, but repeated discharge below about 50% shortens life. Needs correct absorb/float — not a lithium profile bolted on.</p></article>
+      <article class="service-card"><h3>Flooded lead-acid</h3><p>Needs watering and occasional equalization per manufacturer. Most abuse-tolerant to casual DIY — still easy to sulfate in storage.</p></article>
+      <article class="service-card"><h3>Mixed banks</h3><p>Paralleling unlike chemistries or ages is how mystery drains and charger fights start. Fix topology before buying another bigger battery.</p></article>
+    </div>
+
+    <h2 style="margin-top:28px;font-size:1.25rem">Battery not holding a charge</h2>
+    <ul style="line-height:1.75;margin-top:8px">
+      <li><strong>Lithium:</strong> BMS protection from deep discharge, over-temperature, or cell imbalance is far more common than a truly dead pack</li>
+      <li><strong>Lead-acid / AGM:</strong> sulfation from repeated deep discharge or long storage without a maintainer</li>
+      <li><strong>Parasitic draw:</strong> something left on, inverter standby, or aftermarket always-hot loads</li>
+      <li><strong>Charger / converter:</strong> wrong profile, failed stage sensing, or open internal fuse</li>
+      <li><strong>Cable &amp; lugs:</strong> voltage looks fine at rest at the battery and collapses at the inverter under load</li>
+    </ul>
+
+    <h2 style="margin-top:28px;font-size:1.25rem">Capacity testing: is the battery actually bad?</h2>
+    <p>Resting voltage alone does not tell you much — a battery can read a normal resting voltage and still fail to deliver capacity under load. A proper capacity test (controlled discharge with a known load, or manufacturer-approved tester workflow) is the only way to know. Replace on data, not on “it looks old.”</p>
+
+    <h2 style="margin-top:28px;font-size:1.25rem">Storage &amp; maintenance charging</h2>
+    <div class="grid-2">
+      <article class="service-card"><h3>Lithium storage</h3><p>Store around 50–60% SoC — not 100% for months. Confirm cold storage rules in your BMS manual.</p></article>
+      <article class="service-card"><h3>Lead-acid / AGM storage</h3><p>Store fully charged on a maintenance/float charger sized for the bank. A “full” battery left alone all winter often returns sulfated.</p></article>
+    </div>
+
+    <h2 style="margin-top:28px;font-size:1.25rem">Solar not charging or underperforming</h2>
+    <div class="grid-2">
+      <article class="service-card"><h3>Shading &amp; array</h3><p>Partial shading from a vent, A/C, or antenna can drop output far more than the shaded area suggests — especially on non-optimized strings.</p></article>
+      <article class="service-card"><h3>Controller profile</h3><p>Wrong battery type, wrong system voltage, or remote/BMS control disabling charge. Confirm settings in the app or display before condemning panels.</p></article>
+      <article class="service-card"><h3>Wiring &amp; fusing</h3><p>High resistance MC4s, undersized cable, open fuses, and loose lugs impersonate “bad solar.”</p></article>
+      <article class="service-card"><h3>Cold Voc risk</h3><p>Cold mornings raise panel Voc — string design must stay under the MPPT max. Overvoltage errors are often design, not a failed controller.</p></article>
+    </div>
+    <p style="margin-top:12px">MPPT vs PWM basics: <a href="/guides/mppt-vs-pwm-charge-controller-guide/">MPPT vs PWM</a>. Off-grid budgeting: <a href="/guides/off-grid-power-budget-guide/">power budget</a>. Buying lithium: <a href="https://unitedmobilerv.com/lithium-battery-buying-guide/">lithium buying guide</a>.</p>
+
+    <h2 style="margin-top:28px;font-size:1.25rem">Inverter faults &amp; shutdowns</h2>
+    <div class="grid-2">
+      <article class="service-card"><h3>Low-voltage shutdown</h3><p>Bank sagged under load — undersized cabling, high resistance lugs, BMS load disconnect, or a bank smaller than the surge.</p></article>
+      <article class="service-card"><h3>Overload shutdown</h3><p>Connected load or inrush exceeded capability — microwave + induction + compressor stories are classic.</p></article>
+      <article class="service-card"><h3>Overtemp</h3><p>Hot bay, blocked airflow, failed fan. Derate expectations for summer mountain climbs with continuous loads.</p></article>
+      <article class="service-card"><h3>Ripple / connection quality</h3><p>Loose DC lugs beat board replacement more often than owners want to hear. Meter at the inverter under load.</p></article>
+    </div>
+
+    <h2 style="margin-top:28px;font-size:1.25rem">DIY vs book UMRT</h2>
+    <div class="grid-2">
+      <article class="service-card"><h3>Reasonable DIY</h3><p>Clean terminals, verify app settings against the battery manual, note shade patterns, photograph VictronConnect / charger screens for Text Now triage.</p></article>
+      <article class="service-card"><h3>Book us when</h3><p>You need capacity testing, cable/fuse redesign, Victron Professional integration, or a system that has never been configured correctly since install. Corridor: MT · WY · ID · WA.</p></article>
+    </div>
+
+    <h2 style="margin-top:28px;font-size:1.25rem">FAQ</h2>
+    <div class="grid-2">
+      <article class="service-card"><h3>Solar is zero on a sunny day?</h3><p>Confirm array Voc/Vmp at the controller, breaker/fuse state, and whether BMS/GX remote control disabled charging. Cold-charge inhibit looks like “MPPT broken.”</p></article>
+      <article class="service-card"><h3>Can I charge lithium with my stock converter?</h3><p>Only if the profile matches the battery requirements. Many stock converters are lead-acid-centric and will mistreat LiFePO4.</p></article>
+      <article class="service-card"><h3>Do I need a bigger inverter?</h3><p>Maybe — or you need honest cable, surge math, and bank capacity first. Peak stickers are not continuous ratings.</p></article>
+      <article class="service-card"><h3>Where do Victron manuals live?</h3><p>Official Victron live wiki and manuals hub only. Software twin: <a href="https://software.unitedmobilerv.com/troubleshoot/victron-connect/">umrt-software VictronConnect troubleshoot</a>.</p></article>
+    </div>
+
+    <p class="muted" style="margin-top:24px">Related: <a href="https://unitedmobilerv.com/victron/">Victron services</a> · <a href="/guides/victron-fault-code-guide/">Victron fault codes</a> · <a href="/guides/electrical-troubleshooting/">Electrical troubleshooting</a> · <a href="/guides/bms-explained-guide/">BMS explained</a> · <a href="/guides/battery-charging-voltage-chart/">Charging voltage chart</a> · <a href="https://unitedmobilerv.com/troubleshoot/">Troubleshoot hub</a></p>
+    <div class="btn-row" style="margin-top:24px">
+      <a class="btn" href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a>
+      <a class="btn btn-ghost" href="sms:+16166065277">Text Now</a>
+      <a class="btn btn-ghost" href="/guides/">Field Guides</a>
+    </div>
+  </div>
+</section>
+
+<section class="band band-tight" style="border-top:1px solid var(--rule)">
+  <div class="wrap-narrow">
+    <span class="micro">Pricing teaser</span>
+    <p>Trip fee <strong>$75</strong> within 30 miles, then <strong>$1.50/mi</strong> each way. Labor ~<strong>$150/hr</strong> (1-hour minimum, billed in 30-minute increments). Diagnostic <strong>$175</strong> applied toward repair if you proceed.</p>
+    <p class="muted" style="font-size:13px">Credentials (text): Victron Professional Certified Installer · weBoost Authorized Installer · Peplink Certified Associate · Dometic Professional Certified. Starlink = installs only (not a certified partner title).</p>
+  </div>
+</section>
+</article>
+<p class="wrap"><a href="/guides/">← Field Guides</a></p>
+<footer class="guide-foot wrap">
+  <p>United Mobile RV LLC · <a href="tel:+16166065277">Call (616) 606-5277</a> · <a href="sms:+16166065277">Text Now</a></p>
+  <p>
+    <a href="https://unitedmobilerv.com/">Home</a> ·
+    <a href="https://shop.unitedmobilerv.com/">Shop</a> ·
+    <a href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a> ·
+    <a href="https://forum.unitedmobilerv.com/">Forum</a> ·
+    <a href="https://software.unitedmobilerv.com/">Software</a> ·
+    <a href="https://docs.unitedmobilerv.com/">Docs</a>
+  </p>
+</footer>
+<div class="umrt-mobile-bar" aria-label="Quick actions">
+  <a class="btn btn-ghost" href="tel:+16166065277">Call <span class="umrt-call-num">(616) 606-5277</span></a>
+  <a class="btn" href="sms:+16166065277">Text Now</a>
+  <a class="btn btn-ghost" href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a>
+</div>
+<script src="/design/convert-chrome.js" defer></script>
+</body>
+</html>
