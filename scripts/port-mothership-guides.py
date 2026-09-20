@@ -177,10 +177,11 @@ TEMPLATE = """<!DOCTYPE html>
 </div>
 <nav class="top" aria-label="Docs">
   <a href="/guides/">Guides</a>
+  <a href="https://unitedmobilerv.com/guide/">WP library</a>
   <a href="/sop/">SOP</a>
   <a href="/account/">My Jobs</a>
 </nav>
-<p class="source wrap">Adapted from <a href="https://unitedmobilerv.com/guide/{slug}/">unitedmobilerv.com/guide/{slug}/</a>.</p>
+<p class="source wrap">Adapted from <a href="https://unitedmobilerv.com/guide/{slug}/">unitedmobilerv.com/guide/{slug}/</a>. Full library stays on the main-site hub.</p>
 <article>
 {article}
 </article>
