@@ -1,4 +1,50 @@
+# Customer land (/ and /guides/, /policies/) stays crawlable.
+# Search engines and major AI crawlers are explicitly allowed.
+# Staff/private paths stay Disallow. No blanket AI block.
+# Named user-agent groups replace * for those crawlers, so the
+# same staff Disallow list is repeated on each named agent.
+
 User-agent: *
+Allow: /
+Disallow: /work-orders/
+Disallow: /account/
+Disallow: /api/
+Disallow: /sop/internal/
+Disallow: /sop/estimate/
+
+User-agent: GPTBot
+Allow: /
+Disallow: /work-orders/
+Disallow: /account/
+Disallow: /api/
+Disallow: /sop/internal/
+Disallow: /sop/estimate/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /work-orders/
+Disallow: /account/
+Disallow: /api/
+Disallow: /sop/internal/
+Disallow: /sop/estimate/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /work-orders/
+Disallow: /account/
+Disallow: /api/
+Disallow: /sop/internal/
+Disallow: /sop/estimate/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /work-orders/
+Disallow: /account/
+Disallow: /api/
+Disallow: /sop/internal/
+Disallow: /sop/estimate/
+
+User-agent: Applebot-Extended
 Allow: /
 Disallow: /work-orders/
 Disallow: /account/
