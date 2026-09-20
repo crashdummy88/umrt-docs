@@ -1,18 +1,11 @@
-/* Docs catalog — utility index, not a landing page. Tokens #1A1A1A / #C9972C. */
-:root {
-  --black: #1A1A1A;
-  --gold: #C9972C;
-  --white: #fff;
-  --light: #F5F5F5;
-  --gray: #666;
-  --rule: #E5E5E5;
-}
+/* Docs catalog — dark/gold utility index. Tokens #1A1A1A / #C9972C / #0C0C0C. */
+@import url("/design/docs-theme.css");
 
 body.catalog-page {
   margin: 0;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: var(--black);
-  background: var(--white);
+  color: var(--text-body);
+  background: var(--black);
   line-height: 1.5;
 }
 
@@ -35,12 +28,13 @@ body.catalog-page {
   font-size: 1.7rem;
   margin: 0 0 0.55rem;
   line-height: 1.25;
+  color: var(--white);
 }
 
 .catalog-lead {
-  margin: 0 0 1.25rem;
+  margin: 0 0 0.75rem;
   max-width: 42rem;
-  color: var(--black);
+  color: var(--text);
 }
 
 .catalog-search {
@@ -53,6 +47,7 @@ body.catalog-page {
 .catalog-search label {
   font-size: 0.8rem;
   font-weight: 600;
+  color: var(--text-muted);
 }
 
 .catalog-search input[type="search"] {
@@ -61,16 +56,21 @@ body.catalog-page {
   font: inherit;
   font-size: 1rem;
   padding: 0.7rem 0.85rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background: var(--white);
-  color: var(--black);
+  min-height: 44px;
+  border: 1px solid #3a3a3a;
+  border-radius: 6px;
+  background: #141414;
+  color: var(--white);
+}
+
+.catalog-search input[type="search"]::placeholder {
+  color: #777;
 }
 
 .catalog-search input[type="search"]:focus {
   outline: 2px solid var(--gold);
-  outline-offset: 1px;
-  border-color: var(--black);
+  outline-offset: 2px;
+  border-color: var(--gold);
 }
 
 .catalog-chips {
@@ -86,17 +86,23 @@ body.catalog-page {
   font: inherit;
   font-size: 0.82rem;
   padding: 0.35rem 0.7rem;
-  border: 1px solid var(--black);
-  background: var(--white);
-  color: var(--black);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: transparent;
+  color: var(--white);
   border-radius: 999px;
   cursor: pointer;
 }
 
+.catalog-chips button:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
 .catalog-chips button[aria-pressed="true"] {
-  background: var(--black);
-  color: var(--white);
-  border-color: var(--black);
+  background: var(--gold);
+  color: var(--black);
+  border-color: var(--gold);
+  font-weight: 700;
 }
 
 .catalog-chips button:focus-visible {
@@ -106,7 +112,7 @@ body.catalog-page {
 
 .catalog-meta {
   font-size: 0.85rem;
-  color: var(--gray);
+  color: var(--text-muted);
   margin: 0 0 0.85rem;
 }
 
@@ -119,6 +125,7 @@ body.catalog-page {
   margin: 0 0 0.65rem;
   padding-bottom: 0.35rem;
   border-bottom: 1px solid var(--rule);
+  color: var(--white);
 }
 
 .catalog-list {
@@ -150,7 +157,7 @@ body.catalog-page {
 }
 
 .catalog-card h3 a {
-  color: var(--black);
+  color: var(--white);
   text-decoration: none;
 }
 
@@ -164,12 +171,12 @@ body.catalog-page {
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--gray);
+  color: var(--gold);
 }
 
 .catalog-card p {
   margin: 0.3rem 0 0.45rem;
-  color: var(--gray);
+  color: var(--text-muted);
   font-size: 0.95rem;
 }
 
@@ -181,16 +188,16 @@ body.catalog-page {
 }
 
 .catalog-links a {
-  color: var(--black);
+  color: var(--gold);
 }
 
 .catalog-links a:hover {
-  color: var(--gold);
+  color: var(--gold-hover);
 }
 
 .catalog-empty {
   padding: 1rem 0;
-  color: var(--gray);
+  color: var(--text-muted);
 }
 
 .catalog-empty[hidden],
@@ -204,11 +211,11 @@ body.catalog-page {
   padding-top: 1rem;
   border-top: 1px solid var(--rule);
   font-size: 0.88rem;
-  color: var(--gray);
+  color: var(--text-muted);
 }
 
 .catalog-quiet a {
-  color: var(--black);
+  color: var(--white);
   text-decoration: none;
 }
 
@@ -218,12 +225,12 @@ body.catalog-page {
 
 .catalog-foot {
   margin: 1.5rem 0 0;
-  color: var(--gray);
+  color: var(--text-muted);
   font-size: 0.85rem;
 }
 
 .catalog-foot a {
-  color: var(--black);
+  color: var(--white);
   text-decoration: none;
 }
 
@@ -232,13 +239,14 @@ body.catalog-page {
 }
 
 .catalog-local-nav {
-  background: var(--black);
+  background: var(--band);
   color: var(--white);
   padding: 0.75rem 1.25rem;
   font-size: 0.9rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem 1.15rem;
+  border-bottom: 1px solid var(--line);
 }
 
 .catalog-local-nav a {

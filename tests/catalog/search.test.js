@@ -104,9 +104,12 @@ for (const [name, html] of [['home', home], ['guides', guidesHtml], ['policies',
   assert(!/\/sop\//.test(html), name + ' has no SOP link');
   assert(!/\/work-orders\//.test(html), name + ' has no work-orders link');
   assert(!/My Jobs/.test(html), name + ' has no My Jobs teaser');
-  assert(!/umrt-cta-row/.test(html), name + ' has no convert stack');
+  assert(/umrt-cta-row/.test(html), name + ' has Call / Text Now / Book convert row');
+  assert(/tel:\+16166065277/.test(html), name + ' Call is tel:+16166065277');
+  assert(/sms:\+16166065277/.test(html), name + ' Text Now is sms:+16166065277');
   assert(!/book\.unitedmobilerv\.com/.test(html), name + ' does not rewire Book');
   assert(/united-mobile-rv-llc\.square\.site/.test(html), name + ' keeps Square Book');
+  assert(!/MAIN HUB/.test(html), name + ' keeps Home label');
   assert(/docs-catalog\.js/.test(html), name + ' loads catalog script');
   assert(/data-platform-link="hub">Home</.test(html), name + ' keeps Home chrome');
   assert(/\/policies\//.test(html), name + ' links Policies');
@@ -140,6 +143,15 @@ const articleSop = diskSlugs.filter((slug) => {
   return /href="\/sop\/"/.test(html) || /href="\/account\/"/.test(html);
 });
 assert(articleSop.length === 0, 'article pages do not advertise SOP or My Jobs');
+const articleConvert = diskSlugs.filter((slug) => {
+  const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
+  return !/umrt-cta-row/.test(html) || !/tel:\+16166065277/.test(html) || !/sms:\+16166065277/.test(html) || !/united-mobile-rv-llc\.square\.site/.test(html);
+});
+assert(articleConvert.length === 0, 'every article has Call / Text Now / Square Book');
+assert(diskSlugs.every((slug) => {
+  const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
+  return !/book\.unitedmobilerv\.com/.test(html) && !/MAIN HUB/.test(html);
+}), 'articles do not reopen book.* or MAIN HUB');
 
 if (failed) {
   console.error(failed + ' failed');
