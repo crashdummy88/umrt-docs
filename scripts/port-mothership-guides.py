@@ -163,6 +163,7 @@ TEMPLATE = """<!DOCTYPE html>
 <link rel="stylesheet" href="/design/platform-bar.css">
 <link rel="stylesheet" href="/design/convert-chrome.css">
 <link rel="stylesheet" href="/design/docs-guide.css">
+<script type="text/javascript" src="/design/clarity.js"></script>
 </head>
 <body>
 <div class="umrt-platform-bar" role="navigation" aria-label="UMRT properties">
