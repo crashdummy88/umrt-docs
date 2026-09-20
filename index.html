@@ -11,7 +11,7 @@
   <style>
     :root { --black:#1A1A1A; --gold:#C9972C; --white:#fff; --light:#F5F5F5; --gray:#666; }
     body{margin:0;font-family:system-ui,sans-serif;color:var(--black);background:var(--white);line-height:1.5}
-    .top{background:var(--black);color:var(--white);padding:1rem 1.25rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .top{background:var(--black);color:var(--white);padding:1rem 1.25rem;display:flex;justify-content:flex-start;align-items:center;gap:1rem;flex-wrap:wrap}
     .top a{color:var(--white);text-decoration:none}
     .top a:hover{color:var(--gold)}
     .wrap{max-width:42rem;margin:0 auto;padding:1.5rem 1.25rem 3rem}
@@ -38,8 +38,7 @@
     </div>
   </div>
 
-  <header class="top">
-    <nav>
+  <nav class="top" aria-label="Docs">
       <a href="/guides/">Guides</a>
       <a href="https://unitedmobilerv.com/guide/">Field Guides</a>
       <a href="/sop/">SOP</a>
@@ -48,8 +47,7 @@
       <a href="tel:+16166065277">Call (616) 606-5277</a>
       <a href="sms:+16166065277">Text Now</a>
       <a href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a>
-    </nav>
-  </header>
+  </nav>
   <main class="wrap">
     <p class="eyebrow">Field docs</p>
     <h1>Field guides, SOPs &amp; your repair history</h1>

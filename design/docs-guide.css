@@ -19,7 +19,7 @@ h3{font-size:1.02rem;margin:.2rem 0 .35rem}
 .service-card p{margin:.25rem 0 0}
 .source{font-size:.85rem;color:var(--gray);border-left:3px solid var(--gold);padding:.2rem 0 .2rem .8rem;margin:1rem 0}
 .sku{background:#FFF8E8;border:1px solid #E6D19A;border-radius:8px;padding:.9rem 1.05rem;margin:1.1rem 0}
-.top{background:var(--black);color:var(--white);padding:1rem 1.25rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.top{background:var(--black);color:var(--white);padding:1rem 1.25rem;display:flex;justify-content:flex-start;align-items:center;gap:1rem;flex-wrap:wrap}
 .top a{color:var(--white);text-decoration:none}
 .top a:hover{color:var(--gold)}
 footer.guide-foot{margin:2rem 0 1rem;color:var(--gray);font-size:.85rem}
