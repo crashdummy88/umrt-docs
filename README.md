@@ -40,6 +40,6 @@ Shares `umrt-portal-db` (D1, binding `DB`) with `umrt-portal` — same
 - `SSO_SHARED_SECRET` — optional, cross-subdomain "already signed in
   elsewhere" recognition only, never grants access by itself.
 
-Tokens: `#1A1A1A` / `#C9972C` · v0 is static HTML + Pages Functions.
+Tokens: dark canvas `#1A1A1A` / gold `#C9972C` / dark bands `#0C0C0C` — same mothership / shop / forum Pages look (`design/docs-theme.css`). v0 is static HTML + Pages Functions.
 
 Unknown routes serve `404.html` with status 404 (`/* /404.html 404`). Sitemap lists the docs pointer pages only — not SOP internals.
