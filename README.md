@@ -9,9 +9,9 @@ Docs site for United Mobile RV LLC (Cloudflare Pages). Two real audiences:
   technician writes the diagnosis/work/parts, attaches photos, and both
   sides sign off. This is the "official record" a customer later sees
   read-only in `/account/`.
-- `/guides/` — CF surface of Matt’s live Field Guides. Top-set articles are
-  adapted from `unitedmobilerv.com/guide/<slug>/` (attributed on each page).
-  The full WP hub remains the library. Book → Square · Forum · Shop · Call/Text.
+- `/guides/` — Field Guides on this host, adapted from
+  `unitedmobilerv.com/guide/<slug>/` (attributed on each page). Catalog,
+  reference charts, and system how-tos live here. Book → Square · Forum · Shop · Call/Text.
 - `/sop/` — public teaser + Portal login CTA. `/sop/internal/` and
   `/sop/estimate/` are staff-gated stubs (ADMIN or `STAFF_EMAILS`), same
   session check as work orders. Public marketing stays on the main site.
@@ -19,7 +19,7 @@ Docs site for United Mobile RV LLC (Cloudflare Pages). Two real audiences:
 ## Convert chrome
 - Call (616) 606-5277 → `tel:+16166065277` · Text Now → `sms:+16166065277` · Book → https://united-mobile-rv-llc.square.site/ · leftover `/go/book` 302s there
 - Applied on `/`, `/guides/`, `/sop/`, `/work-orders/` via `/design/convert-chrome.css`/`.js` -- no "Call (older phones)"
-- Platform bar lock: Home → `https://unitedmobilerv.com/` · Shop · Book (Square) · Forum · Software · Docs (current). Same-window land-to-land. No Portal / Status. No sticky “United Mobile RV” brand TEXT in chrome (page h1 is the title). Field Guides stay on WP + this docs host — not in other products' chrome. Do not treat `/guides/` as a searchable Apps index.
+- Platform bar lock: Home → `https://unitedmobilerv.com/` · Shop · Book (Square) · Forum · Software · Docs (current). Same-window land-to-land. No Portal / Status. No sticky “United Mobile RV” brand TEXT in chrome (page h1 is the title). Field Guides live on this docs host. Do not treat `/guides/` as a searchable Apps index.
 - Mesh lands stay on custom domains (never `book.*` for Book)
 
 ## Data
