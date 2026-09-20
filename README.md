@@ -33,7 +33,7 @@ only after a pin URL is filled in.
 ## Convert chrome
 - Call (616) 606-5277 → `tel:+16166065277` · Text Now → `sms:+16166065277` · Book → https://united-mobile-rv-llc.square.site/ · leftover `/go/book` 302s there
 - Applied on `/`, `/guides/`, `/sop/`, `/work-orders/` via `/design/convert-chrome.css`/`.js` -- no "Call (older phones)"
-- Platform bar lock: Home → `https://unitedmobilerv.com/` · Shop · Book (Square) · Forum · Software · Docs (current). Same-window land-to-land. No Portal / Status. No sticky “United Mobile RV” brand TEXT in chrome (page h1 is the title). No Book rewires (`book.*` stays unused). Field Guides stay on WP + this docs host — not in other products' chrome.
+- Platform bar lock: Home → `https://unitedmobilerv.com/` · Services → `https://unitedmobilerv.com/service/` · Shop · Book (Square) · Forum · Software · Docs (current). Same-window land-to-land. No Portal / Status. No sticky “United Mobile RV” brand TEXT in chrome (page h1 is the title). No Book rewires (`book.*` stays unused). Field Guides stay on WP + this docs host — not in other products' chrome.
 - Mesh lands stay on custom domains (never `book.*` for Book)
 
 ## Data

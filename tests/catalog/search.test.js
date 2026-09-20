@@ -121,6 +121,8 @@ for (const [name, html] of [['home', home], ['guides', guidesHtml], ['policies',
   assert(!/MAIN HUB/.test(html), name + ' keeps Home label');
   assert(/docs-catalog\.js/.test(html), name + ' loads catalog script');
   assert(/data-platform-link="hub">Home</.test(html), name + ' keeps Home chrome');
+  assert(/data-platform-link="services">Services</.test(html), name + ' keeps Services chrome');
+  assert(/href="https:\/\/unitedmobilerv\.com\/service\/" data-platform-link="services"/.test(html), name + ' Services lands on /service/');
   assert(/\/policies\//.test(html), name + ' links Policies');
   assert(!/operating\s+agreement/i.test(html), name + ' does not mention operating agreement');
 }
@@ -202,6 +204,53 @@ const nestedCta = diskSlugs.filter((slug) => {
   return /service-card[\s\S]{0,400}guide-end-cta/.test(html);
 });
 assert(nestedCta.length === 0, 'end CTA is not nested in a service card');
+
+const CHROME_ORDER = ['Home', 'Services', 'Shop', 'Book', 'Forum', 'Software', 'Docs'];
+const CHROME_HREFS = {
+  Home: 'https://unitedmobilerv.com/',
+  Services: 'https://unitedmobilerv.com/service/',
+  Shop: 'https://shop.unitedmobilerv.com/',
+  Book: 'https://united-mobile-rv-llc.square.site/',
+  Forum: 'https://forum.unitedmobilerv.com/',
+  Software: 'https://software.unitedmobilerv.com/',
+  Docs: 'https://docs.unitedmobilerv.com/'
+};
+function walkHtml(dir, acc) {
+  for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, ent.name);
+    if (ent.isDirectory()) walkHtml(full, acc);
+    else if (ent.name.endsWith('.html')) acc.push(full);
+  }
+  return acc;
+}
+const chromePages = walkHtml(root, []).filter((file) => {
+  const html = fs.readFileSync(file, 'utf8');
+  return /umrt-platform-bar/.test(html);
+});
+assert(chromePages.length >= 80, 'platform bar is shared across public + staff chrome');
+for (const file of chromePages) {
+  const rel = path.relative(root, file);
+  const html = fs.readFileSync(file, 'utf8');
+  const bar = html.match(/<div class="umrt-platform-bar-inner">([\s\S]*?)<\/div>/);
+  assert(bar, rel + ' has platform-bar inner');
+  const labels = [...bar[1].matchAll(/>(Home|Services|Shop|Book|Forum|Software|Docs)</g)].map((m) => m[1]);
+  assert(labels.join('|') === CHROME_ORDER.join('|'), rel + ' platform bar order');
+  for (const [label, href] of Object.entries(CHROME_HREFS)) {
+    const re = new RegExp('href="' + href.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '"[^>]*>' + label + '<');
+    assert(re.test(bar[1]), rel + ' platform ' + label + ' href');
+  }
+  assert(!/book\.unitedmobilerv\.com/.test(html), rel + ' never uses book.*');
+  assert(!/Adapted from/.test(html) && !/class="source wrap"/.test(html), rel + ' has no Adapted-from banner');
+  const foot = html.match(/<footer[\s\S]*?<\/footer>/);
+  if (foot) {
+    const footLabels = [...foot[0].matchAll(/>(Home|Services|Shop|Book|Forum|Software|Docs)</g)].map((m) => m[1]);
+    if (footLabels.includes('Home')) {
+      assert(footLabels.join('|') === CHROME_ORDER.join('|'), rel + ' footer chrome order');
+      assert(foot[0].includes('https://unitedmobilerv.com/service/'), rel + ' footer Services href');
+      assert(foot[0].includes('https://united-mobile-rv-llc.square.site/'), rel + ' footer Book stays Square');
+    }
+  }
+}
 
 for (const [name, html] of [['home', home], ['guides', guidesHtml], ['policies', policiesHtml]]) {
   assert(!/WP library/.test(html), name + ' has no WP library label');
