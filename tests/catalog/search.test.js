@@ -80,8 +80,17 @@ assert(matches(ENTRIES.find((e) => e.id === 'invoice'), 'invoice', 'policies'), 
 assert(ENTRIES.filter((e) => matches(e, 'waiver', 'all')).every((e) => e.category === 'policies'), 'waiver stays in Policies');
 assert(!ENTRIES.some((e) => /operating\s+agreement/i.test(haystack(e))), 'catalog has no operating agreement');
 
+const EXPECTED_PINS = {
+  winterize: 'https://forum.unitedmobilerv.com/forum/t/tech-winterize',
+  '12v': 'https://forum.unitedmobilerv.com/forum/t/tech-12v-battery',
+  solar: 'https://forum.unitedmobilerv.com/forum/t/tech-solar',
+  slides: 'https://forum.unitedmobilerv.com/forum/t/tech-slides',
+  generator: 'https://forum.unitedmobilerv.com/forum/t/tech-generator'
+};
+assert(Object.keys(FORUM_PINS).length === 5, 'exactly five forum pins');
 assert(['winterize', '12v', 'solar', 'slides', 'generator'].every((k) => FORUM_PINS[k]), 'forum pin slots reserved');
-assert(Object.keys(FORUM_PINS).every((k) => !FORUM_PINS[k].href), 'forum pin hrefs stay unset until CF publishes');
+assert(Object.keys(FORUM_PINS).every((k) => FORUM_PINS[k].href === EXPECTED_PINS[k]), 'forum pins match Architect GO URLs');
+assert(Object.keys(FORUM_PINS).every((k) => !/forum\.unitedmobilerv\.com\/?$/.test(FORUM_PINS[k].href)), 'pins are not the generic forum home');
 
 const expectedPdfs = [
   'cancellation-no-show-policy.pdf',
