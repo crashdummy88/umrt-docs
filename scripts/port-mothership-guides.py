@@ -165,7 +165,7 @@ TEMPLATE = """<!DOCTYPE html>
 <link rel="stylesheet" href="/design/docs-guide.css">
 </head>
 <body>
-<div class="umrt-platform-bar" role="navigation" aria-label="United Mobile RV">
+<div class="umrt-platform-bar" role="navigation" aria-label="UMRT properties">
   <div class="umrt-platform-bar-inner">
     <a href="https://unitedmobilerv.com/" data-platform-link="hub">Home</a>
     <a href="https://shop.unitedmobilerv.com/" data-platform-link="shop">Shop</a>
@@ -180,7 +180,7 @@ TEMPLATE = """<!DOCTYPE html>
   <a href="/sop/">SOP</a>
   <a href="/account/">My Jobs</a>
 </nav>
-<p class="source wrap">United Mobile RV field guide, adapted for this site from <a href="https://unitedmobilerv.com/guide/{slug}/">unitedmobilerv.com/guide/{slug}/</a>.</p>
+<p class="source wrap">Adapted from <a href="https://unitedmobilerv.com/guide/{slug}/">unitedmobilerv.com/guide/{slug}/</a>.</p>
 <article>
 {article}
 </article>
