@@ -1,0 +1,249 @@
+/* Docs catalog — utility index, not a landing page. Tokens #1A1A1A / #C9972C. */
+:root {
+  --black: #1A1A1A;
+  --gold: #C9972C;
+  --white: #fff;
+  --light: #F5F5F5;
+  --gray: #666;
+  --rule: #E5E5E5;
+}
+
+body.catalog-page {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--black);
+  background: var(--white);
+  line-height: 1.5;
+}
+
+.catalog-wrap {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+}
+
+.catalog-kicker {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin: 0 0 0.4rem;
+}
+
+.catalog-wrap h1 {
+  font-size: 1.7rem;
+  margin: 0 0 0.55rem;
+  line-height: 1.25;
+}
+
+.catalog-lead {
+  margin: 0 0 1.25rem;
+  max-width: 42rem;
+  color: var(--black);
+}
+
+.catalog-search {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 0 0 1rem;
+}
+
+.catalog-search label {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.catalog-search input[type="search"] {
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 1rem;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: var(--white);
+  color: var(--black);
+}
+
+.catalog-search input[type="search"]:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: 1px;
+  border-color: var(--black);
+}
+
+.catalog-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+.catalog-chips button {
+  font: inherit;
+  font-size: 0.82rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--black);
+  background: var(--white);
+  color: var(--black);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.catalog-chips button[aria-pressed="true"] {
+  background: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+}
+
+.catalog-chips button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.catalog-meta {
+  font-size: 0.85rem;
+  color: var(--gray);
+  margin: 0 0 0.85rem;
+}
+
+.catalog-section {
+  margin: 0 0 1.75rem;
+}
+
+.catalog-section h2 {
+  font-size: 1.05rem;
+  margin: 0 0 0.65rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.catalog-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.catalog-card {
+  border-bottom: 1px solid var(--rule);
+  padding: 0.85rem 0;
+}
+
+.catalog-card:last-child {
+  border-bottom: 0;
+}
+
+.catalog-card-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.45rem 0.65rem;
+}
+
+.catalog-card h3 {
+  font-size: 1.05rem;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.catalog-card h3 a {
+  color: var(--black);
+  text-decoration: none;
+}
+
+.catalog-card h3 a:hover {
+  color: var(--gold);
+  text-decoration: underline;
+}
+
+.catalog-kind {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.catalog-card p {
+  margin: 0.3rem 0 0.45rem;
+  color: var(--gray);
+  font-size: 0.95rem;
+}
+
+.catalog-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.88rem;
+}
+
+.catalog-links a {
+  color: var(--black);
+}
+
+.catalog-links a:hover {
+  color: var(--gold);
+}
+
+.catalog-empty {
+  padding: 1rem 0;
+  color: var(--gray);
+}
+
+.catalog-empty[hidden],
+.catalog-section[hidden],
+.catalog-card[hidden] {
+  display: none;
+}
+
+.catalog-quiet {
+  margin: 2rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.88rem;
+  color: var(--gray);
+}
+
+.catalog-quiet a {
+  color: var(--black);
+  text-decoration: none;
+}
+
+.catalog-quiet a:hover {
+  color: var(--gold);
+}
+
+.catalog-foot {
+  margin: 1.5rem 0 0;
+  color: var(--gray);
+  font-size: 0.85rem;
+}
+
+.catalog-foot a {
+  color: var(--black);
+  text-decoration: none;
+}
+
+.catalog-foot a:hover {
+  color: var(--gold);
+}
+
+.catalog-local-nav {
+  background: var(--black);
+  color: var(--white);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.9rem;
+}
+
+.catalog-local-nav a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.catalog-local-nav a:hover,
+.catalog-local-nav a[aria-current="page"] {
+  color: var(--gold);
+}

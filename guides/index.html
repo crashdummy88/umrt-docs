@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Field Guides · United Mobile RV</title>
-<meta name="description" content="Owner Field Guides from United Mobile RV — electrical, solar, plumbing, roof, appliances, generator, and seasonal reference, organized by system.">
-<link rel="canonical" href="https://docs.unitedmobilerv.com/guides/">
-<link rel="icon" href="/assets/brand/favicon-64.png">
-<link rel="stylesheet" href="/design/platform-bar.css">
-<link rel="stylesheet" href="/design/convert-chrome.css">
-<link rel="stylesheet" href="/design/docs-guide.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Guides & troubleshooting · United Mobile RV Docs</title>
+  <meta name="description" content="Searchable United Mobile RV field guides and troubleshooting — electrical, solar, Starlink, plumbing, appliances, generators, seasonal." />
+  <link rel="canonical" href="https://docs.unitedmobilerv.com/guides/" />
+  <meta name="theme-color" content="#1A1A1A" />
+  <link rel="icon" href="/assets/brand/favicon-64.png" />
+  <link rel="stylesheet" href="/design/platform-bar.css">
+  <link rel="stylesheet" href="/design/convert-chrome.css">
+  <link rel="stylesheet" href="/design/docs-catalog.css">
 </head>
-<body>
+<body class="catalog-page">
   <div class="umrt-platform-bar" role="navigation" aria-label="UMRT properties">
     <div class="umrt-platform-bar-inner">
       <a href="https://unitedmobilerv.com/" data-platform-link="hub">Home</a>
@@ -22,163 +23,30 @@
       <a href="https://docs.unitedmobilerv.com/" data-platform-link="docs" class="is-current" aria-current="page">Docs</a>
     </div>
   </div>
-  <nav class="top" aria-label="Docs">
+
+  <nav class="catalog-local-nav" aria-label="Docs">
     <a href="/guides/" aria-current="page">Guides</a>
-    <a href="https://unitedmobilerv.com/guide/">WP library</a>
-    <a href="/sop/">SOP</a>
-    <a href="/account/">My Jobs</a>
   </nav>
-  <main class="wrap">
-    <p class="micro">Field Guides</p>
-    <h1>RV Owner’s Field Guide</h1>
-    <p class="lead">Practical, fact-checked Field Guides and reference charts for RV, van, trailer, and skoolie owners — organized by system. The library lives on this docs site, adapted from the <a href="https://unitedmobilerv.com/guide/">WP Field Guide hub</a>.</p>
-    <p class="muted">Active corridor: Montana · Wyoming · Idaho · Washington — case-by-case beyond.</p>
 
-    <span class="micro">Start here</span>
-    <div class="start-here-grid">
-      <a class="start-card" href="/guides/electrical-troubleshooting/"><span class="start-card-title">Electrical troubleshooting</span><span class="start-card-desc">Shore power, 12V drain, and converter faults before you swap parts.</span></a>
-      <a class="start-card" href="/guides/winterization-guide/"><span class="start-card-title">Winterization</span><span class="start-card-desc">Blow-out vs antifreeze, bypass rules, and storage before the first hard freeze.</span></a>
-      <a class="start-card" href="/guides/solar-battery-troubleshooting/"><span class="start-card-title">Solar &amp; battery</span><span class="start-card-desc">Charging faults, BMS trips, and low-voltage shutdowns.</span></a>
-      <a class="start-card" href="/guides/starlink-rv-guide/"><span class="start-card-title">Starlink for RVs</span><span class="start-card-desc">Plan honesty, mount, power, and sealed installs. Installs only.</span></a>
-      <a class="start-card" href="/guides/ppi-guide/"><span class="start-card-title">PPI</span><span class="start-card-desc">What a pre-purchase inspection should actually cover.</span></a>
-      <a class="start-card" href="/guides/wire-ampacity-voltage-drop-chart/"><span class="start-card-title">Wire ampacity chart</span><span class="start-card-desc">ABYC E-11 voltage drop and the fuse-protects-the-wire rule.</span></a>
-    </div>
+  <main class="catalog-wrap">
+    <p class="catalog-kicker">Docs</p>
+    <h1>Guides &amp; troubleshooting</h1>
+    <p class="catalog-lead">Same catalog as the docs home. Each card opens the adapted Field Guide on this host, with a WordPress source link.</p>
 
-    <section class="card">
-      <h2>Technical reference</h2>
-      <p>Fast-lookup spec tables for when you already know what you are checking and need the number.</p>
-      <ul class="howto">
-        <li><a href="/guides/wire-ampacity-voltage-drop-chart/">Wire ampacity &amp; voltage-drop chart</a> — 12V DC sizing per ABYC E-11; fuse protects the wire.</li>
-        <li><a href="/guides/torque-spec-chart/">Fastener torque spec chart</a> — lug nuts, U-bolts, and hanger/shackle bolts by size.</li>
-        <li><a href="/guides/lp-gas-pressure-specs/">LP gas pressure specs &amp; leak test</a> — operating/lock-up pressure and the NFPA 1192 timed drop test.</li>
-        <li><a href="/guides/battery-charging-voltage-chart/">Battery charging voltage chart</a> — lead-acid vs LiFePO4 bulk, absorption, and float.</li>
-        <li><a href="/guides/fault-code-index-dometic-onan/">OEM fault-code index</a> — Dometic and Onan codes, plus related Victron diagnostics.</li>
-      </ul>
-    </section>
+    <div id="docs-catalog"></div>
+    <noscript>
+      <p>JavaScript filters the list. Article pages remain at <code>/guides/&lt;slug&gt;/</code>.</p>
+    </noscript>
 
-    <div class="guide-group" data-group="Electrical">
-      <h2 class="guide-group-title">Electrical &amp; power</h2>
-      <p>Shore-power loss, flickering lights, voltage drop, and converter/inverter faults.</p>
-      <ul class="howto">
-        <li><a href="/guides/electrical-troubleshooting/">Electrical troubleshooting</a> — pedestal, cord, parasitic drain, converter output.</li>
-        <li><a href="/guides/30-amp-vs-50-amp-guide/">30-amp vs 50-amp</a> — service honesty; adapters do not invent amperage.</li>
-        <li><a href="/guides/surge-protector-ems-guide/">Surge protector / EMS</a> — low-voltage damage at a bad pedestal.</li>
-        <li><a href="/guides/12v-vs-120v-appliances-guide/">12V vs 120V appliances</a> — what belongs on the inverter.</li>
-        <li><a href="/guides/van-build-electrical-troubleshooting/">Van-build electrical</a> — DIY wiring, mixed-brand faults, undocumented builds.</li>
-        <li><a href="/guides/canbus-multiplex-systems-guide/">CAN-bus &amp; multiplex</a> — Lippert OneControl, Firefly, and Spyder networks.</li>
-      </ul>
-    </div>
-
-    <div class="guide-group" data-group="Power">
-      <h2 class="guide-group-title">Batteries, inverters &amp; Victron</h2>
-      <p>Chemistry, charging, capacity, and inverter-charger diagnostics.</p>
-      <ul class="howto">
-        <li><a href="/guides/solar-battery-troubleshooting/">Solar &amp; battery troubleshooting</a> — start here for anything battery-related.</li>
-        <li><a href="/guides/lithium-agm-lead-acid-comparison/">Lithium vs AGM vs lead-acid</a> — chemistry, charging, and storage.</li>
-        <li><a href="/guides/bms-explained-guide/">BMS explained</a> — load disconnect, cold inhibit, and “dead MPPT” days.</li>
-        <li><a href="/guides/off-grid-power-budget-guide/">Off-grid power budget</a> — daily watt-hours before you buy panels.</li>
-        <li><a href="/guides/best-inverters-guide/">Best inverter/chargers</a> — pure sine vs modified; features that matter.</li>
-        <li><a href="/guides/inverter-sizing-guide/">Inverter sizing</a> — undersized trips vs oversized standby waste.</li>
-        <li><a href="/guides/converter-inverter-charger-guide/">Converter / inverter / charger</a> — factory converters vs MultiPlus-class stacks.</li>
-        <li><a href="/guides/victron-fault-code-guide/">Victron fault codes</a> — MultiPlus, Quattro, and SmartSolar alarm classes. Confirm in VictronConnect.</li>
-      </ul>
-    </div>
-
-    <div class="guide-group" data-group="Solar">
-      <h2 class="guide-group-title">Lithium &amp; solar</h2>
-      <p>Size the system to daily draw, then mount and seal the roof correctly.</p>
-      <ul class="howto">
-        <li><a href="/guides/best-solar-panels-guide/">Best solar panels</a> — rigid, flexible, and portable; roof space first.</li>
-        <li><a href="/guides/solar-sizing-installation-guide/">Solar sizing &amp; installation</a> — watt-hours, bank, MPPT, sealed mounts.</li>
-        <li><a href="/guides/mppt-vs-pwm-charge-controller-guide/">MPPT vs PWM</a> — which controller actually harvests the array.</li>
-        <li><a href="https://unitedmobilerv.com/lithium-battery-buying-guide/">Lithium battery buying guide</a> — how to compare packs before you spend.</li>
-      </ul>
-    </div>
-
-    <div class="guide-group" data-group="Connectivity">
-      <h2 class="guide-group-title">Connectivity</h2>
-      <p>Starlink installs only. weBoost Authorized Installer. Peplink Certified Associate.</p>
-      <ul class="howto">
-        <li><a href="/guides/starlink-rv-guide/">Starlink for RVs</a> — Residential vs Roam, roof vs portable, Mini vs Flat HP. Not Starlink Certified.</li>
-        <li><a href="/guides/weboost-install-guide/">weBoost install</a> — outdoor RF, AGC, and oscillation. Authorized Installer.</li>
-        <li><a href="/guides/peplink-multi-wan-guide/">Peplink multi-WAN</a> — bonding and/or failover; Hot Failover ≠ Bonding ≠ Smoothing.</li>
-        <li><a href="/guides/backup-camera-tpms-install-guide/">Backup camera &amp; TPMS</a> — install notes and power discipline.</li>
-        <li><a href="https://unitedmobilerv.com/wireless/">Wireless service</a> — Starlink, weBoost, and Peplink installs on the coach.</li>
-      </ul>
-    </div>
-
-    <div class="guide-group" data-group="Plumbing">
-      <h2 class="guide-group-title">Plumbing &amp; water</h2>
-      <ul class="howto">
-        <li><a href="/guides/plumbing-troubleshooting/">Plumbing troubleshooting</a> — leaks, no water, and pump faults.</li>
-        <li><a href="/guides/fresh-water-pump-guide/">Fresh-water pump</a> — prime, cycling, and failed diaphragms.</li>
-        <li><a href="/guides/water-heater-troubleshooting-guide/">Water heater</a> — Suburban and Atwood, electric vs LP.</li>
-        <li><a href="/guides/water-filtration-guide/">Water filtration</a> — city, tank, and drinking-water paths.</li>
-        <li><a href="/guides/holding-tank-sanitation-guide/">Holding-tank sanitation</a> · <a href="/guides/tank-sanitizing-guide/">tank sanitizing</a> · <a href="/guides/tank-sensor-troubleshooting-guide/">tank sensors</a></li>
-        <li><a href="/guides/toilet-systems-guide/">Toilet systems</a> · <a href="/guides/dump-station-guide/">dump stations</a></li>
-      </ul>
-    </div>
-
-    <div class="guide-group" data-group="LP">
-      <h2 class="guide-group-title">LP gas &amp; safety</h2>
-      <ul class="howto">
-        <li><a href="/guides/lp-gas-troubleshooting/">LP gas troubleshooting</a> — no flame, regulator, and lock-up.</li>
-        <li><a href="/guides/propane-co-safety-guide/">Propane &amp; CO safety</a> — detectors, leak test, and when to stop DIY.</li>
-        <li><a href="/guides/rv-fire-safety-guide/">RV fire safety</a> · <a href="/guides/roadside-kit-guide/">roadside kit</a></li>
-      </ul>
-    </div>
-
-    <div class="guide-group" data-group="Appliances">
-      <h2 class="guide-group-title">Appliances</h2>
-      <ul class="howto">
-        <li><a href="/guides/rv-furnace-troubleshooting-guide/">Furnace troubleshooting</a> — Suburban and Atwood forced-air, not the water heater.</li>
-        <li><a href="/guides/coleman-mach-ac-guide/">Coleman Mach A/C</a> · <a href="/guides/dometic-appliance-guide/">Dometic appliances</a></li>
-        <li><a href="/guides/norcold-refrigerator-guide/">Norcold refrigerator</a> · <a href="/guides/truma-combi-guide/">Truma Combi</a></li>
-        <li><a href="/guides/rv-microwave-troubleshooting-guide/">Microwave / convection</a></li>
-      </ul>
-    </div>
-
-    <div class="guide-group" data-group="Roof">
-      <h2 class="guide-group-title">Roof, exterior &amp; slides</h2>
-      <ul class="howto">
-        <li><a href="/guides/roof-troubleshooting/">Roof troubleshooting</a> — leaks, penetrations, and soft deck.</li>
-        <li><a href="/guides/roof-coating-guide/">Roof coating</a> · <a href="/guides/roof-material-comparison-guide/">roof materials</a> · <a href="/guides/roof-vent-fan-install-guide/">vent fan install</a></li>
-        <li><a href="/guides/slide-out-seal-guide/">Slide-out seals</a> · <a href="/guides/slide-out-leveling-troubleshooting-guide/">slides &amp; leveling</a></li>
-        <li><a href="/guides/awning-motor-troubleshooting-guide/">Awning motor</a> · <a href="/guides/awning-fabric-replacement-guide/">awning fabric</a> · <a href="/guides/window-seal-replacement-guide/">window seals</a></li>
-      </ul>
-    </div>
-
-    <div class="guide-group" data-group="Chassis">
-      <h2 class="guide-group-title">Chassis, tires &amp; towing</h2>
-      <ul class="howto">
-        <li><a href="/guides/tires-brakes-tpms-guide/">Tires, brakes &amp; TPMS</a> · <a href="/guides/best-rv-tires-guide/">best RV tires</a> · <a href="/guides/tire-aging-guide/">tire aging</a></li>
-        <li><a href="/guides/tire-pressure-load-chart/">Tire pressure / load chart</a> · <a href="/guides/weighing-your-rig-guide/">weighing your rig</a></li>
-        <li><a href="/guides/gvwr-gcwr-payload-guide/">GVWR / GCWR / payload</a> · <a href="/guides/weight-distribution-hitch-guide/">weight-distribution hitch</a></li>
-        <li><a href="/guides/brake-controller-wiring-guide/">Brake-controller wiring</a> · <a href="/guides/fifth-wheel-hitch-guide/">fifth-wheel hitch</a> · <a href="/guides/dinghy-towing-guide/">dinghy towing</a></li>
-        <li><a href="/guides/chassis-engine-maintenance-guide/">Chassis engine maintenance</a> · <a href="/guides/best-leveling-systems-guide/">leveling systems</a></li>
-      </ul>
-    </div>
-
-    <div class="guide-group" data-group="Generator">
-      <h2 class="guide-group-title">Generator</h2>
-      <ul class="howto">
-        <li><a href="/guides/generator-troubleshooting/">Generator troubleshooting &amp; maintenance</a> — starting, running, and no-power faults. Maintenance starting at $150.</li>
-        <li><a href="/guides/generator-manufacturer-guide/">Generator manufacturer notes</a> — Onan and common RV sets.</li>
-      </ul>
-    </div>
-
-    <div class="guide-group" data-group="Seasonal">
-      <h2 class="guide-group-title">Seasonal &amp; buying</h2>
-      <ul class="howto">
-        <li><a href="/guides/winterization-guide/">Winterization</a> · <a href="/guides/spring-dewinterization-checklist/">spring de-winterization</a></li>
-        <li><a href="/guides/seasonal-maintenance-checklist/">Seasonal maintenance</a> · <a href="/guides/rv-storage-prep-guide/">storage prep</a></li>
-        <li><a href="/guides/underbelly-insulation-guide/">Underbelly insulation</a> · <a href="/guides/driving-the-up-winter-guide/">driving the U.P. in winter</a></li>
-        <li><a href="/guides/ppi-guide/">Pre-purchase inspection</a> · <a href="/guides/gear-we-recommend/">gear we recommend</a></li>
-      </ul>
-    </div>
-
+    <p class="catalog-quiet">
+      WordPress library: <a href="https://unitedmobilerv.com/guide/">unitedmobilerv.com/guide/</a>
+      · <a href="https://unitedmobilerv.com/services/guide/">/services/guide/</a>
+      · <a href="tel:+16166065277">Call (616) 606-5277</a>
+      · <a href="sms:+16166065277">Text Now</a>
+    </p>
   </main>
-  <footer class="guide-foot wrap">
+
+  <footer class="catalog-wrap catalog-foot">
     <p>United Mobile RV LLC · <a href="tel:+16166065277">Call (616) 606-5277</a> · <a href="sms:+16166065277">Text Now</a></p>
     <p>
       <a href="https://unitedmobilerv.com/">Home</a> ·
@@ -189,11 +57,13 @@
       <a href="https://docs.unitedmobilerv.com/">Docs</a>
     </p>
   </footer>
+
   <div class="umrt-mobile-bar" aria-label="Quick actions">
     <a class="btn btn-ghost" href="tel:+16166065277">Call <span class="umrt-call-num">(616) 606-5277</span></a>
     <a class="btn" href="sms:+16166065277">Text Now</a>
     <a class="btn btn-ghost" href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a>
   </div>
   <script src="/design/convert-chrome.js" defer></script>
+  <script src="/design/docs-catalog.js" defer></script>
 </body>
 </html>
