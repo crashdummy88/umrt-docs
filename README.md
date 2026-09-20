@@ -11,16 +11,15 @@ Docs site for United Mobile RV LLC (Cloudflare Pages). Two real audiences:
   read-only in `/account/`.
 - `/guides/` — CF surface of Matt’s live Field Guides. Top-set articles are
   adapted from `unitedmobilerv.com/guide/<slug>/` (attributed on each page).
-  The full WP hub remains the library. Book → Square · Forum · Shop · Call/Text.
+  The full WP hub remains the library. Book → book.unitedmobilerv.com · Forum · Shop · Call/Text.
 - `/sop/` — public teaser + Portal login CTA. `/sop/internal/` and
   `/sop/estimate/` are staff-gated stubs (ADMIN or `STAFF_EMAILS`), same
   session check as work orders. Public marketing stays on the main site.
 
 ## Convert chrome
-- Call (616) 606-5277 → `tel:+16166065277` · Text Now → `sms:+16166065277` · Book → https://united-mobile-rv-llc.square.site/ · leftover `/go/book` 302s there
+- Call (616) 606-5277 → `tel:+16166065277` · Text Now → `sms:+16166065277` · Book → https://book.unitedmobilerv.com/ · leftover `/go/book` 302s there
 - Applied on `/`, `/guides/`, `/sop/`, `/work-orders/` via `/design/convert-chrome.css`/`.js` -- no "Call (older phones)"
-- Platform bar lock: MAIN HUB return · Shop · Book (Square) · Forum · Software · Docs (current). No Portal / Status. Field Guides stay on WP + this docs host — not in other products' chrome.
-- Mesh lands stay on custom domains (never `book.*` for Book)
+- Platform bar lock: Home · Shop · Book · Forum · Software · Docs (current). Home → `https://unitedmobilerv.com/`. Book → `https://book.unitedmobilerv.com/` (Square embed host; not bare `united-mobile-rv-llc.square.site`). No Portal / Status. Field Guides stay on WP + this docs `/guides/` bridge — not in the product MESH.
 
 ## Data
 
