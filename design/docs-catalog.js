@@ -26,7 +26,8 @@
     { id: "chassis", label: "Chassis & towing" },
     { id: "generators", label: "Generators" },
     { id: "seasonal", label: "Seasonal" },
-    { id: "reference", label: "Reference" }
+    { id: "reference", label: "Reference" },
+    { id: "policies", label: "Policies" }
   ];
 
   var ENTRIES = [
@@ -809,6 +810,61 @@
       href: "",
       source: "https://unitedmobilerv.com/lithium-battery-buying-guide/",
       tags: "lithium battery buying"
+    },
+    {
+      id: "cancellation-no-show-policy",
+      title: "Cancellation and no-show policy",
+      blurb: "Job form. PDF download — not a Field Guide.",
+      kind: "Policy",
+      category: "policies",
+      href: "",
+      pdf: "/policies/cancellation-no-show-policy.pdf",
+      source: "",
+      tags: "cancellation no-show policy form download pdf"
+    },
+    {
+      id: "service-estimate",
+      title: "Service estimate",
+      blurb: "Estimate template. PDF download — not a Field Guide.",
+      kind: "Policy",
+      category: "policies",
+      href: "",
+      pdf: "/policies/service-estimate.pdf",
+      source: "",
+      tags: "service estimate template form download pdf"
+    },
+    {
+      id: "invoice",
+      title: "Invoice",
+      blurb: "Invoice template. PDF download — not a Field Guide.",
+      kind: "Policy",
+      category: "policies",
+      href: "",
+      pdf: "/policies/invoice.pdf",
+      source: "",
+      tags: "invoice template form download pdf"
+    },
+    {
+      id: "service-agreement",
+      title: "Service agreement",
+      blurb: "Work authorization and liability waiver. PDF download — not a Field Guide.",
+      kind: "Policy",
+      category: "policies",
+      href: "",
+      pdf: "/policies/service-agreement.pdf",
+      source: "",
+      tags: "service agreement work authorization liability waiver form download pdf"
+    },
+    {
+      id: "limitation-of-liability-waiver",
+      title: "Limitation of liability waiver",
+      blurb: "Liability waiver. PDF download — not a Field Guide.",
+      kind: "Policy",
+      category: "policies",
+      href: "",
+      pdf: "/policies/limitation-of-liability-waiver.pdf",
+      source: "",
+      tags: "limitation of liability waiver form download pdf"
     }
   ];
 
@@ -827,6 +883,7 @@
       categoryLabel(entry.category),
       entry.tags,
       entry.href,
+      entry.pdf,
       entry.source
     ].join(' ').toLowerCase();
   }
@@ -871,7 +928,7 @@
     var li = el('li', { class: 'catalog-card', 'data-id': entry.id, 'data-category': entry.category });
     var top = el('div', { class: 'catalog-card-top' });
     var h3 = el('h3');
-    var primary = entry.href || entry.source;
+    var primary = entry.href || entry.pdf || entry.source;
     h3.appendChild(el('a', { href: primary }, entry.title));
     top.appendChild(h3);
     top.appendChild(el('span', { class: 'catalog-kind' }, entry.kind));
@@ -880,6 +937,9 @@
     var links = el('div', { class: 'catalog-links' });
     if (entry.href) {
       links.appendChild(el('a', { href: entry.href }, 'Read on docs'));
+    }
+    if (entry.pdf) {
+      links.appendChild(el('a', { href: entry.pdf }, 'Download PDF'));
     }
     if (entry.source) {
       links.appendChild(el('a', { href: entry.source }, entry.href ? 'WP source' : 'Open WP source'));
@@ -910,18 +970,22 @@
 
   function render(root) {
     var state = params();
+    if (!state.cat || state.cat === 'all') {
+      var preset = root.getAttribute('data-default-cat');
+      if (preset) state.cat = preset;
+    }
     if (CATEGORIES.every(function (c) { return c.id !== state.cat; })) state.cat = 'all';
 
     root.innerHTML = '';
 
     var searchWrap = el('div', { class: 'catalog-search' });
-    var label = el('label', { for: 'catalog-q' }, 'Search guides and troubleshooting');
+    var label = el('label', { for: 'catalog-q' }, 'Search guides, troubleshooting, and policies');
     var input = el('input', {
       id: 'catalog-q',
       type: 'search',
       name: 'q',
       value: state.q,
-      placeholder: 'Furnace, Starlink, MPPT, generator…',
+      placeholder: 'Furnace, cancellation, invoice, Starlink…',
       autocomplete: 'off'
     });
     searchWrap.appendChild(label);
@@ -944,7 +1008,7 @@
     var meta = el('p', { class: 'catalog-meta', id: 'catalog-count' });
     root.appendChild(meta);
 
-    var empty = el('p', { class: 'catalog-empty', id: 'catalog-empty', hidden: 'hidden' }, 'No matching guides or troubleshooting notes.');
+    var empty = el('p', { class: 'catalog-empty', id: 'catalog-empty', hidden: 'hidden' }, 'No matching guides, troubleshooting notes, or policies.');
     root.appendChild(empty);
 
     var lists = {};
