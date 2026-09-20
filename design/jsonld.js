@@ -70,6 +70,19 @@
     return DOCS.replace(/\/$/, '') + p + '/';
   }
 
+  /* JSON-LD item stays the public docs URL. Visible nav uses a same-origin
+     path for docs crumbs so local/preview hosts do not bounce to production. */
+  function navHref(item) {
+    if (!item) return '/';
+    var origin = DOCS.replace(/\/$/, '');
+    if (item === origin || item === DOCS || item.indexOf(origin + '/') === 0) {
+      var path = item.slice(origin.length) || '/';
+      if (path.charAt(0) !== '/') path = '/' + path;
+      return path;
+    }
+    return item;
+  }
+
   function crumbsFor(pathname, opts) {
     opts = opts || {};
     var p = normalizePath(pathname);
@@ -227,7 +240,7 @@
         li.appendChild(span);
       } else {
         var a = doc.createElement('a');
-        a.href = crumbs[i].item;
+        a.href = crumbs[i].href || navHref(crumbs[i].item);
         a.textContent = crumbs[i].name;
         li.appendChild(a);
       }
@@ -286,6 +299,7 @@
     normalizePath: normalizePath,
     shouldSkip: shouldSkip,
     crumbsFor: crumbsFor,
+    navHref: navHref,
     graphsFor: graphsFor,
     stringifyGraph: stringifyGraph,
     mount: mount

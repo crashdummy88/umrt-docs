@@ -59,6 +59,11 @@ assert(guidesCrumbs.length === 3, 'guides index is Home → Docs → section');
 assert(guidesCrumbs[2].name === 'Guides & troubleshooting', 'guides section uses the catalog title');
 assert(guidesCrumbs[2].item === 'https://docs.unitedmobilerv.com/guides/', 'guides section URL');
 
+assert(api.navHref('https://unitedmobilerv.com/') === 'https://unitedmobilerv.com/', 'Home crumb stays on the WP apex');
+assert(api.navHref('https://docs.unitedmobilerv.com/') === '/', 'Docs crumb is same-origin /');
+assert(api.navHref('https://docs.unitedmobilerv.com/guides/') === '/guides/', 'Guides crumb is same-origin /guides/');
+assert(api.navHref('https://docs.unitedmobilerv.com/guides/ppi-guide/') === '/guides/ppi-guide/', 'article crumb is same-origin');
+
 const articleCrumbs = api.crumbsFor('/guides/ppi-guide/', {
   title: 'Pre-purchase RV inspection (PPI) guide'
 });
