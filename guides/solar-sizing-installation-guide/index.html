@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>RV solar sizing & installation · UMRT Docs</title>
-<meta name="description" content="Size panels from daily watt-hours, then bank, MPPT, and sealed roof mounts.">
+<title>RV solar sizing &amp; installation · UMRT Docs</title>
+<meta name="description" content="Size panels from daily watt-hours, then bank, MPPT, fusing, and sealed roof mounts — from the live WP guide.">
 <link rel="canonical" href="https://docs.unitedmobilerv.com/guides/solar-sizing-installation-guide/">
 <meta name="theme-color" content="#1A1A1A">
 <link rel="icon" href="/assets/brand/favicon-64.png">
@@ -34,44 +34,81 @@
     <a href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a>
   </nav>
 </header>
-<p class="source wrap">United Mobile RV field guide — adapted for docs from <a href="https://unitedmobilerv.com/guide/solar-sizing-installation-guide/">unitedmobilerv.com/guide/solar-sizing-installation-guide/</a>. Full library stays on the main-site hub. Questions? <a href="https://forum.unitedmobilerv.com/">Forum</a>.</p>
-<article><section class="page-hero">
+<p class="source wrap">United Mobile RV field guide — adapted for docs from <a href="https://unitedmobilerv.com/guide/solar-sizing-installation-guide/">unitedmobilerv.com/guide/solar-sizing-installation-guide/</a>. Full library stays on the <a href="https://unitedmobilerv.com/guide/">main-site hub</a>. Questions? <a href="https://forum.unitedmobilerv.com/">Forum</a>.</p>
+<article>
+<section class="page-hero">
   <div class="wrap">
-    <span class="micro">Owner guide</span>
+    <span class="micro">Owner guide · Lithium &amp; solar</span>
     <h1>RV Solar Panel Sizing &amp; Installation Guide</h1>
     <p class="lead">Most solar installs fail the owner not because the panels are bad, but because the system was sized to the roof instead of the actual daily power draw. Here’s how to size it correctly before you buy anything.</p>
-    <p class="muted" style="margin-top:16px;max-width:48ch">Active corridor: Montana · Wyoming · Idaho · Washington — case-by-case beyond.</p>
+    <p class="muted" style="margin-top:16px;max-width:48ch">Source: <a href="https://unitedmobilerv.com/guide/solar-sizing-installation-guide/">WP Field Guide</a>. Corridor: Montana · Wyoming · Idaho · Washington — case-by-case beyond.</p>
   </div>
 </section>
 <section class="band">
   <div class="wrap">
     <span class="micro">Field notes</span>
-    <p>Most solar installs fail the owner not because the panels are bad, but because the system was sized to the roof instead of the actual daily power draw. Here’s how to size it correctly before you buy anything. Add up the watt-hours every 12V device draws per day — a compressor fridge (600–900 Wh), CPAP (30–60 Wh), lighting (100–200 Wh), water pump and fans (100–150 Wh), plus anything run through the inverter. A boondocking-focused rig commonly lands between 1,500 and 3,000 Wh/day.</p>
-    <div class="grid-2"><article class="service-card"><h3>Start With Daily Watt-Hours, Not Panel Wattage</h3><p>Add up the watt-hours every 12V device draws per day — a compressor fridge (600–900 Wh), CPAP (30–60 Wh), lighting (100–200 Wh), water pump and fans (100–150 Wh), plus anything run through the inverter.</p></article><article class="service-card"><h3>Battery Bank Comes Second</h3><p>Panels charge the bank; the bank is what actually gets you through the night and cloudy stretches. Size usable capacity to 1.5–2 days of draw with no sun at all.</p></article><article class="service-card"><h3>What Installation Actually Involves</h3><p>Roof mounting and sealing (a bad panel seal is a future roof leak, not a solar problem), wire routing sized for the run length to avoid voltage drop, a charge controller matched to panel voltage and battery chemistry.</p></article><article class="service-card"><h3>Related</h3><p>MPPT vs. PWM ControllersOff-Grid Power Budget PlanningVictron Energy Power SystemsBack to Field Guide</p></article></div>
-    
-    <p class="muted">Related: <a href="/guides/">Docs guides</a> · <a href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a> · <a href="https://unitedmobilerv.com/pricing/">Pricing</a></p>
+    <h2>Start with daily watt-hours, not panel wattage</h2>
+    <p>Add up the watt-hours every 12V device draws per day. The live guide’s examples:</p>
+    <ul class="checklist">
+      <li>Compressor fridge — 600–900 Wh</li>
+      <li>CPAP — 30–60 Wh</li>
+      <li>Lighting — 100–200 Wh</li>
+      <li>Water pump and fans — 100–150 Wh</li>
+      <li>Plus anything run through the inverter</li>
+    </ul>
+    <p>A boondocking-focused rig commonly lands between <strong>1,500 and 3,000 Wh/day</strong>. That number, not roof space, is what sizes the system.</p>
+    <div class="field-note">
+      <p><strong>Rule of thumb (from WP).</strong> In useful sun (4–5 peak-sun hours average across seasons), you need roughly 1 watt of panel for every 4–5 Wh of daily draw to keep pace, plus headroom for cloudy days and charge losses. <strong>2,000 Wh/day realistically wants 400–600 W of panel.</strong></p>
+    </div>
+
+    <h2>Battery bank comes second</h2>
+    <p>Panels charge the bank; the bank is what actually gets you through the night and cloudy stretches. Size usable capacity to <strong>1.5–2 days</strong> of draw with no sun at all. With lithium (100% usable) that’s simpler math than with AGM (50% usable). Undersized panels with an oversized bank just means slow recovery. Oversized panels with an undersized bank means wasted capacity on clear days. They have to be sized together.</p>
+    <p>Work the same starting numbers on the WP <a href="https://unitedmobilerv.com/guide/off-grid-power-budget-guide/">off-grid power budget guide</a> (list every device, add a 20–30% buffer for inverter/wiring/charge losses, then size battery, solar, and inverter together).</p>
+
+    <h2>What installation actually involves</h2>
+    <div class="grid-2">
+      <article class="service-card"><h3>Roof mount &amp; seal</h3><p>A bad panel seal is a future roof leak, not a solar problem.</p></article>
+      <article class="service-card"><h3>Wire routing</h3><p>Sized for the run length to avoid voltage drop.</p></article>
+      <article class="service-card"><h3>Charge controller</h3><p>Matched to panel voltage and battery chemistry. See <a href="/guides/mppt-vs-pwm-charge-controller-guide/">MPPT vs PWM</a>.</p></article>
+      <article class="service-card"><h3>Fusing</h3><p>Correct fusing/breakers at every stage from panel to controller to battery. Skipping the fusing is the most common corner cut — and the most dangerous one.</p></article>
+    </div>
+
+    <h2>DIY vs book a visit</h2>
+    <div class="grid-2">
+      <article class="service-card"><h3>Reasonable DIY</h3><p>Adding up daily watt-hours and reading the bank math before you order panels.</p></article>
+      <article class="service-card"><h3>Book when</h3><p>Sealed roof mounts, series/parallel arrays, or Victron commissioning. Labor <strong>$150/hr</strong> on <a href="https://unitedmobilerv.com/pricing/">pricing</a>. Solar &amp; battery builds are custom-quoted on that page — we do not invent kit prices here.</p></article>
+    </div>
+
+    <p class="muted" style="margin-top:24px">Related: <a href="/guides/best-solar-panels-guide/">Best solar panels</a> · <a href="/guides/mppt-vs-pwm-charge-controller-guide/">MPPT vs PWM</a> · <a href="/guides/inverter-sizing-guide/">Inverter sizing</a> · <a href="https://unitedmobilerv.com/guide/off-grid-power-budget-guide/">Off-grid budget</a> (WP) · <a href="https://unitedmobilerv.com/guide/victron-fault-code-guide/">Victron fault codes</a> (WP)</p>
     <div class="btn-row" style="margin-top:24px">
-      <a class="btn btn-gold" href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a>
-      <a class="btn btn-ghost" href="tel:+16166065277">(616) 606-5277</a>
+      <a class="btn" href="https://book.unitedmobilerv.com/">Book</a>
+      <a class="btn btn-ghost" href="https://forum.unitedmobilerv.com/">Forum</a>
       <a class="btn btn-ghost" href="/guides/">Docs guides</a>
     </div>
   </div>
 </section>
 <section class="band band-tight" style="border-top:1px solid var(--rule)">
   <div class="wrap-narrow">
-    <span class="micro">Pricing teaser</span>
-    <p>Trip fee <strong>$75</strong> within 30 miles, then <strong>$1.50/mi</strong>. Labor ~<strong>$150/hr</strong> (1-hour minimum, billed in 30-minute increments). Diagnostic <strong>$175</strong> applied toward repair if you proceed.</p>
-    <p class="muted" style="font-size:13px">Active corridor: Montana · Wyoming · Idaho · Washington — case-by-case beyond. Credentials (text): Victron Professional Certified Installer · weBoost Authorized Installer · Peplink Certified Associate · Dometic Professional Certified.</p>
+    <span class="micro">Published rates</span>
+    <p>Labor <strong>$150/hr</strong> (1-hour minimum, billed in 30-minute increments) as published on <a href="https://unitedmobilerv.com/pricing/">unitedmobilerv.com/pricing/</a>. Generator maintenance, when quoted, starts at <strong>$150</strong>. Full trip, diagnostic, and flat-rate figures stay on that pricing page — we do not invent rates here.</p>
+    <p class="muted" style="font-size:13px">Active corridor: Montana · Wyoming · Idaho · Washington — case-by-case beyond. Credentials (text): Victron Professional Certified Installer · weBoost Authorized Installer · Peplink Certified Associate · Dometic Professional Certified. Starlink = installs only (not a certified partner title).</p>
   </div>
-</section></article><p class="umrt-cta-row wrap">
-  <a class="btn btn-ghost" href="tel:+16166065277">Call (616) 606-5277</a>
-  <a class="btn" href="sms:+16166065277">Text Now</a>
-  <a class="btn btn-ghost" href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a>
-  <a class="btn btn-ghost" href="https://forum.unitedmobilerv.com/">Forum</a>
-  <a class="btn btn-ghost" href="https://shop.unitedmobilerv.com/">Shop</a>
-</p>
+</section></article>
+<section class="money-loop" aria-label="Book, forum, shop, call">
+  <div class="wrap">
+    <span class="micro">After you read</span>
+    <h2>Troubleshoot → book → forum</h2>
+    <p>Appointments live on <a href="https://book.unitedmobilerv.com/">book.unitedmobilerv.com</a> — not a Portal login. Ask owners on the Forum, shop parts, or call/text the shop.</p>
+    <p class="umrt-cta-row">
+      <a class="btn" href="https://book.unitedmobilerv.com/">Book</a>
+      <a class="btn btn-ghost" href="https://forum.unitedmobilerv.com/">Forum</a>
+      <a class="btn btn-ghost" href="https://shop.unitedmobilerv.com/">Shop</a>
+      <a class="btn btn-ghost" href="tel:+16166065277">Call (616) 606-5277</a>
+      <a class="btn" href="sms:+16166065277">Text Now</a>
+    </p>
+  </div>
+</section>
 <p class="wrap"><a href="/guides/">← Docs guides</a> · <a href="https://unitedmobilerv.com/guide/">Full WP library</a></p>
-
 <footer class="guide-foot wrap">
   <p>United Mobile RV LLC · <a href="tel:+16166065277">Call (616) 606-5277</a> · <a href="sms:+16166065277">Text Now</a></p>
   <p>
