@@ -29,6 +29,7 @@ assert(
 );
 
 assert(chrome.includes('/design/clarity.js'), 'convert-chrome injects the shared Clarity file');
+assert(chrome.includes('/design/jsonld.js'), 'convert-chrome also injects the shared JSON-LD helper');
 assert(!chrome.includes('yl6ovtkj2p'), 'convert-chrome does not duplicate the project ID');
 
 function walkHtml(dir, out) {
