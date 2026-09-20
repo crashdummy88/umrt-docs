@@ -152,6 +152,27 @@ assert(diskSlugs.every((slug) => {
   const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
   return !/book\.unitedmobilerv\.com/.test(html) && !/MAIN HUB/.test(html);
 }), 'articles do not reopen book.* or MAIN HUB');
+const articleBanners = diskSlugs.filter((slug) => {
+  const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
+  return /Adapted from/.test(html) || /class="source wrap"/.test(html);
+});
+assert(articleBanners.length === 0, 'no Adapted-from source banner');
+const articlePricing = diskSlugs.filter((slug) => {
+  const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
+  return /Pricing teaser/.test(html);
+});
+assert(articlePricing.length === 0, 'no pricing teaser blocks');
+const articleWpCta = diskSlugs.filter((slug) => {
+  const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
+  const wp = 'https://unitedmobilerv.com/guide/' + slug + '/';
+  return !html.includes('guide-end-cta') || !html.includes(wp) || !/Read the full guide on the main site/.test(html);
+});
+assert(articleWpCta.length === 0, 'every article has bottom WP main-site CTA');
+const nestedCta = diskSlugs.filter((slug) => {
+  const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
+  return /service-card[\s\S]{0,400}guide-end-cta/.test(html);
+});
+assert(nestedCta.length === 0, 'end CTA is not nested in a service card');
 
 if (failed) {
   console.error(failed + ' failed');
