@@ -52,7 +52,7 @@ function assert(cond, msg) {
 assert(ENTRIES.length >= 76, 'catalog indexes the #22 Field Guide set');
 assert(new Set(ENTRIES.map((e) => e.id)).size === ENTRIES.length, 'ids are unique');
 assert(ENTRIES.every((e) => e.title && e.blurb && e.kind && e.category), 'required fields');
-assert(guides.every((e) => e.source), 'guide entries have WP source');
+assert(guides.every((e) => e.source), 'guide entries have source page URL');
 assert(ENTRIES.every((e) => catIds.has(e.category)), 'every entry has a known category');
 assert(ENTRIES.filter((e) => e.href).every((e) => e.href.startsWith('/guides/')), 'docs hrefs stay on /guides/');
 assert(diskSlugs.every((slug) => ENTRIES.some((e) => e.id === slug)), 'every on-disk /guides/<slug>/ is in the catalog');
@@ -80,8 +80,17 @@ assert(matches(ENTRIES.find((e) => e.id === 'invoice'), 'invoice', 'policies'), 
 assert(ENTRIES.filter((e) => matches(e, 'waiver', 'all')).every((e) => e.category === 'policies'), 'waiver stays in Policies');
 assert(!ENTRIES.some((e) => /operating\s+agreement/i.test(haystack(e))), 'catalog has no operating agreement');
 
+const EXPECTED_PINS = {
+  winterize: 'https://forum.unitedmobilerv.com/forum/t/tech-winterize',
+  '12v': 'https://forum.unitedmobilerv.com/forum/t/tech-12v-battery',
+  solar: 'https://forum.unitedmobilerv.com/forum/t/tech-solar',
+  slides: 'https://forum.unitedmobilerv.com/forum/t/tech-slides',
+  generator: 'https://forum.unitedmobilerv.com/forum/t/tech-generator'
+};
+assert(Object.keys(FORUM_PINS).length === 5, 'exactly five forum pins');
 assert(['winterize', '12v', 'solar', 'slides', 'generator'].every((k) => FORUM_PINS[k]), 'forum pin slots reserved');
-assert(Object.keys(FORUM_PINS).every((k) => !FORUM_PINS[k].href), 'forum pin hrefs stay unset until CF publishes');
+assert(Object.keys(FORUM_PINS).every((k) => FORUM_PINS[k].href === EXPECTED_PINS[k]), 'forum pins match Architect GO URLs');
+assert(Object.keys(FORUM_PINS).every((k) => !/forum\.unitedmobilerv\.com\/?$/.test(FORUM_PINS[k].href)), 'pins are not the generic forum home');
 
 const expectedPdfs = [
   'cancellation-no-show-policy.pdf',
@@ -104,9 +113,12 @@ for (const [name, html] of [['home', home], ['guides', guidesHtml], ['policies',
   assert(!/\/sop\//.test(html), name + ' has no SOP link');
   assert(!/\/work-orders\//.test(html), name + ' has no work-orders link');
   assert(!/My Jobs/.test(html), name + ' has no My Jobs teaser');
-  assert(!/umrt-cta-row/.test(html), name + ' has no convert stack');
+  assert(/umrt-cta-row/.test(html), name + ' has Call / Text Now / Book convert row');
+  assert(/tel:\+16166065277/.test(html), name + ' Call is tel:+16166065277');
+  assert(/sms:\+16166065277/.test(html), name + ' Text Now is sms:+16166065277');
   assert(!/book\.unitedmobilerv\.com/.test(html), name + ' does not rewire Book');
   assert(/united-mobile-rv-llc\.square\.site/.test(html), name + ' keeps Square Book');
+  assert(!/MAIN HUB/.test(html), name + ' keeps Home label');
   assert(/docs-catalog\.js/.test(html), name + ' loads catalog script');
   assert(/data-platform-link="hub">Home</.test(html), name + ' keeps Home chrome');
   assert(/\/policies\//.test(html), name + ' links Policies');
@@ -140,6 +152,63 @@ const articleSop = diskSlugs.filter((slug) => {
   return /href="\/sop\/"/.test(html) || /href="\/account\/"/.test(html);
 });
 assert(articleSop.length === 0, 'article pages do not advertise SOP or My Jobs');
+const articleConvert = diskSlugs.filter((slug) => {
+  const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
+  return !/umrt-cta-row/.test(html) || !/tel:\+16166065277/.test(html) || !/sms:\+16166065277/.test(html) || !/united-mobile-rv-llc\.square\.site/.test(html);
+});
+assert(articleConvert.length === 0, 'every article has Call / Text Now / Square Book');
+assert(diskSlugs.every((slug) => {
+  const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
+  return !/book\.unitedmobilerv\.com/.test(html) && !/MAIN HUB/.test(html);
+}), 'articles do not reopen book.* or MAIN HUB');
+const articleBanners = diskSlugs.filter((slug) => {
+  const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
+  return /Adapted from/.test(html) || /class="source wrap"/.test(html);
+});
+assert(articleBanners.length === 0, 'no Adapted-from source banner');
+const articlePricing = diskSlugs.filter((slug) => {
+  const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
+  return /Pricing teaser/.test(html) || /What does a visit cost/.test(html);
+});
+assert(articlePricing.length === 0, 'no pricing teaser blocks or visit-cost cards');
+const articleDollars = diskSlugs.filter((slug) => {
+  const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
+  return /\$175|\$225|Trip fee <strong>\$75/.test(html);
+});
+assert(articleDollars.length === 0, 'no dollar teaser cards that replace booking');
+const articleWpCta = diskSlugs.filter((slug) => {
+  const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
+  const wp = 'https://unitedmobilerv.com/guide/' + slug + '/';
+  return !html.includes('guide-end-cta') || !html.includes(wp) || !/>Source page</.test(html);
+});
+assert(articleWpCta.length === 0, 'every article has bottom Source page button');
+const articleBookCta = diskSlugs.filter((slug) => {
+  const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
+  return !/class="btn"[^>]*>Book service</.test(html);
+});
+assert(articleBookCta.length === 0, 'every article has gold Book service button');
+const articleNav = diskSlugs.filter((slug) => {
+  const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
+  return /WP library/.test(html) || /WordPress library/.test(html) || /WordPress-adapted/.test(html);
+});
+assert(articleNav.length === 0, 'no WP library / adapted advertising on articles');
+const articleCorridor = diskSlugs.filter((slug) => {
+  const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
+  return /Active corridor:/.test(html) || !/class="service-area"/.test(html) || !/Montana, Wyoming, Idaho, and Washington/.test(html);
+});
+assert(articleCorridor.length === 0, 'every article has professional service-area copy');
+const nestedCta = diskSlugs.filter((slug) => {
+  const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
+  return /service-card[\s\S]{0,400}guide-end-cta/.test(html);
+});
+assert(nestedCta.length === 0, 'end CTA is not nested in a service card');
+
+for (const [name, html] of [['home', home], ['guides', guidesHtml], ['policies', policiesHtml]]) {
+  assert(!/WP library/.test(html), name + ' has no WP library label');
+  assert(!/WordPress-adapted/.test(html), name + ' does not advertise adapted');
+  assert(!/WordPress library/.test(html), name + ' has no WordPress library footer');
+  assert(/>Book service</.test(html), name + ' has Book service button');
+}
 
 if (failed) {
   console.error(failed + ' failed');

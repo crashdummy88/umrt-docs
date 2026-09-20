@@ -1,0 +1,118 @@
+/* UMRT docs theme — mothership dark/gold.
+   Tokens from united-mobile-rv/design/theme.json:
+   canvas #1A1A1A · gold #C9972C · chrome #0C0C0C · cards #222.
+   Color/chrome only — not a content rewrite. */
+
+:root {
+  --black: #1A1A1A;
+  --gold: #C9972C;
+  --gold-hover: #E0B04A;
+  --white: #FFFFFF;
+  --canvas: #1A1A1A;
+  --band: #0C0C0C;
+  --card: #222222;
+  --light: rgba(255, 255, 255, 0.04);
+  --line: rgba(255, 255, 255, 0.12);
+  --rule: rgba(255, 255, 255, 0.12);
+  --gray: #A3A3A3;
+  --text: rgba(255, 255, 255, 0.85);
+  --text-body: rgba(255, 255, 255, 0.78);
+  --text-muted: rgba(255, 255, 255, 0.55);
+  --error: #E05555;
+  --error-bg: rgba(224, 85, 85, 0.12);
+  --success: #4CBE6E;
+  --success-bg: rgba(76, 190, 110, 0.16);
+  --warning: #C9972C;
+  --warning-bg: rgba(201, 151, 44, 0.12);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-body);
+  background: var(--black);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--gold); }
+a:hover { color: var(--gold-hover); }
+
+h1, h2, h3, h4 { color: var(--white); }
+strong { color: var(--white); }
+
+.eyebrow,
+.micro {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.gold { color: var(--gold); }
+
+.muted,
+.fine,
+.lede,
+.meta {
+  color: var(--text-muted);
+}
+
+.top {
+  background: var(--band);
+  color: var(--white);
+  padding: 1rem 1.25rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--line);
+}
+.top a { color: var(--white); text-decoration: none; }
+.top a:hover,
+.top a[aria-current="page"] { color: var(--gold); }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--gold);
+  border-radius: 8px;
+  padding: 1.1rem 1.25rem;
+  margin: 1rem 0;
+  color: var(--text-body);
+}
+.card a { color: var(--gold); }
+
+footer,
+.guide-foot,
+.foot {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+footer a,
+.guide-foot a,
+.foot a {
+  color: var(--white);
+  text-decoration: none;
+}
+footer a:hover,
+.guide-foot a:hover,
+.foot a:hover { color: var(--gold); }
+
+input, select, textarea {
+  background: #111;
+  color: var(--white);
+  border: 1px solid var(--line);
+}
+input::placeholder,
+textarea::placeholder { color: var(--text-muted); }
+
+code {
+  font-size: 0.92em;
+  color: var(--gold);
+}

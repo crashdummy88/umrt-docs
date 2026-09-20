@@ -1,16 +1,13 @@
 /* Searchable guides + troubleshooting catalog. Client-side filter only. */
 (function () {
-  /* TODO(CF forum pins): Architect GO — after this catalog lands, Docs CTAs
-     for winterize / 12V / solar / slides / generator must point at real
-     forum pin prompts. Cloudflare publishes those URLs. Do not invent slugs
-     or link the generic forum home as a pin. href stays null until CF ships.
-     When a URL exists, set href and renderForumPins() will show the row. */
+  /* Architect GO — live tech pin prompts only. Do not invent slugs
+     or point pins at the generic forum home. */
   var FORUM_PINS = {
-    winterize: { label: 'Winterize', href: null },
-    '12v': { label: '12V', href: null },
-    solar: { label: 'Solar', href: null },
-    slides: { label: 'Slides', href: null },
-    generator: { label: 'Generator', href: null }
+    winterize: { label: 'Winterize', href: 'https://forum.unitedmobilerv.com/forum/t/tech-winterize' },
+    '12v': { label: '12V', href: 'https://forum.unitedmobilerv.com/forum/t/tech-12v-battery' },
+    solar: { label: 'Solar', href: 'https://forum.unitedmobilerv.com/forum/t/tech-solar' },
+    slides: { label: 'Slides', href: 'https://forum.unitedmobilerv.com/forum/t/tech-slides' },
+    generator: { label: 'Generator', href: 'https://forum.unitedmobilerv.com/forum/t/tech-generator' }
   };
 
   var CATEGORIES = [
@@ -804,7 +801,7 @@
     {
       id: "lithium-buying",
       title: "Lithium battery buying guide",
-      blurb: "How to compare packs before you spend — WP source, not duplicated here.",
+      blurb: "How to compare packs before you spend — source page, not duplicated here.",
       kind: "Guide",
       category: "solar",
       href: "",
@@ -942,7 +939,7 @@
       links.appendChild(el('a', { href: entry.pdf }, 'Download PDF'));
     }
     if (entry.source) {
-      links.appendChild(el('a', { href: entry.source }, entry.href ? 'WP source' : 'Open WP source'));
+      links.appendChild(el('a', { href: entry.source }, entry.href ? 'Source page' : 'Open source page'));
     }
     li.appendChild(links);
     return li;
