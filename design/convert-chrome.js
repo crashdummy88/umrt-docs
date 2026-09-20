@@ -1,5 +1,15 @@
 /* Convert chrome lock: Text Now / TEXT NOW must stay sms:+16166065277.
-   Never remap sms: → tel:. If a Text Now control is on tel:, fix it. */
+   Never remap sms: → tel:. If a Text Now control is on tel:, fix it.
+   Also loads the shared Microsoft Clarity head snippet once when a page
+   did not already include /design/clarity.js. */
+(function () {
+  if (!document.querySelector('script[src="/design/clarity.js"]')) {
+    var clarity = document.createElement('script');
+    clarity.type = 'text/javascript';
+    clarity.src = '/design/clarity.js';
+    (document.head || document.documentElement).appendChild(clarity);
+  }
+})();
 (function () {
   var SMS = 'sms:+16166065277';
   function isTextNow(el) {
