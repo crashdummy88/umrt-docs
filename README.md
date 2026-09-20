@@ -19,7 +19,7 @@ Docs site for United Mobile RV LLC (Cloudflare Pages). Two real audiences:
 ## Convert chrome
 - Call (616) 606-5277 → `tel:+16166065277` · Text Now → `sms:+16166065277` · Book → https://united-mobile-rv-llc.square.site/ · leftover `/go/book` 302s there
 - Applied on `/`, `/guides/`, `/sop/`, `/work-orders/` via `/design/convert-chrome.css`/`.js` -- no "Call (older phones)"
-- Platform bar lock: Home → WP apex (`https://unitedmobilerv.com/`, homepage↔homepage) · Shop · Book (Square) · Forum · Software · Docs (`https://docs.unitedmobilerv.com/`). Same-window land-to-land. No Portal / Status. No “United Mobile RV” / UMRT Docs brand-title next to the lands. Field Guides stay on WP + this docs host — not in other products' chrome.
+- Platform bar lock: Home → `https://unitedmobilerv.com/` · Shop · Book (Square) · Forum · Software · Docs (current). Same-window land-to-land. No Portal / Status. No sticky “United Mobile RV” brand TEXT in chrome (page h1 is the title). Field Guides stay on WP + this docs host — not in other products' chrome. Do not treat `/guides/` as a searchable Apps index.
 - Mesh lands stay on custom domains (never `book.*` for Book)
 
 ## Data
