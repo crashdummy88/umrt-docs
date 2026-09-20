@@ -4,18 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MPPT vs PWM charge controllers · UMRT Docs</title>
-<meta name="description" content="Why MPPT usually wins on RV roofs, and how to match controller to array and chemistry.">
+<meta name="description" content="Why MPPT usually wins on RV roofs, cold-weather voltage, and when PWM is still the right cheap choice.">
 <link rel="canonical" href="https://docs.unitedmobilerv.com/guides/mppt-vs-pwm-charge-controller-guide/">
 <meta name="theme-color" content="#1A1A1A">
 <link rel="icon" href="/assets/brand/favicon-64.png">
-<link rel="stylesheet" href="/design/platform-bar.css">
-<link rel="stylesheet" href="/design/convert-chrome.css">
+<link rel="stylesheet" href="/design/docs-theme.css">
 <link rel="stylesheet" href="/design/docs-guide.css">
+<link rel="stylesheet" href="/design/convert-chrome.css">
+<link rel="stylesheet" href="/design/platform-bar.css">
 </head>
 <body>
 <div class="umrt-platform-bar" role="navigation" aria-label="UMRT properties">
   <div class="umrt-platform-bar-inner">
-    <a href="https://unitedmobilerv.com/" data-platform-link="hub">MAIN HUB</a>
+    <a href="https://unitedmobilerv.com/" data-platform-link="hub">Home</a>
     <a href="https://shop.unitedmobilerv.com/" data-platform-link="shop">Shop</a>
     <a href="https://united-mobile-rv-llc.square.site/" data-platform-link="book" target="_blank" rel="noopener">Book</a>
     <a href="https://forum.unitedmobilerv.com/" data-platform-link="forum">Forum</a>
@@ -23,59 +24,38 @@
     <a href="https://docs.unitedmobilerv.com/" data-platform-link="docs" class="is-current" aria-current="page">Docs</a>
   </div>
 </div>
-<header class="top">
-  <strong><a href="/">UMRT Docs</a></strong>
-  <nav>
-    <a href="/guides/">Guides</a>
-    <a href="https://unitedmobilerv.com/guide/">WP library</a>
-    <a href="/sop/">SOP</a>
-    <a href="tel:+16166065277">Call (616) 606-5277</a>
-    <a href="sms:+16166065277">Text Now</a>
-    <a href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a>
-  </nav>
-</header>
-<p class="source wrap">United Mobile RV field guide — adapted for docs from <a href="https://unitedmobilerv.com/guide/mppt-vs-pwm-charge-controller-guide/">unitedmobilerv.com/guide/mppt-vs-pwm-charge-controller-guide/</a>. Full library stays on the main-site hub. Questions? <a href="https://forum.unitedmobilerv.com/">Forum</a>.</p>
-<article><section class="page-hero">
+<p class="source wrap">Field notes adapted from <a href="https://unitedmobilerv.com/guide/mppt-vs-pwm-charge-controller-guide/">unitedmobilerv.com/guide/mppt-vs-pwm-charge-controller-guide/</a>. Questions? <a href="https://forum.unitedmobilerv.com/">Forum</a>.</p>
+<article>
+<section class="page-hero">
   <div class="wrap">
-    <span class="micro">Owner guide</span>
-    <h1>MPPT vs. PWM Solar Charge Controllers</h1>
-    <p class="lead">Both keep your panels from overcharging the battery. Only one of them actually gets full value out of your panels. Here’s the difference, in numbers.</p>
-    <p class="muted" style="margin-top:16px;max-width:48ch">Active corridor: Montana · Wyoming · Idaho · Washington — case-by-case beyond.</p>
+    <span class="micro">Lithium &amp; Solar · Guide</span>
+    <h1>MPPT vs PWM solar charge controllers</h1>
+    <p class="lead">Both keep the battery from being overcharged. Only one of them consistently turns roof voltage into battery current. Here is when the extra money for MPPT is real, and when it is not.</p>
   </div>
 </section>
 <section class="band">
   <div class="wrap">
-    <span class="micro">Field notes</span>
-    <p>Both keep your panels from overcharging the battery. Only one of them actually gets full value out of your panels. Here’s the difference, in numbers. Small, single-panel trickle-charge systems (under ~150W) where the panel’s rated voltage is already close to the battery’s — a PWM controller is cheaper and the efficiency loss barely matters at that scale. Once you’re wiring panels in series to reach a higher voltage, or running any system over roughly 200–300W, MPPT is the one worth paying for.</p>
-    <div class="grid-2"><article class="service-card"><h3>How They Actually Differ</h3><p>Field notes from mobile diagnostics — gather model/fault data before parts get swapped.</p></article><article class="service-card"><h3>When PWM Is Actually Fine</h3><p>Small, single-panel trickle-charge systems (under ~150W) where the panel’s rated voltage is already close to the battery’s — a PWM controller is cheaper and the efficiency loss barely matters at that scale.</p></article><article class="service-card"><h3>The Cold-Weather Case for MPPT</h3><p>Panel voltage actually rises in cold weather. A PWM controller can’t use that extra voltage — it just clips it.</p></article><article class="service-card"><h3>Related</h3><p>Solar Sizing &amp; Installation GuideVictron Fault Code GuideVictron Energy Power SystemsBack to Field Guide</p></article></div>
-    
-    <p class="muted">Related: <a href="/guides/">Docs guides</a> · <a href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a> · <a href="https://unitedmobilerv.com/pricing/">Pricing</a></p>
-    <div class="btn-row" style="margin-top:24px">
-      <a class="btn btn-gold" href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a>
-      <a class="btn btn-ghost" href="tel:+16166065277">(616) 606-5277</a>
-      <a class="btn btn-ghost" href="/guides/">Docs guides</a>
-    </div>
+<p>A PWM controller connects the panel more or less straight to the battery and clips whatever voltage is above the battery. An MPPT controller runs the array at its better power point and converts the extra volts into amps. On a small 12 V panel sitting on a 12 V bank, the gap is small. On a series roof string, or any array past a couple hundred watts, the gap is the reason you bought solar.</p>
+<h2>How they actually differ</h2>
+<div class="grid-2"><article class="service-card"><h3>PWM</h3><p>Cheaper, simpler, fine when panel Vmp is already close to battery voltage. It cannot use extra volts. Heat and cold just throw away headroom.</p></article><article class="service-card"><h3>MPPT</h3><p>Tracks the array’s power point. Series strings, higher Voc, and cold mornings become extra charge current instead of wasted voltage.</p></article><article class="service-card"><h3>When PWM is enough</h3><p>A single ~100–150 W trickle panel on a 12 V bank, weekend use, no series wiring. The efficiency loss is real and small at that scale.</p></article><article class="service-card"><h3>When MPPT is the buy</h3><p>Anything over roughly 200–300 W, any series string, lithium banks you actually cycle, or a roof you cannot expand later.</p></article></div>
+<h2>Cold weather is the MPPT case</h2>
+<p>Panel voltage rises as temperature drops. A PWM unit cannot spend those extra volts. An MPPT unit can, which is why winter corridor mornings are where the controller choice shows up on the shunt — not in a July driveway test.</p>
+<div class="grid-2"><article class="service-card"><h3>Voc headroom</h3><p>Size the controller for cold Voc, not sticker Voc. A “100 V” MPPT that is fine in Arizona can over-voltage in a Montana dawn.</p></article><article class="service-card"><h3>Current rating</h3><p>MPPT output current is battery-side. A 30 A controller on a 12 V bank is ~400 W class, not “whatever the panels say.”</p></article><article class="service-card"><h3>What we spec</h3><p>Victron SmartSolar on commissioned systems — Bluetooth history is how you prove the array is working after you leave the site.</p></article><article class="service-card"><h3>Related</h3><p>Pair with <a href="/guides/solar-sizing-installation-guide/">sizing</a> and <a href="/guides/best-solar-panels-guide/">panel choice</a> before you buy a box.</p></article></div>
+<span class="micro">Owner checklist</span><ul><li>Write array Voc (cold) and Imp before picking a controller</li><li>Do not series-string into PWM</li><li>Match lithium vs AGM charge profile in the app</li><li>Fuse array and battery sides</li><li>Confirm the monitor shows expected amps at solar noon once</li></ul>
+<h2>FAQ</h2>
+<div class="grid-2"><article class="service-card"><h3>Can I “upgrade later” from PWM?</h3><p>Yes, but you may also need different string wiring. Plan the roof for the controller you will keep.</p></article><article class="service-card"><h3>Two cheap PWMs vs one MPPT?</h3><p>Usually one correctly sized MPPT. Split arrays only when shade or roof geometry forces it.</p></article><article class="service-card"><h3>Why is my MPPT sitting at a few amps?</h3><p>Shade, dirty glass, a full bank already in float, or a voltage window that does not match the string.</p></article><article class="service-card"><h3>Victron required?</h3><p>No. It is what we commission. Any MPPT with an honest voltage window and a chemistry profile you can set is the idea.</p></article></div>
+    <p class="umrt-cta-row">
+      <a class="btn btn-ghost" href="tel:+16166065277">Call (616) 606-5277</a>
+      <a class="btn" href="sms:+16166065277">Text Now</a>
+      <a class="btn btn-ghost" href="/">All guides</a>
+    </p>
   </div>
 </section>
-<section class="band band-tight" style="border-top:1px solid var(--rule)">
-  <div class="wrap-narrow">
-    <span class="micro">Pricing teaser</span>
-    <p>Trip fee <strong>$75</strong> within 30 miles, then <strong>$1.50/mi</strong>. Labor ~<strong>$150/hr</strong> (1-hour minimum, billed in 30-minute increments). Diagnostic <strong>$175</strong> applied toward repair if you proceed.</p>
-    <p class="muted" style="font-size:13px">Active corridor: Montana · Wyoming · Idaho · Washington — case-by-case beyond. Credentials (text): Victron Professional Certified Installer · weBoost Authorized Installer · Peplink Certified Associate · Dometic Professional Certified.</p>
-  </div>
-</section></article><p class="umrt-cta-row wrap">
-  <a class="btn btn-ghost" href="tel:+16166065277">Call (616) 606-5277</a>
-  <a class="btn" href="sms:+16166065277">Text Now</a>
-  <a class="btn btn-ghost" href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a>
-  <a class="btn btn-ghost" href="https://forum.unitedmobilerv.com/">Forum</a>
-  <a class="btn btn-ghost" href="https://shop.unitedmobilerv.com/">Shop</a>
-</p>
-<p class="wrap"><a href="/guides/">← Docs guides</a> · <a href="https://unitedmobilerv.com/guide/">Full WP library</a></p>
-
+</article>
 <footer class="guide-foot wrap">
-  <p>United Mobile RV LLC · <a href="tel:+16166065277">Call (616) 606-5277</a> · <a href="sms:+16166065277">Text Now</a></p>
+  <p><a href="tel:+16166065277">Call (616) 606-5277</a> · <a href="sms:+16166065277">Text Now</a></p>
   <p>
-    <a href="https://unitedmobilerv.com/">MAIN HUB</a> ·
+    <a href="https://unitedmobilerv.com/">Home</a> ·
     <a href="https://shop.unitedmobilerv.com/">Shop</a> ·
     <a href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a> ·
     <a href="https://forum.unitedmobilerv.com/">Forum</a> ·

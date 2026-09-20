@@ -3,19 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>RV inverter sizing guide · UMRT Docs</title>
-<meta name="description" content="Continuous vs surge watts, pure sine, and standby draw for RV inverters.">
+<title>RV inverter sizing · UMRT Docs</title>
+<meta name="description" content="Continuous vs surge watts, pure sine, and standby draw — size the inverter to what you actually run.">
 <link rel="canonical" href="https://docs.unitedmobilerv.com/guides/inverter-sizing-guide/">
 <meta name="theme-color" content="#1A1A1A">
 <link rel="icon" href="/assets/brand/favicon-64.png">
-<link rel="stylesheet" href="/design/platform-bar.css">
-<link rel="stylesheet" href="/design/convert-chrome.css">
+<link rel="stylesheet" href="/design/docs-theme.css">
 <link rel="stylesheet" href="/design/docs-guide.css">
+<link rel="stylesheet" href="/design/convert-chrome.css">
+<link rel="stylesheet" href="/design/platform-bar.css">
 </head>
 <body>
 <div class="umrt-platform-bar" role="navigation" aria-label="UMRT properties">
   <div class="umrt-platform-bar-inner">
-    <a href="https://unitedmobilerv.com/" data-platform-link="hub">MAIN HUB</a>
+    <a href="https://unitedmobilerv.com/" data-platform-link="hub">Home</a>
     <a href="https://shop.unitedmobilerv.com/" data-platform-link="shop">Shop</a>
     <a href="https://united-mobile-rv-llc.square.site/" data-platform-link="book" target="_blank" rel="noopener">Book</a>
     <a href="https://forum.unitedmobilerv.com/" data-platform-link="forum">Forum</a>
@@ -23,59 +24,37 @@
     <a href="https://docs.unitedmobilerv.com/" data-platform-link="docs" class="is-current" aria-current="page">Docs</a>
   </div>
 </div>
-<header class="top">
-  <strong><a href="/">UMRT Docs</a></strong>
-  <nav>
-    <a href="/guides/">Guides</a>
-    <a href="https://unitedmobilerv.com/guide/">WP library</a>
-    <a href="/sop/">SOP</a>
-    <a href="tel:+16166065277">Call (616) 606-5277</a>
-    <a href="sms:+16166065277">Text Now</a>
-    <a href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a>
-  </nav>
-</header>
-<p class="source wrap">United Mobile RV field guide — adapted for docs from <a href="https://unitedmobilerv.com/guide/inverter-sizing-guide/">unitedmobilerv.com/guide/inverter-sizing-guide/</a>. Full library stays on the main-site hub. Questions? <a href="https://forum.unitedmobilerv.com/">Forum</a>.</p>
-<article><section class="page-hero">
+<p class="source wrap">Field notes adapted from <a href="https://unitedmobilerv.com/guide/inverter-sizing-guide/">unitedmobilerv.com/guide/inverter-sizing-guide/</a>. Questions? <a href="https://forum.unitedmobilerv.com/">Forum</a>.</p>
+<article>
+<section class="page-hero">
   <div class="wrap">
-    <span class="micro">Power guide</span>
-    <h1>Size your RV inverter correctly</h1>
-    <p class="lead">An undersized inverter trips constantly. An oversized one wastes standby power every hour of every day. Size it to what you actually run.</p>
-    <p class="muted" style="margin-top:16px;max-width:48ch">Active corridor: Montana · Wyoming · Idaho · Washington — case-by-case beyond.</p>
+    <span class="micro">Electrical &amp; Power · Guide</span>
+    <h1>Size the RV inverter correctly</h1>
+    <p class="lead">An undersized inverter trips when the microwave and the compressor fridge start together. An oversized inverter wastes standby watts every hour you leave it on. Size to the loads, then pick the box.</p>
   </div>
 </section>
 <section class="band">
   <div class="wrap">
-    <span class="micro">Field notes</span>
-    <p>An undersized inverter trips constantly. An oversized one wastes standby power every hour of every day. Size it to what you actually run. Every AC device draws a running wattage, but motor-driven devices (compressor fridges, microwaves, power tools, some water pumps) draw a much higher surge for the first fraction of a second on startup — often 2–3x the running wattage.</p>
-    <div class="grid-2"><article class="service-card"><h3>Continuous Load vs. Surge Load</h3><p>Every AC device draws a running wattage, but motor-driven devices (compressor fridges, microwaves, power tools, some water pumps) draw a much higher surge for the first fraction of a second on startup — often 2–3x the.</p></article><article class="service-card"><h3>Pure Sine vs. Modified Sine</h3><p>Modified sine inverters are cheaper but run some electronics hot, cause audible buzz in certain devices, and can outright damage sensitive equipment like CPAP machines or variable-speed motors.</p></article><article class="service-card"><h3>Don’t Forget Standby Draw</h3><p>A larger inverter left on 24/7 draws more idle current just staying awake, even with nothing running.</p></article><article class="service-card"><h3>Related</h3><p>Best RV Inverter/ChargersConverter &amp; Inverter-Charger GuideVictron Energy Power SystemsBack to Field Guide</p></article></div>
-    
-    <p class="muted">Related: <a href="/guides/">Docs guides</a> · <a href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a> · <a href="https://unitedmobilerv.com/pricing/">Pricing</a></p>
-    <div class="btn-row" style="margin-top:24px">
-      <a class="btn btn-gold" href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a>
-      <a class="btn btn-ghost" href="tel:+16166065277">(616) 606-5277</a>
-      <a class="btn btn-ghost" href="/guides/">Docs guides</a>
-    </div>
+<p>List the AC loads that can run at the same time. Use running watts, then add the worst startup surge (compressor fridge, microwave, some pumps and tools — often 2–3× running). The inverter’s continuous rating must cover the simultaneous running total. Its surge rating must cover the worst start on top of whatever else is already on.</p>
+<h2>Continuous vs surge</h2>
+<div class="grid-2"><article class="service-card"><h3>Running watts</h3><p>Nameplate or a kill-a-watt at the outlet. Add everything that will be on together — not the whole coach inventory.</p></article><article class="service-card"><h3>Surge</h3><p>Motors and magnetrons spike. A 1,000 W microwave on a 1,000 W inverter is already a bad idea. Leave headroom.</p></article><article class="service-card"><h3>Standby / idle</h3><p>A large inverter left on 24/7 is a daily Wh load even with nothing plugged in. If you only need AC for an hour of cooking, use a switched or assist mode — do not leave a 3 kVA brick idling all night.</p></article><article class="service-card"><h3>DC side</h3><p>Inverter current on 12 V is brutal. Cable gauge, fuse, and busbars have to match. A correctly sized inverter on undersized cable is a fire-watch, not a power upgrade.</p></article></div>
+<h2>Waveform and charger combos</h2>
+<div class="grid-2"><article class="service-card"><h3>Pure sine</h3><p>The default for modern coaches. CPAP, variable-speed motors, and most electronics expect it.</p></article><article class="service-card"><h3>Modified sine</h3><p>Cheaper. Buzzes some loads, heats motors, and can damage medical gear. Do not buy it to “save money” on a coach you sleep in.</p></article><article class="service-card"><h3>Inverter/charger</h3><p>Shore or generator AC charges the bank through the same box. Fewer parts than a separate converter plus inverter — if you commission it as one system.</p></article><article class="service-card"><h3>Related</h3><p>Buying notes: <a href="/guides/best-inverters-guide/">best inverter/chargers</a>. Solar side: <a href="/guides/solar-sizing-installation-guide/">solar sizing</a>.</p></article></div>
+<span class="micro">Owner checklist</span><ul><li>Write simultaneous running watts, then the worst surge</li><li>Include inverter idle in the daily Wh budget if it stays on</li><li>Size DC cable and fusing for the 12 V or 24 V current, not the AC label</li><li>Pure sine for CPAP and modern electronics</li><li>Commission transfer and charge profiles before you trust shore power</li></ul>
+<h2>FAQ</h2>
+<div class="grid-2"><article class="service-card"><h3>Can I run the air conditioner?</h3><p>Only if the inverter, bank, and (usually) generator math say so. Most stock 12 V banks will not.</p></article><article class="service-card"><h3>Why does it alarm at idle?</h3><p>Low battery voltage, overload, or over-temp. Read the code before you reset it.</p></article><article class="service-card"><h3>Bigger inverter, smaller battery?</h3><p>That is how you get a voltage collapse on surge. Bank and inverter are a pair.</p></article><article class="service-card"><h3>DIY vs book?</h3><p>Plug-in day-use units are owner territory. Hardwired transfer, AC panels, and Victron commissioning are the book line.</p></article></div>
+    <p class="umrt-cta-row">
+      <a class="btn btn-ghost" href="tel:+16166065277">Call (616) 606-5277</a>
+      <a class="btn" href="sms:+16166065277">Text Now</a>
+      <a class="btn btn-ghost" href="/">All guides</a>
+    </p>
   </div>
 </section>
-<section class="band band-tight" style="border-top:1px solid var(--rule)">
-  <div class="wrap-narrow">
-    <span class="micro">Pricing teaser</span>
-    <p>Trip fee <strong>$75</strong> within 30 miles, then <strong>$1.50/mi</strong>. Labor ~<strong>$150/hr</strong> (1-hour minimum, billed in 30-minute increments). Diagnostic <strong>$175</strong> applied toward repair if you proceed.</p>
-    <p class="muted" style="font-size:13px">Active corridor: Montana · Wyoming · Idaho · Washington — case-by-case beyond. Credentials (text): Victron Professional Certified Installer · weBoost Authorized Installer · Peplink Certified Associate · Dometic Professional Certified.</p>
-  </div>
-</section></article><p class="umrt-cta-row wrap">
-  <a class="btn btn-ghost" href="tel:+16166065277">Call (616) 606-5277</a>
-  <a class="btn" href="sms:+16166065277">Text Now</a>
-  <a class="btn btn-ghost" href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a>
-  <a class="btn btn-ghost" href="https://forum.unitedmobilerv.com/">Forum</a>
-  <a class="btn btn-ghost" href="https://shop.unitedmobilerv.com/">Shop</a>
-</p>
-<p class="wrap"><a href="/guides/">← Docs guides</a> · <a href="https://unitedmobilerv.com/guide/">Full WP library</a></p>
-
+</article>
 <footer class="guide-foot wrap">
-  <p>United Mobile RV LLC · <a href="tel:+16166065277">Call (616) 606-5277</a> · <a href="sms:+16166065277">Text Now</a></p>
+  <p><a href="tel:+16166065277">Call (616) 606-5277</a> · <a href="sms:+16166065277">Text Now</a></p>
   <p>
-    <a href="https://unitedmobilerv.com/">MAIN HUB</a> ·
+    <a href="https://unitedmobilerv.com/">Home</a> ·
     <a href="https://shop.unitedmobilerv.com/">Shop</a> ·
     <a href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a> ·
     <a href="https://forum.unitedmobilerv.com/">Forum</a> ·

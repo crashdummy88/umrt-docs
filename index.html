@@ -3,33 +3,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Docs · United Mobile RV</title>
-  <meta name="description" content="United Mobile RV field guides, SOPs, and your repair history — diagnosis, work performed, and photos once a job's complete. Call or text (616) 606-5277." />
+  <title>Field Guides · United Mobile RV Docs</title>
+  <meta name="description" content="Searchable United Mobile RV field guides and troubleshooting — electrical, solar, appliances, generators, and seasonal work." />
   <meta name="theme-color" content="#1A1A1A" />
   <link rel="icon" href="/assets/brand/favicon-64.png" />
+  <link rel="canonical" href="https://docs.unitedmobilerv.com/" />
+  <link rel="stylesheet" href="/design/docs-theme.css">
+  <link rel="stylesheet" href="/design/docs-guide.css">
   <link rel="stylesheet" href="/design/convert-chrome.css">
-  <style>
-    :root { --black:#1A1A1A; --gold:#C9972C; --white:#fff; --light:#F5F5F5; --gray:#666; }
-    body{margin:0;font-family:system-ui,sans-serif;color:var(--black);background:var(--white);line-height:1.5}
-    .top{background:var(--black);color:var(--white);padding:1rem 1.25rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
-    .top a{color:var(--white);text-decoration:none}
-    .top a:hover{color:var(--gold)}
-    .wrap{max-width:42rem;margin:0 auto;padding:1.5rem 1.25rem 3rem}
-    .eyebrow{color:var(--gold);text-transform:uppercase;letter-spacing:.08em;font-size:.75rem;font-weight:700}
-    h1{font-size:1.75rem;margin:.35rem 0 .75rem}
-    .card{background:var(--light);border-radius:8px;padding:1.1rem 1.25rem;margin:1rem 0}
-    .card a{color:var(--black);font-weight:600}
-    .btn{display:inline-block;background:var(--gold);color:var(--black);font-weight:700;padding:.65rem 1rem;border-radius:4px;text-decoration:none;margin-right:.5rem}
-    .fine{color:var(--gray);font-size:.85rem}
-    footer a{color:var(--black);text-decoration:none}
-    footer a:hover{color:var(--gold)}
-  </style>
-<link rel="stylesheet" href="/design/platform-bar.css">
+  <link rel="stylesheet" href="/design/platform-bar.css">
 </head>
 <body>
   <div class="umrt-platform-bar" role="navigation" aria-label="UMRT properties">
     <div class="umrt-platform-bar-inner">
-      <a href="https://unitedmobilerv.com/" data-platform-link="hub">MAIN HUB</a>
+      <a href="https://unitedmobilerv.com/" data-platform-link="hub">Home</a>
       <a href="https://shop.unitedmobilerv.com/" data-platform-link="shop">Shop</a>
       <a href="https://united-mobile-rv-llc.square.site/" data-platform-link="book" target="_blank" rel="noopener">Book</a>
       <a href="https://forum.unitedmobilerv.com/" data-platform-link="forum">Forum</a>
@@ -38,40 +25,28 @@
     </div>
   </div>
 
-  <header class="top">
-    <strong>UMRT Docs</strong>
-    <nav>
-      <a href="/guides/">Guides</a>
-      <a href="https://unitedmobilerv.com/guide/">Field Guides</a>
-      <a href="/sop/">SOP</a>
-      <a href="/work-orders/">Work Orders</a>
-      <a href="/account/">My Jobs</a>
-      <a href="tel:+16166065277">Call (616) 606-5277</a>
-      <a href="sms:+16166065277">Text Now</a>
-      <a href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a>
-    </nav>
-  </header>
-  <main class="wrap">
-    <p class="eyebrow">Field docs</p>
-    <h1>Field guides, SOPs &amp; your repair history</h1>
-    <p>Two audiences share this site. <strong>Customers:</strong> once a job's done, sign in to <a href="/account/">My Jobs</a> to see the technician's diagnosis, what was done, and photos from your repair — same account you'd use on the portal to track invoices. <strong>Field guides</strong> on this host adapt the live <a href="https://unitedmobilerv.com/guide/">WordPress library</a> so you can troubleshoot here, then Book, Shop, or ask on the Forum. The full ~184-page hub stays on the main site.</p>
-    <p class="umrt-cta-row">
-      <a class="btn" href="/guides/">Docs guides</a>
-      <a class="btn" href="https://unitedmobilerv.com/guide/">WP library →</a>
-      <a class="btn" href="/account/">My Jobs</a>
-      <a class="btn btn-ghost" href="tel:+16166065277">Call (616) 606-5277</a>
-      <a class="btn" href="sms:+16166065277">Text Now</a>
-      <a class="btn btn-ghost" href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a>
-    </p>
-    <section class="card"><h2>My Jobs</h2><p><a href="/account/">/account/</a> — sign in to see your repair history: diagnosis, work performed, and photos, once a job is marked complete.</p></section>
-    <section class="card"><h2>Guides</h2><p><a href="/guides/">/guides/</a> — ported Field Guides (solar, inverters, Starlink, weBoost, furnace, winterize, generators). Full library: <a href="https://unitedmobilerv.com/guide/">unitedmobilerv.com/guide/</a>.</p></section>
-    <section class="card"><h2>SOP</h2><p><a href="/sop/">/sop/</a> — staff teaser. Full SOP / ESTIMATE pages need a portal or docs sign-in.</p></section>
-    <section class="card"><h2>Work Orders</h2><p><a href="/work-orders/">/work-orders/</a> — internal, admin sign-in required. This is where the technician (Matt) writes up the diagnosis, work performed, parts, and attaches repair photos, then the customer signs off — the "official record" a customer later sees read-only in My Jobs above.</p></section>
+  <main class="wrap-wide" data-guides-index>
+    <header class="index-hero">
+      <p class="eyebrow">Docs</p>
+      <h1>Field guides &amp; troubleshooting</h1>
+      <p class="lead">Owner how-tos and fault isolation in one index, grouped by system. Search a symptom or pick a category.</p>
+    </header>
+
+    <div class="search-box">
+      <span class="search-icon" aria-hidden="true">⌕</span>
+      <label class="visually-hidden" for="guide-search" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Search guides</label>
+      <input id="guide-search" type="search" data-index-search autocomplete="off" placeholder="Search — furnace, solar, Starlink, winterize…" />
+    </div>
+    <div class="cat-chips" data-index-chips role="tablist" aria-label="Guide categories"></div>
+    <p class="index-count" data-index-count></p>
+    <div data-index-list></div>
+    <p class="index-empty" data-index-empty hidden>No guides match that search. Try a system name or a symptom — furnace, inverter, winterize.</p>
   </main>
-  <footer class="wrap">
-    <p class="fine">United Mobile RV LLC · <a href="tel:+16166065277">Call (616) 606-5277</a> · <a href="sms:+16166065277">Text Now</a></p>
-    <p class="fine">
-      <a href="https://unitedmobilerv.com/">MAIN HUB</a> ·
+
+  <footer class="guide-foot wrap-wide">
+    <p><a href="tel:+16166065277">Call (616) 606-5277</a> · <a href="sms:+16166065277">Text Now</a></p>
+    <p>
+      <a href="https://unitedmobilerv.com/">Home</a> ·
       <a href="https://shop.unitedmobilerv.com/">Shop</a> ·
       <a href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a> ·
       <a href="https://forum.unitedmobilerv.com/">Forum</a> ·
@@ -79,11 +54,13 @@
       <a href="https://docs.unitedmobilerv.com/">Docs</a>
     </p>
   </footer>
+
   <div class="umrt-mobile-bar" aria-label="Quick actions">
     <a class="btn btn-ghost" href="tel:+16166065277">Call <span class="umrt-call-num">(616) 606-5277</span></a>
     <a class="btn" href="sms:+16166065277">Text Now</a>
     <a class="btn btn-ghost" href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a>
   </div>
+  <script src="/design/guides-catalog.js" defer></script>
   <script src="/design/convert-chrome.js" defer></script>
 </body>
 </html>
