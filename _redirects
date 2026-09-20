@@ -30,5 +30,17 @@
 /guides/wireless  https://unitedmobilerv.com/wireless/  302
 /guides/wireless/  https://unitedmobilerv.com/wireless/  302
 
+# Policy HTML stubs → the PDF (forms are downloads, not articles).
+/policies/cancellation-no-show-policy  /policies/cancellation-no-show-policy.pdf  302
+/policies/cancellation-no-show-policy/  /policies/cancellation-no-show-policy.pdf  302
+/policies/service-estimate  /policies/service-estimate.pdf  302
+/policies/service-estimate/  /policies/service-estimate.pdf  302
+/policies/invoice  /policies/invoice.pdf  302
+/policies/invoice/  /policies/invoice.pdf  302
+/policies/service-agreement  /policies/service-agreement.pdf  302
+/policies/service-agreement/  /policies/service-agreement.pdf  302
+/policies/limitation-of-liability-waiver  /policies/limitation-of-liability-waiver.pdf  302
+/policies/limitation-of-liability-waiver/  /policies/limitation-of-liability-waiver.pdf  302
+
 # Unknown docs paths: real 404 (do not soft-200 the homepage).
 /*  /404.html  404

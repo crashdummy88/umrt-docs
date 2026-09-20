@@ -236,6 +236,9 @@ body.catalog-page {
   color: var(--white);
   padding: 0.75rem 1.25rem;
   font-size: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.15rem;
 }
 
 .catalog-local-nav a {

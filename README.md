@@ -19,6 +19,8 @@ Docs site for United Mobile RV LLC (Cloudflare Pages). Two real audiences:
   `/sop/internal/` and `/sop/estimate/` stay staff-gated. Square owns
   SOP/ESTIMATE product work; this host does not add public SOP/ESTIMATE gates.
   `/account/` and `/work-orders/` are not advertised on `/` or `/guides/`.
+- `/policies/` — public Matt-provided business PDFs (downloads only, not
+  Field Guides). `/policies/*.pdf`. Not WordPress articles.
 
 ## Forum pin CTAs (not in this PR)
 
@@ -54,4 +56,4 @@ Shares `umrt-portal-db` (D1, binding `DB`) with `umrt-portal` — same
 
 Tokens: `#1A1A1A` / `#C9972C` · v0 is static HTML + Pages Functions.
 
-Unknown routes serve `404.html` with status 404 (`/* /404.html 404`). Sitemap lists the catalog and adapted Field Guide pages — not SOP internals.
+Unknown routes serve `404.html` with status 404 (`/* /404.html 404`). Sitemap lists the catalog, adapted Field Guide pages, and public policy PDFs — not SOP internals.
