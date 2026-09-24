@@ -259,6 +259,24 @@ for (const [name, html] of [['home', home], ['guides', guidesHtml], ['policies',
   assert(/>Book service</.test(html), name + ' has Book service button');
 }
 
+const forumMobileCta = /<a class="btn btn-ghost" href="https:\/\/forum\.unitedmobilerv\.com\/">Join the Free Forum<\/a>/;
+const textNowMobile = /<a class="btn" href="sms:\+16166065277">Text Now<\/a>/;
+const mobileBarFiles = walkHtml(root, []).filter((file) => /class="umrt-mobile-bar/.test(fs.readFileSync(file, 'utf8')));
+assert(mobileBarFiles.length >= 80, 'sticky mobile bar is on docs pages');
+for (const file of mobileBarFiles) {
+  const rel = path.relative(root, file);
+  const html = fs.readFileSync(file, 'utf8');
+  const bars = html.match(/<div class="umrt-mobile-bar[\s\S]*?<\/div>/g) || [];
+  assert(bars.length >= 1, rel + ' has a mobile bar');
+  for (const bar of bars) {
+    assert(forumMobileCta.test(bar), rel + ' mobile bar has Join the Free Forum');
+    assert(textNowMobile.test(bar), rel + ' mobile bar keeps gold Text Now');
+    assert(/https:\/\/united-mobile-rv-llc\.square\.site\//.test(bar), rel + ' mobile bar keeps Square Book');
+  }
+}
+const portScript = fs.readFileSync(path.join(root, 'scripts/port-mothership-guides.py'), 'utf8');
+assert(forumMobileCta.test(portScript), 'guide port template includes Join the Free Forum');
+
 if (failed) {
   console.error(failed + ' failed');
   process.exit(1);
