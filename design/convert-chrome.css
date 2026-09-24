@@ -1,4 +1,4 @@
-/* UMRT convert chrome — Call (tel) + Text Now (sms) + Book (Square).
+/* UMRT convert chrome — Call (tel) + Text Now (sms) + Book (Square) + Forum.
    Dark/gold to match software/shop: gold fill + ghost outline on dark.
    Tokens: --black #1A1A1A · --gold #C9972C · chrome #0C0C0C. */
 
@@ -16,7 +16,6 @@
 .btn-row .btn,
 .btn-row .btn-gold,
 .btn-row .btn-convert,
-.umrt-mobile-bar .btn,
 .btn,
 .btn-gold,
 .btn-convert {
@@ -47,7 +46,6 @@
 
 .umrt-cta-row .btn-ghost,
 .btn-row .btn-ghost,
-.umrt-mobile-bar .btn-ghost,
 .btn-ghost {
   background: transparent;
   border: 2px solid rgba(255, 255, 255, 0.35);
@@ -56,13 +54,13 @@
 
 .umrt-cta-row .btn-ghost:hover,
 .btn-row .btn-ghost:hover,
-.umrt-mobile-bar .btn-ghost:hover,
 .btn-ghost:hover {
   border-color: #FFFFFF;
   color: #FFFFFF;
   background: transparent;
 }
 
+/* Quiet text-link row. Not pill buttons. */
 .umrt-mobile-bar {
   display: none;
   position: fixed;
@@ -70,29 +68,63 @@
   left: 0;
   right: 0;
   z-index: 200;
-  background: rgba(12, 12, 12, 0.97);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
-  gap: 8px;
-  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.35);
+  align-items: stretch;
+  justify-content: space-evenly;
+  gap: 0.15rem;
+  background: rgba(12, 12, 12, 0.72);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0 6px env(safe-area-inset-bottom);
+  box-shadow: none;
 }
 
-.umrt-mobile-bar .btn {
-  flex: 1;
+.umrt-mobile-bar a {
+  flex: 0 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
   min-height: 44px;
-  text-align: center;
   margin: 0;
-  padding: 0.5rem 0.4rem;
-  font-size: 0.8rem;
-  line-height: 1.2;
+  padding: 14px 2px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  color: rgba(255, 255, 255, 0.78);
+  font-weight: 500;
+  font-size: 0.78rem;
+  line-height: 1.15;
+  text-align: center;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  white-space: nowrap;
+}
+
+.umrt-mobile-bar a:hover,
+.umrt-mobile-bar a:focus-visible {
+  background: transparent;
+  border-color: transparent;
+  color: #FFFFFF;
+}
+
+/* Text Now stays slightly emphasized — color and weight only. */
+.umrt-mobile-bar a[href^="sms:"] {
+  color: #C9972C;
+  font-weight: 700;
+}
+
+.umrt-mobile-bar a[href^="sms:"]:hover,
+.umrt-mobile-bar a[href^="sms:"]:focus-visible {
+  color: #E0B04A;
 }
 
 @media (max-width: 900px) {
   .umrt-mobile-bar { display: flex; }
   .umrt-mobile-bar .umrt-call-num { display: none; }
-  body { padding-bottom: 72px; }
+  body { padding-bottom: calc(52px + env(safe-area-inset-bottom)); }
 }
 
 @media print {
