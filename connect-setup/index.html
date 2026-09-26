@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Install United Mobile RV Connect · Docs</title>
+<meta name="description" content="How to install United Mobile RV Connect from the private link we text or email you. Windows, Mac, and Raspberry Pi or Linux, including the browser and Windows warnings.">
+<link rel="canonical" href="https://docs.unitedmobilerv.com/connect-setup/">
+<meta name="theme-color" content="#1A1A1A">
+<link rel="icon" href="/assets/brand/favicon-64.png">
+<link rel="stylesheet" href="/design/platform-bar.css">
+<link rel="stylesheet" href="/design/convert-chrome.css">
+<link rel="stylesheet" href="/design/docs-guide.css">
+</head>
+<body>
+<div class="umrt-platform-bar" role="navigation" aria-label="United Mobile RV">
+  <div class="umrt-platform-bar-inner">
+    <a href="https://unitedmobilerv.com/" data-platform-link="hub">Home</a>
+    <a href="https://unitedmobilerv.com/service/" data-platform-link="services">Services</a>
+    <a href="https://shop.unitedmobilerv.com/" data-platform-link="shop">Shop</a>
+    <a href="https://united-mobile-rv-llc.square.site/" data-platform-link="book" target="_blank" rel="noopener">Book</a>
+    <a href="https://forum.unitedmobilerv.com/" data-platform-link="forum">Forum</a>
+    <a href="https://software.unitedmobilerv.com/" data-platform-link="software">Software</a>
+    <a href="https://docs.unitedmobilerv.com/" data-platform-link="docs" class="is-current" aria-current="page">Docs</a>
+  </div>
+</div>
+<nav class="top" aria-label="Docs">
+  <a href="/guides/">Guides</a>
+  <a href="/how-we-connect/">How we connect</a>
+  <a href="/connect-setup/" aria-current="page">Connect setup</a>
+  <a href="/remote-desktop-setup/">Remote desktop</a>
+  <a href="https://unitedmobilerv.com/guide/">Legacy host</a>
+</nav>
+<article>
+<section class="page-hero">
+  <div class="wrap">
+    <span class="micro">Remote support</span>
+    <h1>Install United Mobile RV Connect</h1>
+    <p class="lead">Open the private link we sent you, on the computer we&rsquo;ll support.</p>
+    <p class="umrt-cta-row" aria-label="Convert">
+      <a class="btn btn-ghost" href="tel:+16166065277">Call (616) 606-5277</a>
+      <a class="btn btn-convert" href="sms:+16166065277">Text Now</a>
+    </p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2 style="margin-top:0">What this app is</h2>
+    <p>United Mobile RV Connect (UMRV Connect) is a small app that lets us reach one computer in your rig when you want help. We use it to look at settings and fix power, solar, and internet gear without a trip out. It&rsquo;s built on MeshCentral, an open-source remote tool, and we run it on our own server at <a href="https://connect.unitedmobilerv.com/" rel="noopener">connect.unitedmobilerv.com</a>.</p>
+    <p>We never connect without asking. See <a href="/how-we-connect/">how we connect</a> for the other tools we use, including phones and routers.</p>
+
+    <h2 id="the-link" style="margin-top:28px">1. Open the link we sent you</h2>
+    <p>We text or email you a private install link. It works for 7 days. Open it on the computer we&rsquo;ll support:</p>
+    <ul style="line-height:1.7">
+      <li>A Windows PC or laptop</li>
+      <li>A Mac</li>
+      <li>A Raspberry Pi or other Linux computer</li>
+    </ul>
+    <p>Don&rsquo;t share the link. If it has expired, or you didn&rsquo;t expect it, call or text <a href="tel:+16166065277">(616) 606-5277</a> before you download anything. Only run the installer if the link came from us.</p>
+    <p>The page looks like this. Pick your system, then choose <strong>Download the software here</strong>.</p>
+    <img src="/connect-setup/img/install-link-desktop.webp" width="960" height="600" loading="lazy" decoding="async" style="display:block;width:100%;max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px;margin:0.5rem 0 1rem" alt="United Mobile RV Connect install page on a computer, with Windows 64-bit selected and a download link">
+    <p>On a phone browser, the same page stacks like this. Still open the link on the computer we&rsquo;ll support, not on the phone, unless we asked you to.</p>
+    <img src="/connect-setup/img/install-link-phone.webp" width="540" height="1169" loading="lazy" decoding="async" style="display:block;width:100%;max-width:22rem;height:auto;border:1px solid var(--line);border-radius:8px;margin:0.5rem 0 1rem" alt="The same United Mobile RV Connect install page on a narrow screen, with the Windows download link">
+
+    <h2 id="windows" style="margin-top:28px">2. Windows</h2>
+    <p>Download the small installer and run it. The file name starts with <code>meshagent64</code>. Yours may also have a short code after that. That&rsquo;s normal. The install window may say MeshCentral Agent. That&rsquo;s the tool underneath United Mobile RV Connect.</p>
+    <p><strong>You&rsquo;ll see a warning. Here&rsquo;s why.</strong> The file comes from our own server, and it&rsquo;s built for your link, so Chrome and Windows haven&rsquo;t seen that exact file before. We also haven&rsquo;t signed it with a paid Microsoft certificate yet. That&rsquo;s why Windows lists the publisher as unknown. It is still our installer.</p>
+    <ol style="line-height:1.7">
+      <li>
+        <p>Chrome may say <strong>This file isn&rsquo;t commonly downloaded and it may be dangerous</strong>. Click <strong>Download suspicious file</strong>. If your browser says <strong>Keep</strong> instead, choose Keep.</p>
+        <img src="/connect-setup/img/chrome-download-warning.webp" width="720" height="288" loading="lazy" decoding="async" style="display:block;width:100%;max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px;margin:0.5rem 0 1rem" alt="Chrome warning that the installer is not commonly downloaded, with the Download suspicious file button">
+      </li>
+      <li>
+        <p>When you open the file, Windows shows a blue box: <strong>Windows protected your PC</strong>. Click <strong>More info</strong>.</p>
+        <img src="/connect-setup/img/smartscreen.webp" width="797" height="746" loading="lazy" decoding="async" style="display:block;width:100%;max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px;margin:0.5rem 0 1rem" alt="Windows protected your PC message from Microsoft Defender SmartScreen, with a More info link">
+      </li>
+      <li>
+        <p>Check that the app name starts with <code>meshagent64</code>. The publisher will say <strong>Unknown publisher</strong>. Then click <strong>Run anyway</strong>.</p>
+        <img src="/connect-setup/img/smartscreen-run-anyway.webp" width="797" height="746" loading="lazy" decoding="async" style="display:block;width:100%;max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px;margin:0.5rem 0 1rem" alt="Windows protected your PC after More info, publisher listed as unknown, with Run anyway and Don't run">
+      </li>
+      <li>If Windows asks to allow changes, choose <strong>Yes</strong>.</li>
+      <li>In the install window, choose <strong>Install</strong> if we&rsquo;re leaving it on the computer for ongoing help, or <strong>Connect</strong> for a one-time session. If you&rsquo;re not sure which button, text us and we&rsquo;ll tell you.</li>
+      <li>Text us &ldquo;installed&rdquo; so we can confirm we see it.</li>
+    </ol>
+    <p class="muted">Only do this if the link came from us by text or email. Our number is <a href="tel:+16166065277">(616) 606-5277</a>. If the buttons look different, or there is no <strong>Run anyway</strong> button, stop and call us. We&rsquo;ll sort it out together.</p>
+
+    <h2 id="mac" style="margin-top:28px">3. Mac</h2>
+    <ol style="line-height:1.7">
+      <li>Open the link on the Mac and download United Mobile RV Connect.</li>
+      <li>Open the download and follow the prompts. The Mac version isn&rsquo;t signed by Apple yet, so macOS may say it can&rsquo;t check the app. Don&rsquo;t choose Move to Trash. Call or text us and we&rsquo;ll walk through the next click with you.</li>
+      <li>The first time, macOS asks you to allow <strong>Screen Recording</strong> and <strong>Accessibility</strong> for the app. That&rsquo;s in System Settings, under Privacy &amp; Security. We&rsquo;ll walk you through it on the phone.</li>
+      <li>Text us &ldquo;installed&rdquo;.</li>
+    </ol>
+
+    <h2 id="linux" style="margin-top:28px">4. Raspberry Pi or Linux</h2>
+    <p>Open the same link on that computer and choose the Linux download. Stay on the phone with us while it installs. A Pi often has no screen prompt, so your OK is the one you already gave us when you asked us to set it up.</p>
+
+    <h2 id="when-we-connect" style="margin-top:28px">5. When we connect</h2>
+    <ul style="line-height:1.7">
+      <li>Every time we connect, you get an <strong>Allow</strong> / <strong>Deny</strong> prompt. Nothing happens until you click <strong>Allow</strong>.</li>
+      <li>While we&rsquo;re connected, a toolbar stays on the screen. You can disconnect anytime.</li>
+      <li>We never connect without asking.</li>
+      <li>After a one-time session, we remove the app.</li>
+      <li>If you&rsquo;re on a monitoring plan, the app stays installed so we can help the next time you ask. You still get the Allow prompt.</li>
+    </ul>
+
+    <h2 id="remove" style="margin-top:28px">6. Remove it later</h2>
+    <p>You can take United Mobile RV Connect off the computer whenever you want.</p>
+    <ul style="line-height:1.7">
+      <li><strong>Windows:</strong> open Settings, then Apps, then Installed apps. On some computers that page is named Apps &amp; features. Find United Mobile RV Connect and choose Uninstall. If the name looks a little different, text us and we&rsquo;ll point to the right row.</li>
+      <li><strong>Mac:</strong> text us and we&rsquo;ll remove it with you.</li>
+      <li><strong>Raspberry Pi or Linux:</strong> text us and we&rsquo;ll send the removal steps for that computer.</li>
+    </ul>
+    <p class="muted">Removing the app doesn&rsquo;t cancel a plan by itself. Text us if you also want the plan to stop.</p>
+
+    <h2 id="not-these" style="margin-top:28px">7. Phones, tablets, and Chromebooks</h2>
+    <p>United Mobile RV Connect does <strong>not</strong> cover these:</p>
+    <ul style="line-height:1.7">
+      <li>iPhone or iPad</li>
+      <li>Chromebooks</li>
+      <li>Android phones (limited)</li>
+    </ul>
+    <p>For those, we use Zoom or FaceTime screen share. We can also point the camera at a panel and walk through it together. That&rsquo;s covered on <a href="/how-we-connect/">how we connect</a>.</p>
+
+    <h2 id="questions" style="margin-top:28px">Questions?</h2>
+    <p>Call or text <a href="tel:+16166065277">(616) 606-5277</a>, or email <a href="mailto:unitedrvnetwork@gmail.com">unitedrvnetwork@gmail.com</a>.</p>
+    <p>Remote support packages are listed at <a href="https://unitedmobilerv.com/remote/">unitedmobilerv.com/remote</a>. A one-time code session on a computer uses <a href="/remote-desktop-setup/">Chrome Remote Desktop</a> instead of this installer.</p>
+    <p class="umrt-cta-row" aria-label="Questions">
+      <a class="btn btn-ghost" href="tel:+16166065277">Call (616) 606-5277</a>
+      <a class="btn btn-convert" href="sms:+16166065277">Text Now</a>
+      <a class="btn" href="https://unitedmobilerv.com/remote/">Remote packages</a>
+    </p>
+  </div>
+</section>
+
+</article>
+<p class="wrap"><a href="/how-we-connect/">← How we connect</a> · <a href="/guides/">Field Guides</a></p>
+<footer class="guide-foot wrap">
+  <p>United Mobile RV LLC · <a href="tel:+16166065277">Call (616) 606-5277</a> · <a href="sms:+16166065277">Text Now</a></p>
+  <p>
+    <a href="https://unitedmobilerv.com/">Home</a> ·
+    <a href="https://unitedmobilerv.com/service/">Services</a> ·
+    <a href="https://shop.unitedmobilerv.com/">Shop</a> ·
+    <a href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a> ·
+    <a href="https://forum.unitedmobilerv.com/">Forum</a> ·
+    <a href="https://software.unitedmobilerv.com/">Software</a> ·
+    <a href="https://docs.unitedmobilerv.com/">Docs</a>
+  </p>
+</footer>
+<div class="umrt-mobile-bar" aria-label="Quick actions">
+  <a href="tel:+16166065277">Call <span class="umrt-call-num">(616) 606-5277</span></a>
+  <a href="sms:+16166065277">Text Now</a>
+  <a href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book service</a>
+  <a href="https://forum.unitedmobilerv.com/">Join the Free Forum</a>
+</div>
+<script src="/design/convert-chrome.js" defer></script>
+</body>
+</html>
