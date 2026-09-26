@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Remote Desktop Setup: Chrome Remote Desktop &amp; TeamViewer · Docs</title>
+<meta name="description" content="How to set up the coach laptop for a United Mobile RV remote session: Chrome Remote Desktop (let us in anytime or a one-time code), with TeamViewer QuickSupport as a backup.">
+<link rel="canonical" href="https://docs.unitedmobilerv.com/remote-desktop-setup/">
+<meta name="theme-color" content="#1A1A1A">
+<link rel="icon" href="/assets/brand/favicon-64.png">
+<link rel="stylesheet" href="/design/platform-bar.css">
+<link rel="stylesheet" href="/design/convert-chrome.css">
+<link rel="stylesheet" href="/design/docs-guide.css">
+</head>
+<body>
+<div class="umrt-platform-bar" role="navigation" aria-label="UMRT properties">
+  <div class="umrt-platform-bar-inner">
+    <a href="https://unitedmobilerv.com/" data-platform-link="hub">Home</a>
+    <a href="https://unitedmobilerv.com/service/" data-platform-link="services">Services</a>
+    <a href="https://shop.unitedmobilerv.com/" data-platform-link="shop">Shop</a>
+    <a href="https://united-mobile-rv-llc.square.site/" data-platform-link="book" target="_blank" rel="noopener">Book</a>
+    <a href="https://forum.unitedmobilerv.com/" data-platform-link="forum">Forum</a>
+    <a href="https://software.unitedmobilerv.com/" data-platform-link="software">Software</a>
+    <a href="https://docs.unitedmobilerv.com/" data-platform-link="docs" class="is-current" aria-current="page">Docs</a>
+  </div>
+</div>
+<nav class="top" aria-label="Docs">
+  <a href="/guides/">Guides</a>
+  <a href="https://unitedmobilerv.com/guide/">Legacy host</a>
+</nav>
+<article>
+<section class="page-hero">
+  <div class="wrap">
+    <span class="micro">Remote session setup</span>
+    <h1>Remote desktop setup for your remote session</h1>
+    <p class="lead">Do this on the coach laptop before your session.</p>
+    <p class="umrt-cta-row" aria-label="Convert">
+      <a class="btn btn-ghost" href="tel:+16166065277">Call (616) 606-5277</a>
+      <a class="btn btn-convert" href="sms:+16166065277">Text Now</a>
+    </p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2 style="margin-top:0">What we need and why</h2>
+    <p>We need a laptop on your coach network and online, so we can pull your GX settings file and tune your network. That means:</p>
+    <ul style="line-height:1.7">
+      <li>Connected to your coach network (Peplink, GL.iNet, cell modem or whatever you run) <strong>and</strong> to the internet.</li>
+      <li>At the coach and powered on for the session.</li>
+      <li>Google Chrome installed, with remote access set up using one of the options below.</li>
+    </ul>
+    <p>Chrome Remote Desktop is our first choice. TeamViewer works too if you prefer it.</p>
+
+    <h2 id="chrome-remote-desktop" style="margin-top:28px">1. Chrome Remote Desktop: let us in anytime <span style="color:var(--gold);font-size:0.8em">(recommended)</span></h2>
+    <p>With this set up, we can pull your GX settings file and remote in to tune your network (Peplink, GL.iNet, modem) without you having to be at the laptop.</p>
+    <ol style="line-height:1.7">
+      <li>
+        <p>On the coach laptop, open Chrome and go to <a href="https://remotedesktop.google.com/access" rel="noopener">remotedesktop.google.com/access</a>, then click the blue download button.</p>
+        <img src="/remote-desktop-setup/img/crd-1-download.webp" width="900" height="464" loading="lazy" decoding="async" style="display:block;width:100%;max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px;margin:0.5rem 0 1rem" alt="Chrome Remote Desktop Remote Access page, &quot;Set up remote access&quot; card with the blue round download button in the lower right">
+      </li>
+      <li>
+        <p>In the Chrome Web Store, click <strong>Add to Chrome</strong>.</p>
+        <img src="/remote-desktop-setup/img/crd-2-add-to-chrome.webp" width="900" height="464" loading="lazy" decoding="async" style="display:block;width:100%;max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px;margin:0.5rem 0 1rem" alt="Chrome Web Store listing for Chrome Remote Desktop by Google, with the blue Add to Chrome button on the right">
+      </li>
+      <li>
+        <p>Click <strong>Add extension</strong>.</p>
+        <img src="/remote-desktop-setup/img/crd-3-add-extension.webp" width="900" height="464" loading="lazy" decoding="async" style="display:block;width:100%;max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px;margin:0.5rem 0 1rem" alt="Chrome pop-up asking to add &quot;Chrome Remote Desktop&quot;, with the Add extension button next to Cancel">
+      </li>
+      <li>
+        <p>Back on the Remote Access page, click <strong>Turn on</strong>. If the installer downloads, run it. Your computer may ask for its password or for a security setting change to let Chrome Remote Desktop in.</p>
+        <img src="/remote-desktop-setup/img/crd-4-turn-on.webp" width="900" height="464" loading="lazy" decoding="async" style="display:block;width:100%;max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px;margin:0.5rem 0 1rem" alt="Chrome Remote Desktop &quot;Set up remote access&quot; card reading &quot;To allow remote access to this computer, click Turn on&quot;, with the blue Turn on button">
+      </li>
+      <li>
+        <p>Name the computer so we know which coach it is (for example <code>Bill-2020Newmar</code>), then click <strong>Next</strong>.</p>
+        <img src="/remote-desktop-setup/img/crd-5-name-computer.webp" width="900" height="464" loading="lazy" decoding="async" style="display:block;width:100%;max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px;margin:0.5rem 0 1rem" alt="Chrome Remote Desktop &quot;Choose a name&quot; box with the example computer name Bill-2020Newmar typed in and the blue Next button">
+      </li>
+      <li>
+        <p>Pick a PIN of at least 6 digits. We&rsquo;ll ask you to share it with us privately when we set up. You can change it or turn remote access off anytime.</p>
+      </li>
+    </ol>
+    <p class="muted">To turn it off later, go back to <a href="https://remotedesktop.google.com/access" rel="noopener">remotedesktop.google.com/access</a> and disable remote connections for that computer.</p>
+
+    <h2 id="one-time-code" style="margin-top:28px">2. One-time session with a code</h2>
+    <p>Use this if you&rsquo;d rather let us in only while you&rsquo;re at the laptop.</p>
+    <ol style="line-height:1.7">
+      <li>Open Chrome and go to <a href="https://remotedesktop.google.com/support" rel="noopener">remotedesktop.google.com/support</a>.</li>
+      <li>Sign in with a Google account.</li>
+      <li>Under <strong>Get Support</strong>, click download and install Chrome Remote Desktop when prompted.</li>
+      <li>When we&rsquo;re ready, click <strong>Generate Code</strong> and text or read us the code. It only works once.</li>
+      <li>When we connect, you&rsquo;ll see a box with our email address. Click <strong>Share</strong> to let us in.</li>
+      <li>Click <strong>Stop Sharing</strong> anytime to end it. On long sessions Chrome asks you every 30 minutes to keep sharing.</li>
+    </ol>
+
+    <h2 id="teamviewer" style="margin-top:28px">3. TeamViewer QuickSupport (backup)</h2>
+    <p>If Chrome Remote Desktop won&rsquo;t cooperate, or you already use TeamViewer:</p>
+    <ol style="line-height:1.7">
+      <li>Open the official <a href="https://www.teamviewer.com/en/download/portal/" rel="noopener">TeamViewer QuickSupport download page</a>, download QuickSupport, and run it.</li>
+      <li>Give us the TeamViewer ID shown in QuickSupport.</li>
+      <li>When the request appears, click <strong>Allow access</strong>.</li>
+    </ol>
+
+    <h2 id="questions" style="margin-top:28px">Questions?</h2>
+    <p>Call or text <a href="tel:+16166065277">(616) 606-5277</a>.</p>
+    <p class="umrt-cta-row" aria-label="Questions">
+      <a class="btn btn-ghost" href="tel:+16166065277">Call (616) 606-5277</a>
+      <a class="btn btn-convert" href="sms:+16166065277">Text Now</a>
+    </p>
+  </div>
+</section>
+
+</article>
+<p class="wrap"><a href="/guides/">← Field Guides</a></p>
+<footer class="guide-foot wrap">
+  <p>United Mobile RV LLC · <a href="tel:+16166065277">Call (616) 606-5277</a> · <a href="sms:+16166065277">Text Now</a></p>
+  <p>
+    <a href="https://unitedmobilerv.com/">Home</a> ·
+    <a href="https://unitedmobilerv.com/service/">Services</a> ·
+    <a href="https://shop.unitedmobilerv.com/">Shop</a> ·
+    <a href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a> ·
+    <a href="https://forum.unitedmobilerv.com/">Forum</a> ·
+    <a href="https://software.unitedmobilerv.com/">Software</a> ·
+    <a href="https://docs.unitedmobilerv.com/">Docs</a>
+  </p>
+</footer>
+<div class="umrt-mobile-bar" aria-label="Quick actions">
+  <a href="tel:+16166065277">Call <span class="umrt-call-num">(616) 606-5277</span></a>
+  <a href="sms:+16166065277">Text Now</a>
+  <a href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book service</a>
+  <a href="https://forum.unitedmobilerv.com/">Join the Free Forum</a>
+</div>
+<script src="/design/convert-chrome.js" defer></script>
+</body>
+</html>
