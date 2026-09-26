@@ -196,7 +196,7 @@ const articleNav = diskSlugs.filter((slug) => {
 assert(articleNav.length === 0, 'no WP library / adapted advertising on articles');
 const articleCorridor = diskSlugs.filter((slug) => {
   const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
-  return /Active corridor:/.test(html) || !/class="service-area"/.test(html) || !/Montana, Wyoming, Idaho, and Washington/.test(html);
+  return /Active corridor:/.test(html) || !/class="service-area"/.test(html) || !/Washington \(on-site booking\); remote help anywhere/.test(html);
 });
 assert(articleCorridor.length === 0, 'every article has professional service-area copy');
 const nestedCta = diskSlugs.filter((slug) => {
