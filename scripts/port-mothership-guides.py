@@ -127,11 +127,18 @@ def rewrite(html: str) -> str:
     html = html.replace(">Book a Service</a>", ">Book</a>")
     html = html.replace(">Book Now</a>", ">Book</a>")
     html = html.replace(">All guides</a>", ">Field Guides</a>")
+    html = html.replace(
+        'href="/troubleshoot/"',
+        'href="https://software.unitedmobilerv.com/troubleshoot/"',
+    )
+    html = html.replace(
+        'href="https://unitedmobilerv.com/troubleshoot/"',
+        'href="https://software.unitedmobilerv.com/troubleshoot/"',
+    )
     for path in (
         "electrical",
         "victron",
         "wireless",
-        "troubleshoot",
         "pricing",
         "service",
         "about",
@@ -139,6 +146,13 @@ def rewrite(html: str) -> str:
         "service-areas",
         "privacy-policy",
         "terms-of-use",
+        "trailer",
+        "chassis",
+        "roof",
+        "ppi",
+        "lp-gas",
+        "plumbing",
+        "preventive",
     ):
         html = html.replace(f'href="/{path}/"', f'href="https://unitedmobilerv.com/{path}/"')
     html = html.replace(
