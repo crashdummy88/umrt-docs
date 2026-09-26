@@ -278,6 +278,10 @@ for (const file of mobileBarFiles) {
 const portScript = fs.readFileSync(path.join(root, 'scripts/port-mothership-guides.py'), 'utf8');
 assert(forumMobileCta.test(portScript), 'guide port template includes Join the Free Forum');
 
+const remoteSetup = fs.readFileSync(path.join(root, 'remote-desktop-setup/index.html'), 'utf8');
+const remoteBack = remoteSetup.match(/<a class="btn" href="https:\/\/unitedmobilerv\.com\/remote\/">Back to remote packages<\/a>/g) || [];
+assert(remoteBack.length === 2, 'remote desktop setup links back to remote packages at the top and the end');
+
 if (failed) {
   console.error(failed + ' failed');
   process.exit(1);

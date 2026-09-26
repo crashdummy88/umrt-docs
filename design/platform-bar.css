@@ -13,15 +13,16 @@
 }
 
 .umrt-platform-bar-inner {
-  width: min(100% - 48px, 1160px);
+  width: min(100% - 32px, 1160px);
   margin-inline: auto;
   display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 18px;
+  row-gap: 2px;
+  overflow: visible;
+  padding-block: 4px;
 }
-.umrt-platform-bar-inner::-webkit-scrollbar { display: none; }
 
 .umrt-platform-bar a {
   flex: 0 0 auto;
@@ -46,6 +47,10 @@
 }
 
 @media (max-width: 480px) {
-  .umrt-platform-bar-inner { gap: 16px; }
+  .umrt-platform-bar-inner {
+    width: min(100% - 24px, 1160px);
+    column-gap: 16px;
+    row-gap: 2px;
+  }
   .umrt-platform-bar a { font-size: 11px; }
 }
