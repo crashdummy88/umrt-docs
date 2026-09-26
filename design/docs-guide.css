@@ -25,8 +25,8 @@ h3 { font-size: 1.02rem; margin: 0.2rem 0 0.35rem; color: var(--white); }
 .lead { font-size: 1.05rem; max-width: 42rem; color: var(--text); }
 .muted { color: var(--text-muted); font-size: 0.9rem; }
 
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin: 1rem 0; }
-@media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
+.grid-2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0.75rem; margin: 1rem 0; }
+@media (max-width: 640px) { .grid-2 { grid-template-columns: minmax(0, 1fr); } }
 
 .service-card {
   background: var(--card);
@@ -34,8 +34,11 @@ h3 { font-size: 1.02rem; margin: 0.2rem 0 0.35rem; color: var(--white); }
   border-left: 4px solid var(--gold);
   border-radius: 8px;
   padding: 0.95rem 1.05rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 .service-card p { margin: 0.25rem 0 0; color: var(--text-body); }
+.service-card a { overflow-wrap: anywhere; }
 
 .source {
   font-size: 0.85rem;

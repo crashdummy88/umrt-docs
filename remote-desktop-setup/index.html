@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Remote Desktop Setup: Chrome Remote Desktop &amp; TeamViewer · Docs</title>
-<meta name="description" content="How to set up the coach laptop for a United Mobile RV remote session: Chrome Remote Desktop (let us in anytime or a one-time code), with TeamViewer QuickSupport as a backup.">
+<title>Remote Desktop Setup: Chrome Remote Desktop · Docs</title>
+<meta name="description" content="One-time Chrome Remote Desktop code for your coach laptop session. Free Google account. TeamViewer: only if we ask. We never ask for a PIN or password.">
 <link rel="canonical" href="https://docs.unitedmobilerv.com/remote-desktop-setup/">
 <meta name="theme-color" content="#1A1A1A">
 <link rel="icon" href="/assets/brand/favicon-64.png">
@@ -26,6 +26,9 @@
 </div>
 <nav class="top" aria-label="Docs">
   <a href="/guides/">Guides</a>
+  <a href="/how-we-connect/">How we connect</a>
+  <a href="/connect-setup/">Connect setup</a>
+  <a href="/remote-desktop-setup/" aria-current="page">Remote desktop</a>
   <a href="https://unitedmobilerv.com/guide/">Legacy host</a>
 </nav>
 <article>
@@ -48,60 +51,29 @@
     <ul style="line-height:1.7">
       <li>Connected to your coach network (Peplink, GL.iNet, cell modem or whatever you run) <strong>and</strong> to the internet.</li>
       <li>At the coach and powered on for the session.</li>
-      <li>Google Chrome installed, with remote access set up using one of the options below.</li>
+      <li>Google Chrome installed.</li>
     </ul>
-    <p>Chrome Remote Desktop is our first choice. TeamViewer works too if you prefer it.</p>
+    <p>For a one-off session on a computer, we use United Mobile RV Connect or Chrome Remote Desktop. We&rsquo;ll text you which one we&rsquo;ll use for your session.</p>
+    <p>Macs: we use FaceTime or Zoom for now. Mac, Raspberry Pi, and Android are supported only after testing with us.</p>
+    <p>On your computer, nothing happens until you click Allow, and you can end the session any time. For remote-access boxes on Managed and Fleet plans, which can&rsquo;t show a prompt, we text you before every session and wait for your reply.</p>
+    <p>Text &ldquo;pause&rdquo; and we pause our access within 4 hours during the day, or the same evening if you text late. While paused, your computer still asks before anything happens, and a remote-access box can&rsquo;t be reached at all. Text &ldquo;resume&rdquo; to turn access back on.</p>
+    <p>If we text you a <a href="/connect-setup/">United Mobile RV Connect</a> link, open it on the Windows computer. Only run an install link we texted you. If Chrome says <strong>This file isn&rsquo;t commonly downloaded and it may be dangerous</strong>, click <strong>Download suspicious file</strong>. If it says <strong>Keep</strong>, choose Keep. When you open the file, Windows shows a blue box: <strong>Windows protected your PC</strong>. Click <strong>More info</strong>, then <strong>Run anyway</strong>. When Windows asks to allow changes, click <strong>Yes</strong>. In the Connect installer, click <strong>Install</strong> only. To remove it later, find Mesh Agent in your apps list. <a href="/how-we-connect/">How we connect</a> shows which tool we use for a phone, a Peplink router, or a Victron system.</p>
+    <p>TeamViewer: only if we ask.</p>
 
-    <h2 id="chrome-remote-desktop" style="margin-top:28px">1. Chrome Remote Desktop: let us in anytime <span style="color:var(--gold);font-size:0.8em">(recommended)</span></h2>
-    <p>With this set up, we can pull your GX settings file and remote in to tune your network (Peplink, GL.iNet, modem) without you having to be at the laptop.</p>
-    <ol style="line-height:1.7">
-      <li>
-        <p>On the coach laptop, open Chrome and go to <a href="https://remotedesktop.google.com/access" rel="noopener">remotedesktop.google.com/access</a>, then click the blue download button.</p>
-        <img src="/remote-desktop-setup/img/crd-1-download.webp" width="900" height="464" loading="lazy" decoding="async" style="display:block;width:100%;max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px;margin:0.5rem 0 1rem" alt="Chrome Remote Desktop Remote Access page, &quot;Set up remote access&quot; card with the blue round download button in the lower right">
-      </li>
-      <li>
-        <p>In the Chrome Web Store, click <strong>Add to Chrome</strong>.</p>
-        <img src="/remote-desktop-setup/img/crd-2-add-to-chrome.webp" width="900" height="464" loading="lazy" decoding="async" style="display:block;width:100%;max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px;margin:0.5rem 0 1rem" alt="Chrome Web Store listing for Chrome Remote Desktop by Google, with the blue Add to Chrome button on the right">
-      </li>
-      <li>
-        <p>Click <strong>Add extension</strong>.</p>
-        <img src="/remote-desktop-setup/img/crd-3-add-extension.webp" width="900" height="464" loading="lazy" decoding="async" style="display:block;width:100%;max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px;margin:0.5rem 0 1rem" alt="Chrome pop-up asking to add &quot;Chrome Remote Desktop&quot;, with the Add extension button next to Cancel">
-      </li>
-      <li>
-        <p>Back on the Remote Access page, click <strong>Turn on</strong>. If the installer downloads, run it. Your computer may ask for its password or for a security setting change to let Chrome Remote Desktop in.</p>
-        <img src="/remote-desktop-setup/img/crd-4-turn-on.webp" width="900" height="464" loading="lazy" decoding="async" style="display:block;width:100%;max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px;margin:0.5rem 0 1rem" alt="Chrome Remote Desktop &quot;Set up remote access&quot; card reading &quot;To allow remote access to this computer, click Turn on&quot;, with the blue Turn on button">
-      </li>
-      <li>
-        <p>Name the computer so we know which coach it is (for example <code>Bill-2020Newmar</code>), then click <strong>Next</strong>.</p>
-        <img src="/remote-desktop-setup/img/crd-5-name-computer.webp" width="900" height="464" loading="lazy" decoding="async" style="display:block;width:100%;max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px;margin:0.5rem 0 1rem" alt="Chrome Remote Desktop &quot;Choose a name&quot; box with the example computer name Bill-2020Newmar typed in and the blue Next button">
-      </li>
-      <li>
-        <p>Pick a PIN of at least 6 digits. We&rsquo;ll ask you to share it with us privately when we set up. You can change it or turn remote access off anytime.</p>
-      </li>
-    </ol>
-    <p class="muted">To turn it off later, go back to <a href="https://remotedesktop.google.com/access" rel="noopener">remotedesktop.google.com/access</a> and disable remote connections for that computer.</p>
-
-    <h2 id="one-time-code" style="margin-top:28px">2. One-time session with a code</h2>
-    <p>Use this if you&rsquo;d rather let us in only while you&rsquo;re at the laptop.</p>
+    <h2 id="chrome-remote-desktop" style="margin-top:28px">1. Chrome Remote Desktop (one-time code)</h2>
+    <p id="one-time-code">This is the only Chrome Remote Desktop path. You stay at the laptop, and we only get in while you&rsquo;re sharing. You need a free Google account to get the one-time code. Gmail works. The first time, it installs a small helper. We never ask for a PIN or password.</p>
     <ol style="line-height:1.7">
       <li>Open Chrome and go to <a href="https://remotedesktop.google.com/support" rel="noopener">remotedesktop.google.com/support</a>.</li>
-      <li>Sign in with a Google account.</li>
-      <li>Under <strong>Get Support</strong>, click download and install Chrome Remote Desktop when prompted.</li>
-      <li>When we&rsquo;re ready, click <strong>Generate Code</strong> and text or read us the code. It only works once.</li>
-      <li>When we connect, you&rsquo;ll see a box with our email address. Click <strong>Share</strong> to let us in.</li>
+      <li>Click <strong>Share this screen</strong>.</li>
+      <li>Read us the code. It only works once.</li>
       <li>Click <strong>Stop Sharing</strong> anytime to end it. On long sessions Chrome asks you every 30 minutes to keep sharing.</li>
     </ol>
 
-    <h2 id="teamviewer" style="margin-top:28px">3. TeamViewer QuickSupport (backup)</h2>
-    <p>If Chrome Remote Desktop won&rsquo;t cooperate, or you already use TeamViewer:</p>
-    <ol style="line-height:1.7">
-      <li>Open the official <a href="https://www.teamviewer.com/en/download/portal/" rel="noopener">TeamViewer QuickSupport download page</a>, download QuickSupport, and run it.</li>
-      <li>Give us the TeamViewer ID shown in QuickSupport.</li>
-      <li>When the request appears, click <strong>Allow access</strong>.</li>
-    </ol>
+    <h2 id="teamviewer" style="margin-top:28px">TeamViewer: only if we ask</h2>
+    <p>TeamViewer: only if we ask. If we use it, we&rsquo;ll text you first. You read us the ID and the one-time session code shown in your TeamViewer window. That code changes every session. We never ask for your computer, email or account passwords.</p>
 
     <h2 id="questions" style="margin-top:28px">Questions?</h2>
-    <p>Call or text <a href="tel:+16166065277">(616) 606-5277</a>.</p>
+    <p>Call or text <a href="tel:+16166065277">(616) 606-5277</a>, or email <a href="mailto:unitedrvnetwork@gmail.com">unitedrvnetwork@gmail.com</a>.</p>
     <p class="umrt-cta-row" aria-label="Questions">
       <a class="btn btn-ghost" href="tel:+16166065277">Call (616) 606-5277</a>
       <a class="btn btn-convert" href="sms:+16166065277">Text Now</a>
