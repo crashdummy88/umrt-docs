@@ -275,7 +275,7 @@
       kind: "Guide",
       category: "seasonal",
       href: "/guides/gear-we-recommend/",
-      source: "https://unitedmobilerv.com/guide/gear-we-recommend/",
+      source: "https://docs.unitedmobilerv.com/guides/gear-we-recommend/",
       tags: "gear we recommend"
     },
     {
@@ -395,7 +395,7 @@
       kind: "Guide",
       category: "wireless",
       href: "/guides/peplink-multi-wan-guide/",
-      source: "https://unitedmobilerv.com/guide/peplink-multi-wan-guide/",
+      source: "https://docs.unitedmobilerv.com/guides/peplink-multi-wan-guide/",
       tags: "peplink multi wan guide"
     },
     {

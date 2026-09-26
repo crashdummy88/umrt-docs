@@ -178,10 +178,13 @@ const articleDollars = diskSlugs.filter((slug) => {
   return /\$175|\$225|Trip fee <strong>\$75/.test(html);
 });
 assert(articleDollars.length === 0, 'no dollar teaser cards that replace booking');
+const docsSourceSlugs = new Set(['peplink-multi-wan-guide', 'gear-we-recommend']);
 const articleWpCta = diskSlugs.filter((slug) => {
   const html = fs.readFileSync(path.join(root, 'guides', slug, 'index.html'), 'utf8');
-  const wp = 'https://unitedmobilerv.com/guide/' + slug + '/';
-  return !html.includes('guide-end-cta') || !html.includes(wp) || !/>Source page</.test(html);
+  const sourceHref = docsSourceSlugs.has(slug)
+    ? '/guides/' + slug + '/'
+    : 'https://unitedmobilerv.com/guide/' + slug + '/';
+  return !html.includes('guide-end-cta') || !html.includes(sourceHref) || !/>Source page</.test(html);
 });
 assert(articleWpCta.length === 0, 'every article has bottom Source page button');
 const articleBookCta = diskSlugs.filter((slug) => {
