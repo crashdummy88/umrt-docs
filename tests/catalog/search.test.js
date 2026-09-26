@@ -207,10 +207,12 @@ const nestedCta = diskSlugs.filter((slug) => {
 });
 assert(nestedCta.length === 0, 'end CTA is not nested in a service card');
 
-const CHROME_ORDER = ['Home', 'Services', 'Shop', 'Book', 'Forum', 'Software', 'Docs'];
+const HEADER_ORDER = ['Home', 'Services', 'Guides', 'Shop', 'Book', 'Forum', 'Software', 'Docs'];
+const FOOTER_ORDER = ['Home', 'Services', 'Shop', 'Book', 'Forum', 'Software', 'Docs'];
 const CHROME_HREFS = {
   Home: 'https://unitedmobilerv.com/',
   Services: 'https://unitedmobilerv.com/services/',
+  Guides: 'https://unitedmobilerv.com/guide/',
   Shop: 'https://shop.unitedmobilerv.com/',
   Book: 'https://united-mobile-rv-llc.square.site/',
   Forum: 'https://forum.unitedmobilerv.com/',
@@ -235,8 +237,8 @@ for (const file of chromePages) {
   const html = fs.readFileSync(file, 'utf8');
   const bar = html.match(/<div class="umrt-platform-bar-inner">([\s\S]*?)<\/div>/);
   assert(bar, rel + ' has platform-bar inner');
-  const labels = [...bar[1].matchAll(/>(Home|Services|Shop|Book|Forum|Software|Docs)</g)].map((m) => m[1]);
-  assert(labels.join('|') === CHROME_ORDER.join('|'), rel + ' platform bar order');
+  const labels = [...bar[1].matchAll(/>(Home|Services|Guides|Shop|Book|Forum|Software|Docs)</g)].map((m) => m[1]);
+  assert(labels.join('|') === HEADER_ORDER.join('|'), rel + ' platform bar order');
   for (const [label, href] of Object.entries(CHROME_HREFS)) {
     const re = new RegExp('href="' + href.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '"[^>]*>' + label + '<');
     assert(re.test(bar[1]), rel + ' platform ' + label + ' href');
@@ -247,7 +249,7 @@ for (const file of chromePages) {
   if (foot) {
     const footLabels = [...foot[0].matchAll(/>(Home|Services|Shop|Book|Forum|Software|Docs)</g)].map((m) => m[1]);
     if (footLabels.includes('Home')) {
-      assert(footLabels.join('|') === CHROME_ORDER.join('|'), rel + ' footer chrome order');
+      assert(footLabels.join('|') === FOOTER_ORDER.join('|'), rel + ' footer chrome order');
       assert(foot[0].includes('https://unitedmobilerv.com/services/'), rel + ' footer Services href');
       assert(foot[0].includes('https://united-mobile-rv-llc.square.site/'), rel + ' footer Book stays Square');
     }
