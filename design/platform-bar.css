@@ -1,9 +1,10 @@
 /* UMRT platform bar — tokens from design/theme.json (#0C0C0C / #C9972C).
    Docs lock: Home → https://unitedmobilerv.com/ ·
-   Services → https://unitedmobilerv.com/service/ · Shop · Book (Square) ·
+   Services → https://unitedmobilerv.com/services/ ·
+   Guides → https://unitedmobilerv.com/guide/ · Shop · Book (Square) ·
    Forum · Software · Docs (current). Same-window land-to-land.
    No Portal / Status. No “United Mobile RV” brand TEXT in chrome
-   (page h1 is the title). Field Guides stay on WP + this docs host.
+   (page h1 is the title). The docs subnav keeps its own /guides/ link.
    Convert Call/Text Now live outside this bar. */
 
 .umrt-platform-bar {
@@ -13,15 +14,16 @@
 }
 
 .umrt-platform-bar-inner {
-  width: min(100% - 48px, 1160px);
+  width: min(100% - 32px, 1160px);
   margin-inline: auto;
   display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 18px;
+  row-gap: 2px;
+  overflow: visible;
+  padding-block: 4px;
 }
-.umrt-platform-bar-inner::-webkit-scrollbar { display: none; }
 
 .umrt-platform-bar a {
   flex: 0 0 auto;
@@ -46,6 +48,10 @@
 }
 
 @media (max-width: 480px) {
-  .umrt-platform-bar-inner { gap: 16px; }
+  .umrt-platform-bar-inner {
+    width: min(100% - 24px, 1160px);
+    column-gap: 16px;
+    row-gap: 2px;
+  }
   .umrt-platform-bar a { font-size: 11px; }
 }

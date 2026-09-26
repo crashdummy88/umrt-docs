@@ -127,11 +127,18 @@ def rewrite(html: str) -> str:
     html = html.replace(">Book a Service</a>", ">Book</a>")
     html = html.replace(">Book Now</a>", ">Book</a>")
     html = html.replace(">All guides</a>", ">Field Guides</a>")
+    html = html.replace(
+        'href="/troubleshoot/"',
+        'href="https://software.unitedmobilerv.com/troubleshoot/"',
+    )
+    html = html.replace(
+        'href="https://unitedmobilerv.com/troubleshoot/"',
+        'href="https://software.unitedmobilerv.com/troubleshoot/"',
+    )
     for path in (
         "electrical",
         "victron",
         "wireless",
-        "troubleshoot",
         "pricing",
         "service",
         "about",
@@ -139,6 +146,13 @@ def rewrite(html: str) -> str:
         "service-areas",
         "privacy-policy",
         "terms-of-use",
+        "trailer",
+        "chassis",
+        "roof",
+        "ppi",
+        "lp-gas",
+        "plumbing",
+        "preventive",
     ):
         html = html.replace(f'href="/{path}/"', f'href="https://unitedmobilerv.com/{path}/"')
     html = html.replace(
@@ -169,7 +183,8 @@ TEMPLATE = """<!DOCTYPE html>
 <div class="umrt-platform-bar" role="navigation" aria-label="UMRT properties">
   <div class="umrt-platform-bar-inner">
     <a href="https://unitedmobilerv.com/" data-platform-link="hub">Home</a>
-    <a href="https://unitedmobilerv.com/service/" data-platform-link="services">Services</a>
+    <a href="https://unitedmobilerv.com/services/" data-platform-link="services">Services</a>
+    <a href="https://unitedmobilerv.com/guide/" data-platform-link="guides">Guides</a>
     <a href="https://shop.unitedmobilerv.com/" data-platform-link="shop">Shop</a>
     <a href="https://united-mobile-rv-llc.square.site/" data-platform-link="book" target="_blank" rel="noopener">Book</a>
     <a href="https://forum.unitedmobilerv.com/" data-platform-link="forum">Forum</a>
@@ -192,7 +207,7 @@ TEMPLATE = """<!DOCTYPE html>
   <p>United Mobile RV LLC · <a href="tel:+16166065277">Call (616) 606-5277</a> · <a href="sms:+16166065277">Text Now</a></p>
   <p>
     <a href="https://unitedmobilerv.com/">Home</a> ·
-    <a href="https://unitedmobilerv.com/service/">Services</a> ·
+    <a href="https://unitedmobilerv.com/services/">Services</a> ·
     <a href="https://shop.unitedmobilerv.com/">Shop</a> ·
     <a href="https://united-mobile-rv-llc.square.site/" target="_blank" rel="noopener">Book</a> ·
     <a href="https://forum.unitedmobilerv.com/">Forum</a> ·

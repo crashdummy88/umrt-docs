@@ -1,6 +1,6 @@
 /* UMRT docs theme — mothership dark/gold.
    Tokens from united-mobile-rv/design/theme.json:
-   canvas #1A1A1A · gold #C9972C · chrome #0C0C0C · cards #222.
+   canvas #1A1A1A · gold #C9972C · chrome #0C0C0C · cards #0C0C0C / #1A1A1A.
    Color/chrome only — not a content rewrite. */
 
 :root {
@@ -10,13 +10,13 @@
   --white: #FFFFFF;
   --canvas: #1A1A1A;
   --band: #0C0C0C;
-  --card: #222222;
+  --card: #0C0C0C;
   --light: rgba(255, 255, 255, 0.04);
   --line: rgba(255, 255, 255, 0.12);
   --rule: rgba(255, 255, 255, 0.12);
   --gray: #A3A3A3;
-  --text: rgba(255, 255, 255, 0.85);
-  --text-body: rgba(255, 255, 255, 0.78);
+  --text: #D6D6D6;
+  --text-body: #D6D6D6;
   --text-muted: rgba(255, 255, 255, 0.55);
   --error: #E05555;
   --error-bg: rgba(224, 85, 85, 0.12);
@@ -42,6 +42,7 @@ a { color: var(--gold); }
 a:hover { color: var(--gold-hover); }
 
 h1, h2, h3, h4 { color: var(--white); }
+p, li { color: var(--text-body); }
 strong { color: var(--white); }
 
 .eyebrow,
@@ -81,10 +82,15 @@ strong { color: var(--white); }
   background: var(--card);
   border: 1px solid var(--line);
   border-left: 4px solid var(--gold);
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 1.1rem 1.25rem;
   margin: 1rem 0;
   color: var(--text-body);
+}
+.band .card,
+.band-tight .card,
+.page-hero .card {
+  background: #1A1A1A;
 }
 .card a { color: var(--gold); }
 

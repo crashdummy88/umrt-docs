@@ -53,6 +53,8 @@ assert(ENTRIES.length >= 76, 'catalog indexes the #22 Field Guide set');
 assert(new Set(ENTRIES.map((e) => e.id)).size === ENTRIES.length, 'ids are unique');
 assert(ENTRIES.every((e) => e.title && e.blurb && e.kind && e.category), 'required fields');
 assert(guides.every((e) => e.source), 'guide entries have source page URL');
+assert(ENTRIES.find((e) => e.id === 'gear-we-recommend').source === 'https://docs.unitedmobilerv.com/guides/gear-we-recommend/', 'Gear We Recommend source page is the docs guide');
+assert(ENTRIES.find((e) => e.id === 'peplink-multi-wan-guide').source === 'https://docs.unitedmobilerv.com/guides/peplink-multi-wan-guide/', 'Peplink multi-WAN source page is the docs guide');
 assert(ENTRIES.every((e) => catIds.has(e.category)), 'every entry has a known category');
 assert(ENTRIES.filter((e) => e.href).every((e) => e.href.startsWith('/guides/')), 'docs hrefs stay on /guides/');
 assert(diskSlugs.every((slug) => ENTRIES.some((e) => e.id === slug)), 'every on-disk /guides/<slug>/ is in the catalog');
@@ -122,7 +124,7 @@ for (const [name, html] of [['home', home], ['guides', guidesHtml], ['policies',
   assert(/docs-catalog\.js/.test(html), name + ' loads catalog script');
   assert(/data-platform-link="hub">Home</.test(html), name + ' keeps Home chrome');
   assert(/data-platform-link="services">Services</.test(html), name + ' keeps Services chrome');
-  assert(/href="https:\/\/unitedmobilerv\.com\/service\/" data-platform-link="services"/.test(html), name + ' Services lands on /service/');
+  assert(/href="https:\/\/unitedmobilerv\.com\/services\/" data-platform-link="services"/.test(html), name + ' Services lands on /services/');
   assert(/\/policies\//.test(html), name + ' links Policies');
   assert(!/operating\s+agreement/i.test(html), name + ' does not mention operating agreement');
 }
@@ -205,10 +207,12 @@ const nestedCta = diskSlugs.filter((slug) => {
 });
 assert(nestedCta.length === 0, 'end CTA is not nested in a service card');
 
-const CHROME_ORDER = ['Home', 'Services', 'Shop', 'Book', 'Forum', 'Software', 'Docs'];
+const HEADER_ORDER = ['Home', 'Services', 'Guides', 'Shop', 'Book', 'Forum', 'Software', 'Docs'];
+const FOOTER_ORDER = ['Home', 'Services', 'Shop', 'Book', 'Forum', 'Software', 'Docs'];
 const CHROME_HREFS = {
   Home: 'https://unitedmobilerv.com/',
-  Services: 'https://unitedmobilerv.com/service/',
+  Services: 'https://unitedmobilerv.com/services/',
+  Guides: 'https://unitedmobilerv.com/guide/',
   Shop: 'https://shop.unitedmobilerv.com/',
   Book: 'https://united-mobile-rv-llc.square.site/',
   Forum: 'https://forum.unitedmobilerv.com/',
@@ -233,8 +237,8 @@ for (const file of chromePages) {
   const html = fs.readFileSync(file, 'utf8');
   const bar = html.match(/<div class="umrt-platform-bar-inner">([\s\S]*?)<\/div>/);
   assert(bar, rel + ' has platform-bar inner');
-  const labels = [...bar[1].matchAll(/>(Home|Services|Shop|Book|Forum|Software|Docs)</g)].map((m) => m[1]);
-  assert(labels.join('|') === CHROME_ORDER.join('|'), rel + ' platform bar order');
+  const labels = [...bar[1].matchAll(/>(Home|Services|Guides|Shop|Book|Forum|Software|Docs)</g)].map((m) => m[1]);
+  assert(labels.join('|') === HEADER_ORDER.join('|'), rel + ' platform bar order');
   for (const [label, href] of Object.entries(CHROME_HREFS)) {
     const re = new RegExp('href="' + href.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '"[^>]*>' + label + '<');
     assert(re.test(bar[1]), rel + ' platform ' + label + ' href');
@@ -245,8 +249,8 @@ for (const file of chromePages) {
   if (foot) {
     const footLabels = [...foot[0].matchAll(/>(Home|Services|Shop|Book|Forum|Software|Docs)</g)].map((m) => m[1]);
     if (footLabels.includes('Home')) {
-      assert(footLabels.join('|') === CHROME_ORDER.join('|'), rel + ' footer chrome order');
-      assert(foot[0].includes('https://unitedmobilerv.com/service/'), rel + ' footer Services href');
+      assert(footLabels.join('|') === FOOTER_ORDER.join('|'), rel + ' footer chrome order');
+      assert(foot[0].includes('https://unitedmobilerv.com/services/'), rel + ' footer Services href');
       assert(foot[0].includes('https://united-mobile-rv-llc.square.site/'), rel + ' footer Book stays Square');
     }
   }
@@ -277,6 +281,12 @@ for (const file of mobileBarFiles) {
 }
 const portScript = fs.readFileSync(path.join(root, 'scripts/port-mothership-guides.py'), 'utf8');
 assert(forumMobileCta.test(portScript), 'guide port template includes Join the Free Forum');
+
+const remoteSetup = fs.readFileSync(path.join(root, 'remote-desktop-setup/index.html'), 'utf8');
+const remoteBack = remoteSetup.match(/<a class="btn" href="https:\/\/unitedmobilerv\.com\/remote\/">Back to remote packages<\/a>/g) || [];
+assert(remoteBack.length === 2, 'remote desktop setup links back to remote packages at the top and the end');
+const setupSteps = remoteSetup.match(/<a class="btn" href="https:\/\/unitedmobilerv\.com\/remote-setup\/">Back to setup steps<\/a>/g) || [];
+assert(setupSteps.length === 2, 'remote desktop setup links back to setup steps at the top and the end');
 
 if (failed) {
   console.error(failed + ' failed');

@@ -58,7 +58,7 @@ body.catalog-page {
   padding: 0.7rem 0.85rem;
   min-height: 44px;
   border: 1px solid #3a3a3a;
-  border-radius: 6px;
+  border-radius: 10px;
   background: #141414;
   color: var(--white);
 }
@@ -135,12 +135,11 @@ body.catalog-page {
 }
 
 .catalog-card {
-  border-bottom: 1px solid var(--rule);
-  padding: 0.85rem 0;
-}
-
-.catalog-card:last-child {
-  border-bottom: 0;
+  background: #0C0C0C;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  margin: 0 0 0.7rem;
 }
 
 .catalog-card-top {
@@ -176,7 +175,7 @@ body.catalog-page {
 
 .catalog-card p {
   margin: 0.3rem 0 0.45rem;
-  color: var(--text-muted);
+  color: var(--text-body);
   font-size: 0.95rem;
 }
 
