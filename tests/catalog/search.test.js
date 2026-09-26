@@ -285,6 +285,8 @@ assert(forumMobileCta.test(portScript), 'guide port template includes Join the F
 const remoteSetup = fs.readFileSync(path.join(root, 'remote-desktop-setup/index.html'), 'utf8');
 const remoteBack = remoteSetup.match(/<a class="btn" href="https:\/\/unitedmobilerv\.com\/remote\/">Back to remote packages<\/a>/g) || [];
 assert(remoteBack.length === 2, 'remote desktop setup links back to remote packages at the top and the end');
+const setupSteps = remoteSetup.match(/<a class="btn" href="https:\/\/unitedmobilerv\.com\/remote-setup\/">Back to setup steps<\/a>/g) || [];
+assert(setupSteps.length === 2, 'remote desktop setup links back to setup steps at the top and the end');
 
 if (failed) {
   console.error(failed + ' failed');
